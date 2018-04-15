@@ -7,7 +7,7 @@ path="res://.import/godot-tank-prototype.dae-b99f295eac775e3d2bedfb04aa9e0fc3.sc
 [deps]
 
 source_file="res://models/godot-tank-prototype.dae"
-source_md5="3f451952e0c7311f9199873917cc1e68"
+source_md5="025592833801f3af0c8ba8aaaddd2946"
 
 dest_files=[ "res://.import/godot-tank-prototype.dae-b99f295eac775e3d2bedfb04aa9e0fc3.scn" ]
 dest_md5="ad25fc8dc048352ac6b8b8076ce2aff6"

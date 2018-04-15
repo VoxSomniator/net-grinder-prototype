@@ -9,7 +9,7 @@ path="res://.import/godotmechgun.obj-457c782f2e98489e07a17cab7067afb2.mesh"
 files=[ "res://.import/godotmechgun.obj-457c782f2e98489e07a17cab7067afb2.mesh" ]
 
 source_file="res://models/godotmechgun.obj"
-source_md5="4a0c0e615e1fe07112db72ed6c17d105"
+source_md5="e3b24e7b41783460b63a66dff38b92d6"
 
 dest_files=[ "res://.import/godotmechgun.obj-457c782f2e98489e07a17cab7067afb2.mesh", "res://.import/godotmechgun.obj-457c782f2e98489e07a17cab7067afb2.mesh" ]
 dest_md5="800257e9ab199416d83fc39c260c5115"
@@ -17,3 +17,4 @@ dest_md5="800257e9ab199416d83fc39c260c5115"
 [params]
 
 generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )

@@ -49,6 +49,7 @@ func _process(delta):
 			
 		#Turn left/right
 		if Input.is_action_pressed("ui_left"):
+			print("Turning left")
 			turn_torque.y += turn_speed
 		if Input.is_action_pressed("ui_right"):
 			turn_torque.y -= turn_speed
@@ -67,7 +68,7 @@ func _process(delta):
 func _integrate_forces(state):
 	#Only apply torque to our own tank
 	if is_network_master():
-		state.apply_torqe_impulse(turn_torque)
+		state.apply_torque_impulse(turn_torque)
 
 #Fancy function to apply acceleration forces. Makes it so vehicles can't exceed their
 # max speed on their own, but can go faster if pushed/thrown somehow.
