@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/ChatBox.tscn" type="PackedScene" id=1]
 
-[node name="InGameHUD" type="CanvasLayer" index="0"]
+[node name="InGameHUD" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
