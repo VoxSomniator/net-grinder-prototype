@@ -1,13 +1,17 @@
 extends Container
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var tank_camera
+var tank_cam_heading
+var tank_cam_heading_int
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	tank_camera = get_parent().get_node("Camera")
+
+func _process(delta):
+	tank_cam_heading = tank_camera.rotation_degrees.y
+	tank_cam_heading_int = int(tank_cam_heading)
+	
+	$CompassTrack.rect_position.x = tank_cam_heading
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
