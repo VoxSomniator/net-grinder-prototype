@@ -25,6 +25,13 @@ var turn_torque = Vector3(0, 0, 0)
 #Used only by instances of other players' tanks. Each player's master tank updates all the other slaves.
 slave var other_transform
 
+var start_jump = false
+var max_jump_speed = 20
+var in_freefall_up = false
+var in_freefall_down = false
+var in_freefall = false
+var can_jump = true
+
 
 
 func _ready():
@@ -46,13 +53,41 @@ func _process(delta):
 		#Drive forward, up to max speed
 		if Input.is_action_pressed("ui_up"):
 			moving_vector = accelerate(forward_vector, acceleration, delta, max_forward_speed)	
+		elif Input.is_action_pressed("ui_down"):
+			moving_vector = accelerate(forward_vector, -1 * acceleration, delta, max_forward_speed)	
 			
 		#Turn left/right
 		if Input.is_action_pressed("ui_left"):
-			print("Turning left")
 			turn_torque.y += turn_speed
 		if Input.is_action_pressed("ui_right"):
 			turn_torque.y -= turn_speed
+		if Input.is_key_pressed(KEY_SPACE) && can_jump:
+			#Sets a limit on how high the tank can jump
+			if linear_velocity.y < max_jump_speed:
+				#If the tank has stopped accelerating upwards in the current jump, 
+				#it cannot start accelerating upwards again.
+				if !in_freefall:
+					moving_vector = moving_vector + Vector3(0,100,0)
+					start_jump = true
+			#The tank is in the middle of jumping, but has reached its 
+			#top upwards speed
+			elif start_jump:
+				start_jump = false
+				in_freefall_up = true
+				in_freefall = true
+		#The tank had started jumping, but the user ended the jump
+		elif start_jump:
+			start_jump = false
+			in_freefall_up = true
+			in_freefall = true
+		#The tank has reached the apex of its jump
+		if in_freefall_up && linear_velocity.y < -0.01:
+			in_freefall_up = false
+			in_freefall_down = true
+		#The tank has landed and can jump again
+		if in_freefall_down && linear_velocity.y > -0.01:
+			in_freefall = false
+			in_freefall_down = false
 		
 		#After all forces are calculated, apply the impulse.
 		apply_impulse(Vector3(0, 0, 0), moving_vector*delta)
