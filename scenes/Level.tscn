@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/StaticCube.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/PlayerSpawner.gd" type="Script" id=3]
+[ext_resource path="res://scenes/InGameHUD.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -141,5 +142,7 @@ far = 100.0
 [node name="PlayerSpawner" type="Spatial" parent="." index="2"]
 
 script = ExtResource( 3 )
+
+[node name="InGameHUD" parent="." index="3" instance=ExtResource( 4 )]
 
 
