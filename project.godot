@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="net grinder prototype"
+config/name="net grinder prototype (dev-medley)"
 run/main_scene="res://scenes/GameCore.tscn"
 config/icon="res://icon.png"
 
