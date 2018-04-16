@@ -42,7 +42,7 @@ surfaces/1 = {
 
 extents = Vector3( 2, 1.45, 2 )
 
-[node name="Player" type="RigidBody"]
+[node name="Player" type="RigidBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0810366, 0 )
 input_ray_pickable = true
@@ -126,7 +126,7 @@ disabled = false
 
 [node name="Camera" type="Camera" parent="." index="2"]
 
-transform = Transform( -1, 0, -8.74228e-08, -2.20311e-08, 0.967726, 0.252006, 8.46013e-08, 0.252006, -0.967726, 0, 4.15192, -4.65796 )
+transform = Transform( -1, -1.74533e-08, 8.74228e-08, -1.74533e-08, 1, 0, -8.74228e-08, -1.52582e-15, -1, -0.377091, 2.91273, 0.0144353 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
