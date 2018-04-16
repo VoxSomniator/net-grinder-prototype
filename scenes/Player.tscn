@@ -42,7 +42,7 @@ surfaces/1 = {
 
 extents = Vector3( 2, 1.45, 2 )
 
-[node name="Player" type="RigidBody"]
+[node name="Player" type="RigidBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0810366, 0 )
 input_ray_pickable = true
@@ -143,5 +143,7 @@ script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="HUD-Tank" parent="." index="3" instance=ExtResource( 5 )]
+
+[connection signal="heading_updated" from="Camera" to="HUD-Tank" method="_on_Camera_heading_updated"]
 
 
