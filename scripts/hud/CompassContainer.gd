@@ -11,6 +11,7 @@ func _ready():
 func _process(delta):
 	compass_track.rect_position.x = heading * 2
 	heading_label.text = str(heading)
+	print(String(heading))
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
