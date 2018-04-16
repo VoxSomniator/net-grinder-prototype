@@ -1,12 +1,13 @@
 extends Container
 
 var heading
+var compass_track
 
 func _ready():
-	pass
+	compass_track = $CompassTrack
 
 func _process(delta):
-	$CompassTrack.rect_position.x = heading
+	compass_track.rect_position.x = heading
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
