@@ -11,7 +11,11 @@ func _ready():
 
 func _process(delta):
 	compass_track.rect_position.x = heading * 2
+	
 	heading_int = int(heading) * -1 + 360
+	if heading_int == 360:
+		heading_int = 0
+	
 	heading_label.text = str(heading_int)
 
 func _draw():
