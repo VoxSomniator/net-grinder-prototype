@@ -10,6 +10,8 @@ func _ready():
 
 func _process(delta):
 	cam_xform = self.get_global_transform()
-	heading = cam_xform.rotation_degrees.y
+	heading = rad2deg(Vector2(cam_xform.basis.z.x, cam_xform.basis.z.z).angle_to(Vector2(0,1)))
+	if cam_heading<0:
+		cam_heading+=360 # beautify heading, remove negative angle
 	print(String(heading))
 	emit_signal("heading_updated", heading)
