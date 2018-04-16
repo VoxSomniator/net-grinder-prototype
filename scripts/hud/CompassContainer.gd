@@ -7,7 +7,7 @@ func _ready():
 	compass_track = $CompassTrack
 
 func _process(delta):
-	compass_track.rect_position.x = heading * 8
+	compass_track.rect_position.x = heading * 2
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
