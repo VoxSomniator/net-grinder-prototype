@@ -45,12 +45,13 @@ _sections_unfolded = [ "Rect" ]
 
 position = Vector2( -3, 0 )
 points = PoolVector2Array( 28, 30, 33, 38, 38, 30 )
-width = 1.0
+width = 2.0
 default_color = Color( 1, 1, 1, 1 )
 texture_mode = 336147152
+joint_mode = 2
 sharp_limit = 2.0
 round_precision = 8
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Border", "Capping", "Fill", "Material", "Transform", "Visibility" ]
 
 [node name="CompassContainer" type="Container" parent="." index="1"]
 
