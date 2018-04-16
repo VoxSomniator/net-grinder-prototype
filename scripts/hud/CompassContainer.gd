@@ -10,7 +10,7 @@ func _ready():
 	heading_label = get_node("../HeadingLabel")
 
 func _process(delta):
-	compass_track.rect_position.x = heading * 2
+	compass_track.rect_position.x = heading * 4
 	
 	heading_int = int(heading) * -1 + 360
 	if heading_int == 360:
