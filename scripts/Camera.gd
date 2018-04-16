@@ -1,6 +1,6 @@
 extends Camera
 
-signal heading_updated
+signal heading_updated(heading)
 
 var heading
 
