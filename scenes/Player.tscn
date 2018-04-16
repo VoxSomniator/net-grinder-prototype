@@ -126,7 +126,7 @@ disabled = false
 
 [node name="Camera" type="Camera" parent="." index="2"]
 
-transform = Transform( -1, -1.74533e-08, 8.74228e-08, -1.74533e-08, 1, 0, -8.74228e-08, -1.52582e-15, -1, -0.377091, 2.91273, 0.0144353 )
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -0.377091, 2.91273, 0.0144353 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
