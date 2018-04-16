@@ -16,5 +16,4 @@ func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
 
 func _on_HUDTank_heading_updated(received_heading):
-	print("testing compass signal")
 	heading = received_heading
