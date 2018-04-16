@@ -2,7 +2,7 @@ extends Camera
 
 signal heading_updated
 
-var my_heading
+var heading
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -10,6 +10,6 @@ func _ready():
 	pass
 
 func _process(delta):
-	my_heading = self.rotation_degrees.y
+	heading = self.rotation_degrees.y
 	
-	emit_signal("heading_updated", my_heading)
+	emit_signal("heading_updated", heading)
