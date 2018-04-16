@@ -9,5 +9,4 @@ func _ready():
 
 func _process(delta):
 	heading = self.rotation_degrees.y
-	print("signal debug: Camera.gd")
 	emit_signal("heading_updated", heading)
