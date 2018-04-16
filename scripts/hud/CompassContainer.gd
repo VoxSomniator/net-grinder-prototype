@@ -6,7 +6,7 @@ var heading_label
 
 func _ready():
 	compass_track = $CompassTrack
-	heading_label = $HeadingLabel
+	heading_label = get_node("../HeadingLabel")
 
 func _process(delta):
 	compass_track.rect_position.x = heading * 2
