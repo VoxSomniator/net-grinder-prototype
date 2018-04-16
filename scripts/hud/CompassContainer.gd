@@ -20,6 +20,8 @@ func _process(delta):
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)
+	
+#	VisualServer.canvas_item_add_clip_ignore(get_canvas_item(), true)
 
 func _on_HUDTank_heading_updated(received_heading):
 	heading = received_heading
