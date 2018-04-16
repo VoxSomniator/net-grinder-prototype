@@ -1,6 +1,7 @@
 extends Container
 
 var heading
+var heading_int
 var compass_track
 var heading_label
 
@@ -10,7 +11,8 @@ func _ready():
 
 func _process(delta):
 	compass_track.rect_position.x = heading * 2
-	heading_label.text = str(heading)
+	heading_int = int(heading)
+	heading_label.text = str(heading_int)
 
 func _draw():
 	VisualServer.canvas_item_set_clip(get_canvas_item(), true)

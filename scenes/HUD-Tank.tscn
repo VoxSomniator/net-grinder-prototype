@@ -99,7 +99,62 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="EastLine720" type="Line2D" parent="CompassContainer/CompassTrack" index="1"]
+[node name="NorthLine3" type="Line2D" parent="CompassContainer/CompassTrack" index="1"]
+
+position = Vector2( -180, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLine4" type="Line2D" parent="CompassContainer/CompassTrack" index="2"]
+
+position = Vector2( -360, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLine5" type="Line2D" parent="CompassContainer/CompassTrack" index="3"]
+
+position = Vector2( -540, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLine1" type="Line2D" parent="CompassContainer/CompassTrack" index="4"]
+
+position = Vector2( 180, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLine2" type="Line2D" parent="CompassContainer/CompassTrack" index="5"]
+
+position = Vector2( 360, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="EastLine720" type="Line2D" parent="CompassContainer/CompassTrack" index="6"]
 
 position = Vector2( 720, 0 )
 points = PoolVector2Array( 0, 0, 0, 15 )
@@ -110,7 +165,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="NorthLine540" type="Line2D" parent="CompassContainer/CompassTrack" index="2"]
+[node name="NorthLine540" type="Line2D" parent="CompassContainer/CompassTrack" index="7"]
 
 position = Vector2( 540, 0 )
 points = PoolVector2Array( 0, 0, 0, 15 )
@@ -121,7 +176,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="NorthLabel0" type="Label" parent="CompassContainer/CompassTrack" index="3"]
+[node name="NorthLabel0" type="Label" parent="CompassContainer/CompassTrack" index="8"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -137,6 +192,78 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NorthLabel3" type="Label" parent="CompassContainer/CompassTrack" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -200.0
+margin_top = 5.0
+margin_right = -160.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NorthLabel4" type="Label" parent="CompassContainer/CompassTrack" index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -380.0
+margin_top = 5.0
+margin_right = -340.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NorthLabel5" type="Label" parent="CompassContainer/CompassTrack" index="11"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -560.0
+margin_top = 5.0
+margin_right = -520.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
 text = "N"
 align = 1
 valign = 1
@@ -145,7 +272,55 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
 
-[node name="EastLabel720" type="Label" parent="CompassContainer/CompassTrack" index="4"]
+[node name="NorthLabel1" type="Label" parent="CompassContainer/CompassTrack" index="12"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 160.0
+margin_top = 5.0
+margin_right = 200.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NorthLabel2" type="Label" parent="CompassContainer/CompassTrack" index="13"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 340.0
+margin_top = 5.0
+margin_right = 380.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="EastLabel720" type="Label" parent="CompassContainer/CompassTrack" index="14"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -169,7 +344,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
 
-[node name="NorthLabel540" type="Label" parent="CompassContainer/CompassTrack" index="5"]
+[node name="NorthLabel540" type="Label" parent="CompassContainer/CompassTrack" index="15"]
 
 anchor_left = 0.0
 anchor_top = 0.0
