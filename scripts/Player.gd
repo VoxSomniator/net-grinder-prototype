@@ -1,5 +1,11 @@
 extends RigidBody
 
+enum TurnDirection {
+	left,
+	right,
+	forward
+}
+
 #A player-controlled tank.
 #Currently, moves around, controlled by master player or signals from other masters.
 #Uses rigidbody instead of kinematicbody, because big bulky vehicles should have physics.
@@ -18,7 +24,7 @@ var forward_vector = Vector3(0, 1, 0)
 var moving_vector = Vector3(0, 0, 0)
 
 #How fast do we spin?
-var turn_speed = 1
+var turn_speed = 3
 #Used to store rotation torque for physics processing
 var turn_torque = Vector3(0, 0, 0)
 
@@ -31,6 +37,7 @@ var in_freefall_up = false
 var in_freefall_down = false
 var in_freefall = false
 var can_jump = true
+var turn_direction = TurnDirection.forward
 
 
 
@@ -58,9 +65,13 @@ func _process(delta):
 			
 		#Turn left/right
 		if Input.is_action_pressed("ui_left"):
-			turn_torque.y += turn_speed
-		if Input.is_action_pressed("ui_right"):
-			turn_torque.y -= turn_speed
+			#turn_torque.y += turn_speed
+				angular_velocity.y = turn_speed;
+		elif Input.is_action_pressed("ui_right"):
+			#turn_torque.y -= turn_speed
+				angular_velocity.y = -turn_speed;
+		else:
+				angular_velocity.y = 0
 		if Input.is_key_pressed(KEY_SPACE) && can_jump:
 			#Sets a limit on how high the tank can jump
 			if linear_velocity.y < max_jump_speed:
