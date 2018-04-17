@@ -262,7 +262,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="StaticCube" parent="Terrain/cubes" index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0043, 2.00086, 20.4874 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0043, 2.00086, 20.7788 )
 
 [node name="StaticCube2" parent="Terrain/cubes" index="1" instance=ExtResource( 2 )]
 
