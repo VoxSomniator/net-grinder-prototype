@@ -1,0 +1,2258 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/hud/HUD-Tank.gd" type="Script" id=1]
+[ext_resource path="res://scripts/hud/CompassContainer.gd" type="Script" id=2]
+[ext_resource path="res://scripts/hud/HeadingLabel.gd" type="Script" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+render_priority = 0
+blend_mode = 1
+light_mode = 0
+_sections_unfolded = [ "Resource" ]
+
+[node name="HUD-Tank" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+
+[node name="CompassContainer" type="Container" parent="." index="0"]
+
+editor/display_folded = true
+modulate = Color( 0, 1, 0.742188, 1 )
+material = SubResource( 1 )
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -360.0
+margin_top = 180.0
+margin_right = 360.0
+margin_bottom = 265.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+
+[node name="HeadingLabel" type="Label" parent="CompassContainer" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -30.0
+margin_right = 30.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "HDG"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Pointer" type="Line2D" parent="CompassContainer/HeadingLabel" index="0"]
+
+position = Vector2( -3, 0 )
+points = PoolVector2Array( 28, 30, 33, 38, 38, 30 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+joint_mode = 1
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Material", "Transform", "Visibility" ]
+
+[node name="CompassTrack" type="Container" parent="CompassContainer" index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -360.0
+margin_top = -40.0
+margin_right = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="WLine" type="Line2D" parent="CompassContainer/CompassTrack" index="0"]
+
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="WLabel" type="Label" parent="CompassContainer/CompassTrack/WLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors", "custom_fonts" ]
+
+[node name="SWLineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="1"]
+
+position = Vector2( -180, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SWLabelL1" type="Label" parent="CompassContainer/CompassTrack/SWLineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="SLineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="2"]
+
+position = Vector2( -360, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SLabelL1" type="Label" parent="CompassContainer/CompassTrack/SLineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="SELineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="3"]
+
+position = Vector2( -540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SELabelL1" type="Label" parent="CompassContainer/CompassTrack/SELineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="ELineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="4"]
+
+position = Vector2( -720, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="ELabelL1" type="Label" parent="CompassContainer/CompassTrack/ELineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NELineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="5"]
+
+position = Vector2( -900, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NELabelL1" type="Label" parent="CompassContainer/CompassTrack/NELineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NLineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="6"]
+
+position = Vector2( -1080, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NLabelL1" type="Label" parent="CompassContainer/CompassTrack/NLineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NWLineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="7"]
+
+position = Vector2( -1260, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NWLabelL1" type="Label" parent="CompassContainer/CompassTrack/NWLineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="WLineL1" type="Line2D" parent="CompassContainer/CompassTrack" index="8"]
+
+position = Vector2( -1440, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="WLabelL1" type="Label" parent="CompassContainer/CompassTrack/WLineL1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="SWLineL2" type="Line2D" parent="CompassContainer/CompassTrack" index="9"]
+
+position = Vector2( -1620, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SWLabelL2" type="Label" parent="CompassContainer/CompassTrack/SWLineL2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NLine" type="Line2D" parent="CompassContainer/CompassTrack" index="10"]
+
+position = Vector2( 360, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NLabel" type="Label" parent="CompassContainer/CompassTrack/NLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NELineR1" type="Line2D" parent="CompassContainer/CompassTrack" index="11"]
+
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NELabelR1" type="Label" parent="CompassContainer/CompassTrack/NELineR1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="NWLineR1" type="Line2D" parent="CompassContainer/CompassTrack" index="12"]
+
+position = Vector2( 180, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NWLabelR1" type="Label" parent="CompassContainer/CompassTrack/NWLineR1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="ELineR1" type="Line2D" parent="CompassContainer/CompassTrack" index="13"]
+
+position = Vector2( 720, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="ELabelR1" type="Label" parent="CompassContainer/CompassTrack/ELineR1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="SELineR1" type="Line2D" parent="CompassContainer/CompassTrack" index="14"]
+
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SELabelR1" type="Label" parent="CompassContainer/CompassTrack/SELineR1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="WLineR2" type="Line2D" parent="CompassContainer/CompassTrack" index="15"]
+
+position = Vector2( 1440, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="WLabelR2" type="Label" parent="CompassContainer/CompassTrack/WLineR2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="SLineR1" type="Line2D" parent="CompassContainer/CompassTrack" index="16"]
+
+position = Vector2( 1080, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SLabelR1" type="Label" parent="CompassContainer/CompassTrack/SLineR1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 20, 20 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_colors" ]
+
+[node name="5GLine" type="Line2D" parent="CompassContainer/CompassTrack" index="17"]
+
+editor/display_folded = true
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack" index="18"]
+
+editor/display_folded = true
+position = Vector2( 200, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine2" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine3" type="Line2D" parent="CompassContainer/CompassTrack" index="19"]
+
+editor/display_folded = true
+position = Vector2( 380, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine3" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack" index="20"]
+
+editor/display_folded = true
+position = Vector2( 560, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine4" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack" index="21"]
+
+editor/display_folded = true
+position = Vector2( 740, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine5" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine6" type="Line2D" parent="CompassContainer/CompassTrack" index="22"]
+
+editor/display_folded = true
+position = Vector2( 920, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine6" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack" index="23"]
+
+editor/display_folded = true
+position = Vector2( 1110, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine7" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack" index="24"]
+
+editor/display_folded = true
+position = Vector2( -340, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine8" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine9" type="Line2D" parent="CompassContainer/CompassTrack" index="25"]
+
+editor/display_folded = true
+position = Vector2( -160, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine9" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine10" type="Line2D" parent="CompassContainer/CompassTrack" index="26"]
+
+editor/display_folded = true
+position = Vector2( -520, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine10" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine11" type="Line2D" parent="CompassContainer/CompassTrack" index="27"]
+
+editor/display_folded = true
+position = Vector2( -700, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine11" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine12" type="Line2D" parent="CompassContainer/CompassTrack" index="28"]
+
+editor/display_folded = true
+position = Vector2( -880, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine12" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine13" type="Line2D" parent="CompassContainer/CompassTrack" index="29"]
+
+editor/display_folded = true
+position = Vector2( -1060, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine13" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine14" type="Line2D" parent="CompassContainer/CompassTrack" index="30"]
+
+editor/display_folded = true
+position = Vector2( -1240, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine14" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine15" type="Line2D" parent="CompassContainer/CompassTrack" index="31"]
+
+editor/display_folded = true
+position = Vector2( -1420, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine15" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine16" type="Line2D" parent="CompassContainer/CompassTrack" index="32"]
+
+editor/display_folded = true
+position = Vector2( -1600, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine2" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="0"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine3" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="1"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine4" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="2"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine5" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="3"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="15GLine6" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="4"]
+
+position = Vector2( 100, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine7" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="5"]
+
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="5GLine8" type="Line2D" parent="CompassContainer/CompassTrack/5GLine16" index="6"]
+
+position = Vector2( 140, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="ReticleContainer" type="Container" parent="." index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 40, 40 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Line2D" type="Line2D" parent="ReticleContainer" index="0"]
+
+position = Vector2( 0, 40 )
+points = PoolVector2Array( 0, 0, 15, 0 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="ReticleContainer" index="1"]
+
+position = Vector2( 80, 40 )
+points = PoolVector2Array( 0, 0, -15, 0 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="ReticleContainer" index="2"]
+
+position = Vector2( 80, 0 )
+points = PoolVector2Array( 0, 0, -20, 20 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="ReticleContainer" index="3"]
+
+points = PoolVector2Array( 0, 0, 20, 20 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="ReticleContainer" index="4"]
+
+position = Vector2( 0, 80 )
+points = PoolVector2Array( 0, 0, 20, -20 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="ReticleContainer" index="5"]
+
+position = Vector2( 80, 80 )
+points = PoolVector2Array( 0, 0, -20, -20 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="PitchRangeContainer" type="Container" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 360.0
+margin_top = -180.0
+margin_right = 400.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Line2D" type="Line2D" parent="PitchRangeContainer" index="0"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, -20, 0 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="PitchRangeContainer" index="1"]
+
+position = Vector2( 40, 180 )
+points = PoolVector2Array( 0, 0, -20, 0 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="PitchRangeContainer" index="2"]
+
+position = Vector2( 40, 360 )
+points = PoolVector2Array( 0, 0, -20, 0 )
+width = 3.0
+default_color = Color( 0, 1, 0.741176, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="heading_updated" from="." to="CompassContainer" method="_on_HUDTank_heading_updated"]
+
+

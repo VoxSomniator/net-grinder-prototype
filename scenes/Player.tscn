@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://models/Material.material" type="Material" id=2]
 [ext_resource path="res://models/Material_001.material" type="Material" id=3]
+[ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
+[ext_resource path="res://scenes/HUD-Tank.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -40,7 +42,7 @@ surfaces/1 = {
 
 extents = Vector3( 2, 1.45, 2 )
 
-[node name="Player" type="RigidBody" index="0"]
+[node name="Player" type="RigidBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0810366, 0 )
 input_ray_pickable = true
@@ -124,7 +126,7 @@ disabled = false
 
 [node name="Camera" type="Camera" parent="." index="2"]
 
-transform = Transform( -1, 0, -8.74228e-08, -2.20311e-08, 0.967726, 0.252006, 8.46013e-08, 0.252006, -0.967726, 0, 4.15192, -4.65796 )
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -0.377091, 2.91273, 0.0144353 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -137,6 +139,11 @@ fov = 70.0
 size = 1.0
 near = 0.05
 far = 100.0
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="HUD-Tank" parent="." index="3" instance=ExtResource( 5 )]
+
+[connection signal="heading_updated" from="Camera" to="HUD-Tank" method="_on_Camera_heading_updated"]
 
 

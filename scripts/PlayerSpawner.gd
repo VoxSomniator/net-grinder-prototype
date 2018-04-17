@@ -13,7 +13,7 @@ func _ready():
 	#Get our ID
 	our_id = get_tree().get_root().get_node("GameCore").get_our_id()
 	#Preload the player tank object for later spawning
-	player_tank = preload("res://Scenes/Player.tscn")
+	player_tank = preload("res://scenes/Player.tscn")
 
 #Called by all peers' Level when all players are synced and ready. Spawns all the tanks.
 #Gets the list, which is passed along from the server through a complicated chain lol
