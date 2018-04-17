@@ -7,7 +7,7 @@ path="res://.import/citymap1-scaled.dae-ab726cb6fff0023e119f15f970263f7a.scn"
 [deps]
 
 source_file="res://models/maps/citymap1-scaled.dae"
-source_md5="056a8da26210639e43c36b7916b09cab"
+source_md5="f00c83aa33960f0eca3aa32a28bfe527"
 
 dest_files=[ "res://.import/citymap1-scaled.dae-ab726cb6fff0023e119f15f970263f7a.scn" ]
 dest_md5="afd5ada6fa073ca61921cfedafa66c5b"

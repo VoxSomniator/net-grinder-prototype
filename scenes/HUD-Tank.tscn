@@ -11,7 +11,7 @@ blend_mode = 1
 light_mode = 0
 _sections_unfolded = [ "Resource" ]
 
-[node name="HUD-Tank" type="Control" index="0"]
+[node name="HUD-Tank" type="Control"]
 
 modulate = Color( 0.238281, 1, 0.589386, 1 )
 anchor_left = 0.0

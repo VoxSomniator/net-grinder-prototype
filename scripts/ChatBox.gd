@@ -31,6 +31,8 @@ func _on_EntryBox_text_entered( new_text ):
 		rpc("update_chat", new_text, our_id)
 		#Then, clear the text box for the next message.
 		$VBoxContainer/EntryBox.text = ""
+	#Either way, release focus- Most useful in-game to deselect the chat.
+	$VBoxContainer/EntryBox.release_focus()
 
 #When called, *all peers* receive the new message to add to their array. Then, updates the display.
 #Currently it just takes the raw text string, which would theoretically let people fuck it up with escape sequences.

@@ -5,6 +5,19 @@ extends RigidBody
 #Uses rigidbody instead of kinematicbody, because big bulky vehicles should have physics.
 #Kinematicbody lacks the inertia and rotation and everything.
 
+#Emitted when this tank becomes the active player, makes its camera current.
+#Used instead of a direct path call so the camera can be rearranged safely.
+signal camera_activated()
+#Holds ref to the camera gimbal object
+var cam_gimbal
+#holds ref to the camera object
+var camera
+#How fast the mouse moves the camera
+const MOUSE_SENSITIVITY = 0.05
+#Maximum rotation angles of the camera
+const CAM_Y_RANGE = 45
+const CAM_X_RANGE = 45
+
 
 #HOW FAST can we go (forward/backward)
 var max_forward_speed = 100
@@ -38,7 +51,13 @@ func _ready():
 	#If this vehicle is the local player's, do some stuff
 	if is_network_master():
 		#Turn on its camera, which turns off the old one probably
-		$Camera.make_current()
+		emit_signal("camera_activated")
+		#Set up other camera stuff- Only in this section, otherwise, every other
+		# player's tank would do this too and that might get wonky
+		cam_gimbal = $"Camera-gimbal"
+		camera = $"Camera-gimbal/Camera"
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		set_process_input(true)
 
 func _process(delta):
 	
@@ -94,6 +113,13 @@ func _process(delta):
 	
 		#Send our tank's new coordinates to all the other games
 		rset_unreliable("other_transform", global_transform)
+		
+		#Listen for esc keypress, toggle mouse lock/look
+		if Input.is_action_just_pressed("ui_cancel"):
+			if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	else:
 		#If this is the slave tank to another player
@@ -120,5 +146,18 @@ func accelerate(direction, d_acceleration, delta, max_speed):
 	else:
 		return Vector3(0, 0, 0)
 	
+
+#Receives mouse movement input moving the camera view. Escape toggles mouselock.
+func _input(event):
+	#If the passed event was mouse motion, and the mouse is currently captured
+	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		#Move the camera gimbal from side to side, clamp to the limited range.
+		var horizontal_rotation = event.relative.x * MOUSE_SENSITIVITY * -1
+		var new_rot_y = clamp(cam_gimbal.get_rotation_degrees().y + horizontal_rotation, -CAM_Y_RANGE, CAM_Y_RANGE)
+		cam_gimbal.set_rotation_degrees(Vector3(0, new_rot_y, 0))
+		#Move the camera itself up and down, clamp again
+		var vertical_rotation = event.relative.y * MOUSE_SENSITIVITY * -1
+		var new_rot_x = clamp(camera.get_rotation_degrees().x + vertical_rotation, -CAM_X_RANGE, CAM_X_RANGE)
+		camera.set_rotation_degrees(Vector3(new_rot_x, -180, 0))
 		
-	
+		

@@ -14,3 +14,7 @@ func _process(delta):
 	if heading<0:
 		heading+=360 # beautify heading, remove negative angle
 	emit_signal("heading_updated", heading)
+
+#Called by the tank when it becomes the player's active view.
+func _on_Player_camera_activated():
+	make_current()
