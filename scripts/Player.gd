@@ -12,11 +12,15 @@ signal camera_activated()
 var cam_gimbal
 #holds ref to the camera object
 var camera
+#Holds a ref to the turret skeleton thing. Used by camera.
+var skeleton
 #How fast the mouse moves the camera
 const MOUSE_SENSITIVITY = 0.05
 #Maximum rotation angles of the camera
 const CAM_Y_RANGE = 45
 const CAM_X_RANGE = 45
+#Signal emitted by camera to update turret's position
+signal camera_position_updated(cam_quat, gimbal_quat)
 
 
 #HOW FAST can we go (forward/backward)
@@ -56,6 +60,7 @@ func _ready():
 		# player's tank would do this too and that might get wonky
 		cam_gimbal = $"Camera-gimbal"
 		camera = $"Camera-gimbal/Camera"
+		skeleton = $"Scene Root2/tank-armature/Skeleton"
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process_input(true)
 
@@ -151,13 +156,22 @@ func accelerate(direction, d_acceleration, delta, max_speed):
 func _input(event):
 	#If the passed event was mouse motion, and the mouse is currently captured
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		
+		
 		#Move the camera gimbal from side to side, clamp to the limited range.
 		var horizontal_rotation = event.relative.x * MOUSE_SENSITIVITY * -1
-		var new_rot_y = clamp(cam_gimbal.get_rotation_degrees().y + horizontal_rotation, -CAM_Y_RANGE, CAM_Y_RANGE)
+		var new_rot_y = cam_gimbal.get_rotation_degrees().y + horizontal_rotation
 		cam_gimbal.set_rotation_degrees(Vector3(0, new_rot_y, 0))
 		#Move the camera itself up and down, clamp again
+		#Some of the lines have 180 added/subtracted because the camera is turned around to face forward, it's weird
 		var vertical_rotation = event.relative.y * MOUSE_SENSITIVITY * -1
-		var new_rot_x = clamp(camera.get_rotation_degrees().x + vertical_rotation, -CAM_X_RANGE, CAM_X_RANGE)
+		var new_rot_x = camera.get_rotation_degrees().x + vertical_rotation
 		camera.set_rotation_degrees(Vector3(new_rot_x, -180, 0))
+		
+		#Emit update signal to turret. First, assemble the camera's quaternion,
+		# relative to the tank base. Slightly messy since it has two rotating parts.
+		var cam_quat = Quat(camera.get_transform().basis)
+		var gimbal_quat = Quat(cam_gimbal.get_transform().basis)
+		emit_signal("camera_position_updated", cam_quat, gimbal_quat)
 		
 		

@@ -78,7 +78,7 @@ subdivide_depth = 0
 
 extents = Vector3( 50, 0, 50 )
 
-[node name="Level" type="Spatial"]
+[node name="Level" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 

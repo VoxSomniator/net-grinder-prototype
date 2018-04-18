@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://models/Material.material" type="Material" id=2]
-[ext_resource path="res://models/Material_001.material" type="Material" id=3]
-[ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
-[ext_resource path="res://scenes/HUD-Tank.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/TurretAimer.gd" type="Script" id=2]
+[ext_resource path="res://models/Material.material" type="Material" id=3]
+[ext_resource path="res://models/Material_001.material" type="Material" id=4]
+[ext_resource path="res://scripts/Camera.gd" type="Script" id=5]
+[ext_resource path="res://scenes/HUD-Tank.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -18,7 +19,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98243,
 "index_count": 528,
-"material": ExtResource( 2 ),
+"material": ExtResource( 3 ),
 "name": "Material",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -31,7 +32,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 98243,
 "index_count": 570,
-"material": ExtResource( 3 ),
+"material": ExtResource( 4 ),
 "name": "Material.001",
 "primitive": 4,
 "skeleton_aabb": [  ],
@@ -42,7 +43,7 @@ surfaces/1 = {
 
 extents = Vector3( 2, 1.45, 2 )
 
-[node name="Player" type="RigidBody" index="0"]
+[node name="Player" type="RigidBody"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0810366, 0 )
 input_ray_pickable = true
@@ -91,6 +92,7 @@ bones/1/parent = -1
 bones/1/rest = Transform( -1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 1.78933, 0 )
 bones/1/enabled = true
 bones/1/bound_children = [  ]
+script = ExtResource( 2 )
 _sections_unfolded = [ "bones", "bones/1" ]
 
 [node name="tank" type="MeshInstance" parent="Scene Root2/tank-armature/Skeleton" index="0"]
@@ -144,12 +146,14 @@ fov = 70.0
 size = 1.0
 near = 0.05
 far = 200.0
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HUD-Tank" parent="." index="3" instance=ExtResource( 5 )]
+[node name="HUD-Tank" parent="." index="3" instance=ExtResource( 6 )]
 
 [connection signal="camera_activated" from="." to="Camera-gimbal/Camera" method="_on_Player_camera_activated"]
+
+[connection signal="camera_position_updated" from="." to="Scene Root2/tank-armature/Skeleton" method="_on_Player_camera_position_updated"]
 
 [connection signal="heading_updated" from="Camera-gimbal/Camera" to="HUD-Tank" method="_on_Camera_heading_updated"]
 
