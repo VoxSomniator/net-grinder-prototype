@@ -133,7 +133,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Camera" type="Camera" parent="Camera-gimbal" index="0"]
 
-transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0, 0 )
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, 0, 0.146194, 0 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -151,10 +151,14 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="HUD-Tank" parent="." index="3" instance=ExtResource( 6 )]
 
+[connection signal="body_heading_updated" from="." to="HUD-Tank" method="_on_Player_body_heading_updated"]
+
 [connection signal="camera_activated" from="." to="Camera-gimbal/Camera" method="_on_Player_camera_activated"]
 
 [connection signal="camera_position_updated" from="." to="Scene Root2/tank-armature/Skeleton" method="_on_Player_camera_position_updated"]
 
 [connection signal="heading_updated" from="Camera-gimbal/Camera" to="HUD-Tank" method="_on_Camera_heading_updated"]
+
+[connection signal="pitch_updated" from="Camera-gimbal/Camera" to="HUD-Tank" method="_on_Camera_pitch_updated"]
 
 

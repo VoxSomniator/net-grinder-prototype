@@ -22,6 +22,13 @@ const CAM_X_RANGE = 45
 #Signal emitted by camera to update turret's position
 signal camera_position_updated(cam_quat, gimbal_quat)
 
+#Body heading signal
+signal body_heading_updated(body_heading)
+
+#Body global transform and heading variables
+var body_xform
+var body_heading
+
 
 #HOW FAST can we go (forward/backward)
 var max_forward_speed = 100
@@ -125,6 +132,13 @@ func _process(delta):
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			else:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+		#Body global transform and heading values
+		body_xform = self.get_global_transform()
+		body_heading = rad2deg(Vector2(body_xform.basis.z.x, body_xform.basis.z.z).angle_to(Vector2(0,1)))
+		if body_heading < 0:
+			body_heading += 360 # beautify heading, remove negative angle
+		emit_signal("body_heading_updated", body_heading)
 	
 	else:
 		#If this is the slave tank to another player
