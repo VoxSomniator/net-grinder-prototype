@@ -31,7 +31,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="CompassContainer" type="Container" parent="." index="0"]
 
-editor/display_folded = true
 material = SubResource( 1 )
 anchor_left = 0.5
 anchor_top = 0.0
@@ -88,6 +87,7 @@ _sections_unfolded = [ "Border", "Capping", "Fill", "Material", "Transform", "Vi
 
 [node name="Line2D" type="Line2D" parent="CompassContainer/HeadingLabel" index="1"]
 
+visible = false
 position = Vector2( 30, 35 )
 points = PoolVector2Array( 0, 5, 0, 10 )
 width = 1.0
@@ -2327,6 +2327,30 @@ texture_mode = 336147152
 sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
+
+[node name="PitchLabel" type="Label" parent="PitchRangeContainer/PitchLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -85.0
+margin_top = -20.0
+margin_right = -25.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "PCH"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 [node name="Line2D3" type="Line2D" parent="PitchRangeContainer" index="5"]
 
