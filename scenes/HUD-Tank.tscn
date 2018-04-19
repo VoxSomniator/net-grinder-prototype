@@ -48,6 +48,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Rect", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="HeadingLabel" type="Label" parent="CompassContainer" index="0"]
 
@@ -71,7 +74,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 3 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [node name="Pointer" type="Line2D" parent="CompassContainer/HeadingLabel" index="0"]
 
@@ -85,7 +88,24 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Border", "Capping", "Fill", "Material", "Transform", "Visibility" ]
 
-[node name="Line2D" type="Line2D" parent="CompassContainer/HeadingLabel" index="1"]
+[node name="PointerSolid" type="Polygon2D" parent="CompassContainer/HeadingLabel" index="1"]
+
+position = Vector2( 30, 34 )
+polygon = PoolVector2Array( 25, 30, 30, 36, 35, 30 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( -29.8776, -33.3371 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="CompassContainer/HeadingLabel" index="2"]
 
 visible = false
 position = Vector2( 30, 35 )
@@ -97,13 +117,14 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="BodyHeadingLabel" type="Label" parent="CompassContainer" index="1"]
+[node name="BodyHeadingLabel" type="Label" parent="CompassContainer/HeadingLabel" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 60.0
+margin_left = -330.0
+margin_right = -270.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -120,7 +141,7 @@ max_lines_visible = -1
 script = ExtResource( 4 )
 _sections_unfolded = [ "Rect" ]
 
-[node name="Pointer" type="Line2D" parent="CompassContainer/BodyHeadingLabel" index="0"]
+[node name="Pointer" type="Line2D" parent="CompassContainer/HeadingLabel/BodyHeadingLabel" index="0"]
 
 position = Vector2( -3, 0 )
 points = PoolVector2Array( 28, 38, 33, 30, 38, 38 )
@@ -130,9 +151,20 @@ texture_mode = 336147152
 joint_mode = 1
 sharp_limit = 2.0
 round_precision = 8
-_sections_unfolded = [ "Border", "Capping", "Fill", "Material", "Transform", "Visibility" ]
+_sections_unfolded = [ "Capping", "Fill", "Material", "Transform", "Visibility" ]
 
-[node name="CompassTrack" type="Container" parent="CompassContainer" index="2"]
+[node name="ConnectorLine" type="Line2D" parent="CompassContainer/HeadingLabel/BodyHeadingLabel/Pointer" index="0"]
+
+position = Vector2( 36, 34 )
+points = PoolVector2Array( 0, 0, 324, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 336147152
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Transform", "Visibility" ]
+
+[node name="CompassTrack" type="Container" parent="CompassContainer" index="1"]
 
 anchor_left = 0.5
 anchor_top = 1.0
