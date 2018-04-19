@@ -1,5 +1,8 @@
 extends Skeleton
 
+#Signal passing turret transform data for the raycast
+signal turret_transform_updated(turret_transform)
+
 #Constants for different axes
 var y_vec = Vector3(0, 1, 0)
 var x_vec = Vector3(1, 0, 0)
@@ -45,6 +48,7 @@ func _process(delta):
 	
 	set_bone_pose(turret_bone, turret_transform)
 	
+	emit_signal("turret_transform_updated", turret_transform)
 
 #Updates the position of the camera to target
 func _on_Player_camera_position_updated(new_cam, new_gimbal):
