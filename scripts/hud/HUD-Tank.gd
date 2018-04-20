@@ -4,6 +4,7 @@ signal heading_updated(heading)
 signal body_heading_updated(body_heading)
 signal pitch_updated(pitch)
 signal turret_aimpoint_unprojected_updated(turret_aimpoint_unprojected)
+signal aimpoint_range_updated(aimpoint_range)
 
 func _ready():
 	pass
@@ -20,3 +21,7 @@ func _on_Camera_pitch_updated(pitch):
 
 func _on_Camera_turret_aimpoint_unprojected_updated(turret_aimpoint_unprojected):
 	emit_signal("turret_aimpoint_unprojected_updated", turret_aimpoint_unprojected)
+
+
+func _on_TurretAimPoint_aimpoint_range_updated(aimpoint_range):
+	emit_signal("aimpoint_range_updated", aimpoint_range)
