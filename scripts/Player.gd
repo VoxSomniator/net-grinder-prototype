@@ -22,6 +22,7 @@ var acceleration = 2000
 var forward_vector = Vector3(0, 1, 0)
 #Used to total forces/accelerations and apply every frame. Still world coordinates.
 var moving_vector = Vector3(0, 0, 0)
+var bullet_speed = 75
 
 #How fast do we spin?
 var turn_speed = 3
@@ -36,9 +37,15 @@ var max_jump_speed = 20
 var in_freefall_up = false
 var in_freefall_down = false
 var in_freefall = false
+#indicates whether or not the tank should be able to jump
 var can_jump = true
-var turn_direction = TurnDirection.forward
+var bullet
 
+var bullet_timer
+#The amount of seconds it takes to fire a bullet
+var fire_rate = .5
+var can_fire = true
+onready var UtilityQuat = preload("res://scripts/UtilityQuat.gd")
 
 
 func _ready():
@@ -46,6 +53,17 @@ func _ready():
 	if is_network_master():
 		#Turn on its camera, which turns off the old one probably
 		$Camera.make_current()
+		bullet = preload("res://scenes/Bullet.tscn")
+		bullet_timer = Timer.new()
+		bullet_timer.wait_time = fire_rate
+		bullet_timer.one_shot = true
+		bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+		bullet_timer.connect("timeout",self,"_enable_fire")
+		add_child(bullet_timer)
+		
+func _enable_fire():
+	can_fire = true
+
 
 func _process(delta):
 	
@@ -65,10 +83,8 @@ func _process(delta):
 			
 		#Turn left/right
 		if Input.is_action_pressed("ui_left"):
-			#turn_torque.y += turn_speed
 				angular_velocity.y = turn_speed;
 		elif Input.is_action_pressed("ui_right"):
-			#turn_torque.y -= turn_speed
 				angular_velocity.y = -turn_speed;
 		else:
 				angular_velocity.y = 0
@@ -99,6 +115,19 @@ func _process(delta):
 		if in_freefall_down && linear_velocity.y > -0.01:
 			in_freefall = false
 			in_freefall_down = false
+		if Input.is_key_pressed(KEY_K):
+			if can_fire:
+				var rotation_degrees = self.get_rotation()
+				can_fire = false
+				var b = bullet.instance()
+				b.transform = self.transform
+				var translate_rotator = UtilityQuat.quat_from_YXZ(Vector3(0, self.get_rotation().y, 0))
+				b.linear_velocity = translate_rotator.rotate(Vector3(0, 0, bullet_speed))
+				var offset_vector = translate_rotator.rotate(Vector3(0,0,25))
+				var test_velocity = b.linear_velocity
+				self.get_parent().add_child(b)
+				b.translate(Vector3(0,2,10))
+				bullet_timer.start()
 		
 		#After all forces are calculated, apply the impulse.
 		apply_impulse(Vector3(0, 0, 0), moving_vector*delta)
