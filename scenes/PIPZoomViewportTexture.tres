@@ -1,0 +1,8 @@
+[gd_resource type="ViewportTexture" format=2]
+
+[resource]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("/root/EditorNode/@@5/@@6/@@14/@@16/@@20/@@24/@@25/@@26/@@42/@@43/@@50/@@51/@@6456/@@6322/@@6323/@@6324/@@6325/@@6326/@@6327/Player/Camera-gimbal/Camera/PIPZoomViewport")
+

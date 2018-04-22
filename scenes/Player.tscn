@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://scripts/TurretAimer.gd" type="Script" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://models/Material_001.material" type="Material" id=4]
 [ext_resource path="res://scripts/TurretAimPoint.gd" type="Script" id=5]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=6]
-[ext_resource path="res://scenes/HUD-Tank.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/PIPZoomCamera.gd" type="Script" id=7]
+[ext_resource path="res://scenes/HUD-Tank.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -44,7 +45,7 @@ surfaces/1 = {
 
 extents = Vector3( 2, 1.45, 2 )
 
-[node name="Player" type="RigidBody"]
+[node name="Player" type="RigidBody" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0810366, 0 )
 input_ray_pickable = true
@@ -165,7 +166,92 @@ far = 200.0
 script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HUD-Tank" parent="." index="4" instance=ExtResource( 7 )]
+[node name="Container" type="Container" parent="Camera-gimbal/Camera" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -180.0
+margin_right = 315.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Camera-gimbal/Camera/Container" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -180.0
+margin_right = 315.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = false
+stretch_shrink = 1
+
+[node name="PIPZoomViewport" type="Viewport" parent="Camera-gimbal/Camera/Container/ViewportContainer" index="0"]
+
+arvr = false
+size = Vector2( 630, 360 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 0
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Render Target", "Rendering", "Shadow Atlas" ]
+
+[node name="PIPZoomCamera" type="Camera" parent="Camera-gimbal/Camera/Container/ViewportContainer/PIPZoomViewport" index="0"]
+
+transform = Transform( -1, 0, 3.25841e-07, 0, 1, 0, -3.25841e-07, 0, -1, -0.377091, 3.13996, 0.014435 )
+visible = false
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 20.0
+size = 1.0
+near = 0.05
+far = 200.0
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="HUD-Tank" parent="." index="4" instance=ExtResource( 8 )]
 
 [connection signal="body_heading_updated" from="." to="HUD-Tank" method="_on_Player_body_heading_updated"]
 
@@ -184,5 +270,7 @@ _sections_unfolded = [ "Transform" ]
 [connection signal="pitch_updated" from="Camera-gimbal/Camera" to="HUD-Tank" method="_on_Camera_pitch_updated"]
 
 [connection signal="turret_aimpoint_unprojected_updated" from="Camera-gimbal/Camera" to="HUD-Tank" method="_on_Camera_turret_aimpoint_unprojected_updated"]
+
+[connection signal="pipcam_relayed" from="Camera-gimbal/Camera/Container/ViewportContainer/PIPZoomViewport/PIPZoomCamera" to="HUD-Tank" method="_on_PIPZoomCamera_pipcam_relayed"]
 
 

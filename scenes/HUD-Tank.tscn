@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/hud/HUD-Tank.gd" type="Script" id=1]
 [ext_resource path="res://scripts/hud/CompassContainer.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/hud/BodyHeadingLabel.gd" type="Script" id=4]
 [ext_resource path="res://scripts/hud/PitchRangeContainer.gd" type="Script" id=5]
 [ext_resource path="res://scripts/hud/ReticleContainer.gd" type="Script" id=6]
+[ext_resource path="res://scripts/hud/PIPZoomContainer.gd" type="Script" id=7]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -14,7 +15,15 @@ blend_mode = 1
 light_mode = 0
 _sections_unfolded = [ "Resource" ]
 
-[node name="HUD-Tank" type="Control" index="0"]
+[sub_resource type="ImageTexture" id=2]
+
+flags = 7
+storage = 0
+lossy_quality = 0.7
+flags = 7
+size = Vector2( 0, 0 )
+
+[node name="HUD-Tank" type="Control"]
 
 modulate = Color( 0.238281, 1, 0.589386, 1 )
 anchor_left = 0.0
@@ -2441,11 +2450,153 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect" ]
 
+[node name="PIPZoomContainer" type="Container" parent="." index="3"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -180.0
+margin_right = 315.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 315, 180 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 7 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="PIPZoomContainer" index="0"]
+
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -180.0
+margin_right = 315.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = false
+stretch_shrink = 1
+_sections_unfolded = [ "Grow Direction", "Material", "Rect", "Visibility" ]
+
+[node name="Viewport" type="Viewport" parent="PIPZoomContainer/ViewportContainer" index="0"]
+
+arvr = false
+size = Vector2( 0, 0 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 0
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
+
+[node name="Camera" type="Camera" parent="PIPZoomContainer/ViewportContainer/Viewport" index="0"]
+
+visible = false
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 35.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ProgressBar" type="ProgressBar" parent="." index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 187.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 70.0
+step = 1.0
+page = 0.0
+value = 60.0
+exp_edit = true
+rounded = false
+percent_visible = true
+_sections_unfolded = [ "Percent" ]
+
+[node name="TextureProgress" type="TextureProgress" parent="." index="5"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+texture_under = null
+texture_over = null
+texture_progress = SubResource( 2 )
+radial_fill_degrees = 360.0
+radial_center_offset = Vector2( 0, 0 )
+nine_patch_stretch = false
+_sections_unfolded = [ "Textures" ]
+
 [connection signal="aimpoint_range_updated" from="." to="ReticleContainer" method="_on_HUDTank_aimpoint_range_updated"]
 
 [connection signal="body_heading_updated" from="." to="CompassContainer" method="_on_HUDTank_body_heading_updated"]
 
 [connection signal="heading_updated" from="." to="CompassContainer" method="_on_HUDTank_heading_updated"]
+
+[connection signal="pipcam_relayed" from="." to="PIPZoomContainer" method="_on_HUDTank_pipcam_relayed"]
 
 [connection signal="pitch_updated" from="." to="PitchRangeContainer" method="_on_HUDTank_pitch_updated"]
 
