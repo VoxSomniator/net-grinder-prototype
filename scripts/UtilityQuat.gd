@@ -4,6 +4,7 @@ var i
 var j
 var k
 
+#Gets the axis of rotation of this quaternion
 func get_axis():
 	var rawVector = Vector3(i, j, k)
 	if(rawVector.length() > 0):
@@ -14,15 +15,18 @@ func get_axis():
 	else:
 		return Vector3(0,0,1)
 
+#Constructor
 func _init(a, i, j, k):
 	self.a = a
 	self.i = i
 	self.j = j
 	self.k = k
 	
+#Constructor wrapper - needed for instance methods to work
 static func create(a, i, j, k):
 	return new(a, i, j, k)
-	
+
+#Converts a Vector3 to a quaternion in the proper format for rotation math
 static func convert_vector3(vector_to_convert):
 	var a = 0
 	var i = vector_to_convert.x
@@ -30,20 +34,22 @@ static func convert_vector3(vector_to_convert):
 	var k = vector_to_convert.z
 	return new(a, i, j, k)
 	
+#Creates a UtilityQuat from a Godot Quat
+static func convert_quat(convertTo):
+	var a = convertTo.w
+	var i = convertTo.x
+	var j = convertTo.y
+	var k = convertTo.z
+	return new(a, i, j, k)
 
-func convert_quat(convertTo):
-	self.a = convertTo.w
-	self.i = convertTo.x
-	self.j = convertTo.y
-	self.k = convertTo.z
-	
-func rotation_map(from, to):
+#Creates a UtilityQuat that will rotate the Vector3 from to the Vector3 to in the same plane
+static func rotation_map(from, to):
 	var vectorBase = from.cross(to)
 	var i = vectorBase.x
 	var j = vectorBase.y
 	var k = vectorBase.z
 	
-	a = cos(acos(from.dot(to) / from.length() / to.length()) / 2)
+	var a = cos(acos(from.dot(to) / from.length() / to.length()) / 2)
 	
 	var scale = 1
 	if (0 != (i * i + j * j + k * k)):
@@ -53,6 +59,7 @@ func rotation_map(from, to):
 		k = k * scale
 	return new(a,i,j,k)
 
+#Performs the hamilton product between self as the left operand and right as the right operand
 func hamilton(right): 
 	var a = self.a * right.a - self.i * right.i - self.j * right.j - self.k * right.k
 	var i = self.a * right.i + self.i * right.a + self.j * right.k - self.k * right.j
@@ -61,12 +68,14 @@ func hamilton(right):
 	
 	return create(a,i,j,k)
 
+#Rotates a Vector3 using self
 func rotate(toRotate):
 	var preRotateQuaternion = convert_vector3(toRotate)
 	var intermediate = self.hamilton(preRotateQuaternion)
 	var rotatedQuaternion = intermediate.hamilton(self.reciprocal())
 	return Vector3(rotatedQuaternion.i, rotatedQuaternion.j, rotatedQuaternion.k)
 
+#Creates a UtilityQuat to be the reciprocal of self
 func reciprocal():
 	var recip_a = self.a / self.length_squared()
 	var recip_i = -1 * self.i / self.length_squared()
@@ -74,13 +83,15 @@ func reciprocal():
 	var recip_k = -1 * self.k / self.length_squared()
 	return create(recip_a, recip_i, recip_j, recip_k)
 
+#Returns the length of self squared
 func length_squared():
 	return self.a * self.a + self.i * self.i + self.j * self.j + self.k * self.k
 
-
-func to_unity_quaternion():
+#Returns self converted to a godot quaternion
+func to_godot_quaternion():
 	return Quat(self.i, self.j, self.k, self.a)
 
+#Returns the rotation that self represents represented as an Euler rotation
 func to_euler():
 	var sineAlphaHalf = sqrt(1 - a * a)
 	var x = acos(i / sineAlphaHalf)
@@ -88,16 +99,19 @@ func to_euler():
 	var z = acos(k / sineAlphaHalf)
 	return Vector3(x, y, z)
 
+#Returns the combined rotation of self and doNext
 func add_rotation(doNext):
 	return doNext.hamilton(self)
+
 
 func to_string():
 	return "a: " + a + ", i: " + i +", j: " + j +", k: " + k
 	
-	
+#Computes the a value needed to perform a rotation in the given radians
 static func a_for_radian(radian):
 	return cos(radian/2)
 	
+#Creates a unit quaternion with the same a value, and the i, j, and k values scaled
 static func unit_for_angle_and_axis(radian, i, j, k):
 	var a = a_for_radian(radian)
 	var scale = 1
@@ -110,6 +124,7 @@ static func unit_for_angle_and_axis(radian, i, j, k):
 		k = k * scale
 	return new(a, i, j, k)
 	
+#Constructs a UtilityQuat representing a rotation in YXZ rotation notation (Rotatae along the z-axis, then the x-axis, then the y-axis)
 static func quat_from_YXZ(vector):
 	var z_quat = unit_for_angle_and_axis(vector.z,0,0,1)
 	var x_quat = unit_for_angle_and_axis(vector.x,1,0,0)
