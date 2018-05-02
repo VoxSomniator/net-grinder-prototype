@@ -156,7 +156,7 @@ sync func start_game():
 	else:
 		#Mostly the same as the lobby start code up there. Just ordered different.
 		current_state = "Game"
-		state_scene = preload("res://scenes/Level.tscn")
+		state_scene = preload("res://scenes/maps/citymap1.tscn")
 		clean_tree()
 		var load_node = state_scene.instance()
 		#Reset the sync list. This function only actually does stuff for the server.

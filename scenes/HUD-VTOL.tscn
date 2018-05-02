@@ -1,0 +1,4277 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/hud/vtol/HUD-VTOL.gd" type="Script" id=1]
+[ext_resource path="res://scripts/hud/vtol/altimeter/Altimeter.gd" type="Script" id=2]
+[ext_resource path="res://scripts/hud/vtol/altimeter/Altimeter-Inner.gd" type="Script" id=3]
+[ext_resource path="res://textures/hud/laddergaugemask_75x40.png" type="Texture" id=4]
+[ext_resource path="res://scripts/hud/vtol/altimeter/LabelsUpper.gd" type="Script" id=5]
+[ext_resource path="res://scripts/hud/vtol/speedometer/Speedometer.gd" type="Script" id=6]
+[ext_resource path="res://scripts/hud/vtol/speedometer/Inner.gd" type="Script" id=7]
+[ext_resource path="res://scripts/hud/vtol/compass/Compass.gd" type="Script" id=8]
+[ext_resource path="res://scripts/hud/vtol/compass/Inner.gd" type="Script" id=9]
+[ext_resource path="res://scripts/hud/vtol/compass/Track.gd" type="Script" id=10]
+
+[node name="HUD-VTOL" type="Control"]
+
+modulate = Color( 0, 0.905569, 1, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect", "Visibility" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Altimeter" type="Container" parent="." index="0"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 360.0
+margin_top = -200.0
+margin_right = 460.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Border" type="Line2D" parent="Altimeter" index="0"]
+
+visible = false
+points = PoolVector2Array( 80, 0, 0, 0, 0, 360, 80, 360 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Material" ]
+
+[node name="Border2" type="Line2D" parent="Altimeter" index="1"]
+
+visible = false
+points = PoolVector2Array( 0, 0, 0, 360 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping" ]
+
+[node name="Inner" type="Container" parent="Altimeter" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Track" type="Container" parent="Altimeter/Inner" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Line0" type="Line2D" parent="Altimeter/Inner/Track" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 180 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="Label0" type="Label" parent="Altimeter/Inner/Track/Line0" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus50" type="Line2D" parent="Altimeter/Inner/Track" index="1"]
+
+editor/display_folded = true
+position = Vector2( 0, 130 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus50" type="Label" parent="Altimeter/Inner/Track/LinePlus50" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "50"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus100" type="Line2D" parent="Altimeter/Inner/Track" index="2"]
+
+editor/display_folded = true
+position = Vector2( 0, 80 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus100" type="Label" parent="Altimeter/Inner/Track/LinePlus100" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "100"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus150" type="Line2D" parent="Altimeter/Inner/Track" index="3"]
+
+editor/display_folded = true
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus150" type="Label" parent="Altimeter/Inner/Track/LinePlus150" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "150"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus200" type="Line2D" parent="Altimeter/Inner/Track" index="4"]
+
+editor/display_folded = true
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus200" type="Label" parent="Altimeter/Inner/Track/LinePlus200" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "200"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="LinePlus250" type="Line2D" parent="Altimeter/Inner/Track" index="5"]
+
+editor/display_folded = true
+position = Vector2( 0, -70 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus250" type="Label" parent="Altimeter/Inner/Track/LinePlus250" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "250"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus300" type="Line2D" parent="Altimeter/Inner/Track" index="6"]
+
+editor/display_folded = true
+position = Vector2( 0, -120 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus300" type="Label" parent="Altimeter/Inner/Track/LinePlus300" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "300"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus350" type="Line2D" parent="Altimeter/Inner/Track" index="7"]
+
+editor/display_folded = true
+position = Vector2( 0, -170 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus350" type="Label" parent="Altimeter/Inner/Track/LinePlus350" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "350"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus400" type="Line2D" parent="Altimeter/Inner/Track" index="8"]
+
+editor/display_folded = true
+position = Vector2( 0, -220 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus400" type="Label" parent="Altimeter/Inner/Track/LinePlus400" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "400"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus50" type="Line2D" parent="Altimeter/Inner/Track" index="9"]
+
+editor/display_folded = true
+position = Vector2( 0, 230 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus50" type="Label" parent="Altimeter/Inner/Track/LineMinus50" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-50"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus100" type="Line2D" parent="Altimeter/Inner/Track" index="10"]
+
+editor/display_folded = true
+position = Vector2( 0, 280 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus100" type="Label" parent="Altimeter/Inner/Track/LineMinus100" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-100"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus150" type="Line2D" parent="Altimeter/Inner/Track" index="11"]
+
+editor/display_folded = true
+position = Vector2( 0, 330 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus150" type="Label" parent="Altimeter/Inner/Track/LineMinus150" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-150"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus200" type="Line2D" parent="Altimeter/Inner/Track" index="12"]
+
+editor/display_folded = true
+position = Vector2( 0, 380 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus200" type="Label" parent="Altimeter/Inner/Track/LineMinus200" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-200"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus250" type="Line2D" parent="Altimeter/Inner/Track" index="13"]
+
+editor/display_folded = true
+position = Vector2( 0, 430 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus250" type="Label" parent="Altimeter/Inner/Track/LineMinus250" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-250"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus300" type="Line2D" parent="Altimeter/Inner/Track" index="14"]
+
+editor/display_folded = true
+position = Vector2( 0, 480 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus300" type="Label" parent="Altimeter/Inner/Track/LineMinus300" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-300"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus350" type="Line2D" parent="Altimeter/Inner/Track" index="15"]
+
+editor/display_folded = true
+position = Vector2( 0, 530 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus350" type="Label" parent="Altimeter/Inner/Track/LineMinus350" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-350"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus400" type="Line2D" parent="Altimeter/Inner/Track" index="16"]
+
+editor/display_folded = true
+position = Vector2( 0, 580 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus400" type="Label" parent="Altimeter/Inner/Track/LineMinus400" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = -20.0
+margin_right = 100.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-400"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Inbetweens" type="Line2D" parent="Altimeter/Inner/Track" index="17"]
+
+editor/display_folded = true
+position = Vector2( 0, 155 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="3"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="4"]
+
+position = Vector2( 0, -5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="5"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="6"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="7"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="8"]
+
+position = Vector2( 0, -50 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens2/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="9"]
+
+position = Vector2( 0, -100 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens3/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="10"]
+
+position = Vector2( 0, -150 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens4/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="11"]
+
+position = Vector2( 0, -200 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens5/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="12"]
+
+position = Vector2( 0, -250 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens6/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens15" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="13"]
+
+position = Vector2( 0, -300 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens15/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens16" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="14"]
+
+position = Vector2( 0, -350 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens16/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="15"]
+
+position = Vector2( 0, 50 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens7/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="16"]
+
+position = Vector2( 0, 100 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens8/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens9" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="17"]
+
+position = Vector2( 0, 150 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens9/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens10" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="18"]
+
+position = Vector2( 0, 200 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens10/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens11" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="19"]
+
+position = Vector2( 0, 250 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens11/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens12" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="20"]
+
+position = Vector2( 0, 300 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens12/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens13" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="21"]
+
+position = Vector2( 0, 350 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens13/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens14" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="22"]
+
+position = Vector2( 0, 400 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens14/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Box" type="Line2D" parent="Altimeter/Inner" index="1"]
+
+position = Vector2( 25, 160 )
+z_index = 2
+points = PoolVector2Array( 75, 0, 0, 0, 0, 20, 0, 40, 75, 40, 75, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0 )
+texture_mode = -1082211219
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform", "Z Index" ]
+
+[node name="Current" type="Label" parent="Altimeter/Inner/Box" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_right = 75.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0m"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="BoxMask" type="Light2D" parent="Altimeter/Inner/Box" index="1"]
+
+position = Vector2( 38, 20 )
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 3
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 0
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Range", "Transform", "Z Index" ]
+
+[node name="BoxTop" type="Line2D" parent="Altimeter/Inner/Box" index="2"]
+
+points = PoolVector2Array( 0, 0, 75, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 128
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="BoxBottom" type="Line2D" parent="Altimeter/Inner/Box" index="3"]
+
+position = Vector2( 0, 40 )
+points = PoolVector2Array( 0, 0, 75, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 128
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Labels" type="Container" parent="Altimeter/Inner" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 25.0
+margin_right = 100.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 5 )
+_sections_unfolded = [ "Anchor", "Rect" ]
+
+[node name="Container" type="Container" parent="Altimeter/Inner/Labels" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 75.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="GroundIndicator" type="Container" parent="Altimeter/Inner" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 80.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/GroundIndicator" index="0"]
+
+position = Vector2( 5, 180 )
+points = PoolVector2Array( 0, 0, 0, 200 )
+width = 10.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Altitude" type="Label" parent="Altimeter" index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = 180.0
+margin_right = 37.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "[0m]"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Speedometer" type="Container" parent="." index="1"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -460.0
+margin_top = -200.0
+margin_right = -360.0
+margin_bottom = 160.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 6 )
+_sections_unfolded = [ "Material", "Rect", "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Border" type="Line2D" parent="Speedometer" index="0"]
+
+visible = false
+use_parent_material = true
+points = PoolVector2Array( 20, 0, 100, 0, 100, 360, 20, 360 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Material" ]
+
+[node name="Border2" type="Line2D" parent="Speedometer" index="1"]
+
+visible = false
+points = PoolVector2Array( 100, 0, 100, 360 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Inner" type="Container" parent="Speedometer" index="2"]
+
+use_parent_material = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 7 )
+_sections_unfolded = [ "Material", "Rect" ]
+
+[node name="Track" type="Container" parent="Speedometer/Inner" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Material", "Rect" ]
+
+[node name="Line0" type="Line2D" parent="Speedometer/Inner/Track" index="0"]
+
+editor/display_folded = true
+position = Vector2( 80, 180 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="Label0" type="Label" parent="Speedometer/Inner/Track/Line0" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus25" type="Line2D" parent="Speedometer/Inner/Track" index="1"]
+
+editor/display_folded = true
+position = Vector2( 80, 130 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus25" type="Label" parent="Speedometer/Inner/Track/LinePlus25" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "25"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus50" type="Line2D" parent="Speedometer/Inner/Track" index="2"]
+
+editor/display_folded = true
+position = Vector2( 80, 80 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus50" type="Label" parent="Speedometer/Inner/Track/LinePlus50" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "50"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus75" type="Line2D" parent="Speedometer/Inner/Track" index="3"]
+
+editor/display_folded = true
+position = Vector2( 80, 30 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus75" type="Label" parent="Speedometer/Inner/Track/LinePlus75" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "75"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus100" type="Line2D" parent="Speedometer/Inner/Track" index="4"]
+
+editor/display_folded = true
+position = Vector2( 80, -20 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus100" type="Label" parent="Speedometer/Inner/Track/LinePlus100" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "100"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="LinePlus125" type="Line2D" parent="Speedometer/Inner/Track" index="5"]
+
+editor/display_folded = true
+position = Vector2( 80, -70 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus125" type="Label" parent="Speedometer/Inner/Track/LinePlus125" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "125"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus150" type="Line2D" parent="Speedometer/Inner/Track" index="6"]
+
+editor/display_folded = true
+position = Vector2( 80, -120 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus150" type="Label" parent="Speedometer/Inner/Track/LinePlus150" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "150"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus175" type="Line2D" parent="Speedometer/Inner/Track" index="7"]
+
+editor/display_folded = true
+position = Vector2( 80, -170 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus175" type="Label" parent="Speedometer/Inner/Track/LinePlus175" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "175"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LinePlus200" type="Line2D" parent="Speedometer/Inner/Track" index="8"]
+
+editor/display_folded = true
+position = Vector2( 80, -220 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelPlus200" type="Label" parent="Speedometer/Inner/Track/LinePlus200" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "200"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus25" type="Line2D" parent="Speedometer/Inner/Track" index="9"]
+
+editor/display_folded = true
+position = Vector2( 80, 230 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus25" type="Label" parent="Speedometer/Inner/Track/LineMinus25" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-25"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus50" type="Line2D" parent="Speedometer/Inner/Track" index="10"]
+
+editor/display_folded = true
+position = Vector2( 80, 280 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus50" type="Label" parent="Speedometer/Inner/Track/LineMinus50" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-50"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus75" type="Line2D" parent="Speedometer/Inner/Track" index="11"]
+
+editor/display_folded = true
+position = Vector2( 80, 330 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus75" type="Label" parent="Speedometer/Inner/Track/LineMinus75" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-75"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus100" type="Line2D" parent="Speedometer/Inner/Track" index="12"]
+
+editor/display_folded = true
+position = Vector2( 80, 380 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus100" type="Label" parent="Speedometer/Inner/Track/LineMinus100" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-100"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus125" type="Line2D" parent="Speedometer/Inner/Track" index="13"]
+
+editor/display_folded = true
+position = Vector2( 80, 430 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus125" type="Label" parent="Speedometer/Inner/Track/LineMinus125" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-125"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus150" type="Line2D" parent="Speedometer/Inner/Track" index="14"]
+
+editor/display_folded = true
+position = Vector2( 80, 480 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus150" type="Label" parent="Speedometer/Inner/Track/LineMinus150" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-150"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus175" type="Line2D" parent="Speedometer/Inner/Track" index="15"]
+
+editor/display_folded = true
+position = Vector2( 80, 530 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus175" type="Label" parent="Speedometer/Inner/Track/LineMinus175" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-175"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineMinus200" type="Line2D" parent="Speedometer/Inner/Track" index="16"]
+
+editor/display_folded = true
+position = Vector2( 80, 580 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="LabelMinus200" type="Label" parent="Speedometer/Inner/Track/LineMinus200" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -80.0
+margin_top = -20.0
+margin_right = -8.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-200"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Inbetweens" type="Line2D" parent="Speedometer/Inner/Track" index="17"]
+
+editor/display_folded = true
+position = Vector2( 90, 140 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens5" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="3"]
+
+editor/display_folded = true
+position = Vector2( 0, -50 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens5" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens5" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens5" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens6" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="4"]
+
+editor/display_folded = true
+position = Vector2( 0, -100 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens6" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens6" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens6" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens7" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="5"]
+
+editor/display_folded = true
+position = Vector2( 0, -150 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens7" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens7" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens7" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens8" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="6"]
+
+editor/display_folded = true
+position = Vector2( 0, -200 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens8" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens8" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens8" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens9" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="7"]
+
+editor/display_folded = true
+position = Vector2( 0, -250 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens9" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens9" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens9" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens10" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="8"]
+
+editor/display_folded = true
+position = Vector2( 0, -300 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens10" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens10" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens10" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens11" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="9"]
+
+editor/display_folded = true
+position = Vector2( 0, -350 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens11" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens11" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens11" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens12" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="10"]
+
+editor/display_folded = true
+position = Vector2( 0, 50 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens12" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens12" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens12" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens13" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="11"]
+
+editor/display_folded = true
+position = Vector2( 0, 100 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens13" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens13" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens13" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens14" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="12"]
+
+editor/display_folded = true
+position = Vector2( 0, 150 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens14" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens14" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens14" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens15" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="13"]
+
+editor/display_folded = true
+position = Vector2( 0, 200 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens15" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens15" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens15" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens16" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="14"]
+
+editor/display_folded = true
+position = Vector2( 0, 250 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens16" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens16" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens16" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens17" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="15"]
+
+editor/display_folded = true
+position = Vector2( 0, 300 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens17" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens17" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens17" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens18" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="16"]
+
+editor/display_folded = true
+position = Vector2( 0, 350 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens18" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens18" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens18" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens19" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens" index="17"]
+
+editor/display_folded = true
+position = Vector2( 0, 400 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens2" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens19" index="0"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens3" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens19" index="1"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens4" type="Line2D" parent="Speedometer/Inner/Track/Inbetweens/Inbetweens19" index="2"]
+
+position = Vector2( 0, 30 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Box" type="Line2D" parent="Speedometer/Inner" index="1"]
+
+use_parent_material = true
+position = Vector2( 1, 160 )
+z_index = 2
+points = PoolVector2Array( 75, 0, 0, 0, 0, 20, 0, 40, 75, 40, 75, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0 )
+texture_mode = -1082211219
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Material", "Transform", "Z Index" ]
+
+[node name="Current" type="Label" parent="Speedometer/Inner/Box" index="0"]
+
+use_parent_material = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -1.0
+margin_right = 71.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0kph"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Material", "Rect" ]
+
+[node name="BoxMask" type="Light2D" parent="Speedometer/Inner/Box" index="1"]
+
+position = Vector2( 38, 20 )
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 1, 1, 1, 1 )
+energy = 1.0
+mode = 3
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 0
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Range", "Transform", "Z Index" ]
+
+[node name="BoxTop2" type="Line2D" parent="Speedometer/Inner/Box" index="2"]
+
+points = PoolVector2Array( 0, 0, 75, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 128
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="BoxBottom2" type="Line2D" parent="Speedometer/Inner/Box" index="3"]
+
+position = Vector2( 0, 40 )
+points = PoolVector2Array( 0, 0, 75, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 128
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="VerticalSpeed" type="Label" parent="Speedometer" index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -50.0
+margin_top = 180.0
+margin_right = 25.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0m/s"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Line2D" type="Line2D" parent="Speedometer/VerticalSpeed" index="0"]
+
+position = Vector2( 80, 30 )
+points = PoolVector2Array( 0, 0, 20, -20, 40, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 310954336
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Throttle" type="Container" parent="Speedometer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 120.0
+margin_top = 160.0
+margin_right = 180.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Border" type="Line2D" parent="Speedometer/Throttle" index="0"]
+
+points = PoolVector2Array( 30, 0, 0, 0, 0, 200, 30, 200 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="0" type="Line2D" parent="Speedometer/Throttle/Border" index="0"]
+
+position = Vector2( 0, 100 )
+points = PoolVector2Array( 0, 0, 30, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Fill", "Transform" ]
+
+[node name="Setting" type="Line2D" parent="Speedometer/Throttle" index="1"]
+
+position = Vector2( 35, 100 )
+points = PoolVector2Array( 10, -10, 0, 0, 10, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Speedometer/Throttle/Setting" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = -10.0
+margin_right = 55.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Bar" type="Line2D" parent="Speedometer/Throttle" index="2"]
+
+position = Vector2( 15, 100 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 20.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Current" type="Polygon2D" parent="Speedometer/Throttle/Bar" index="0"]
+
+position = Vector2( 20, 0 )
+polygon = PoolVector2Array( 10, -10, 0, 0, 10, 10 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Compass" type="Container" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -338.0
+margin_top = -315.0
+margin_right = 337.0
+margin_bottom = -235.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 8 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Inner" type="Container" parent="Compass" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 675.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 9 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Track" type="Container" parent="Compass/Inner" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -337.5
+margin_right = 337.5
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLine" type="Line2D" parent="Compass/Inner/Track" index="0"]
+
+position = Vector2( 337, 20 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLine2" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="0"]
+
+position = Vector2( 135, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLine3" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="1"]
+
+position = Vector2( 270, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Pointer" type="Container" parent="Compass" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Pointer" type="Line2D" parent="Compass/Pointer" index="0"]
+
+position = Vector2( 10, 15 )
+points = PoolVector2Array( 0, 0, 10, -10, 20, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Heading" type="Label" parent="Compass/Pointer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Border" type="Line2D" parent="Compass" index="2"]
+
+position = Vector2( 0, 40 )
+points = PoolVector2Array( 0, 0, 675, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="body_heading_updated" from="." to="Compass" method="_on_HUDVTOL_body_heading_updated"]
+
+[connection signal="speed_kph_float_updated" from="." to="Speedometer" method="_on_HUDVTOL_speed_kph_float_updated"]
+
+[connection signal="throttle_setting_updated" from="." to="Speedometer" method="_on_HUDVTOL_throttle_setting_updated"]
+
+[connection signal="throttle_updated" from="." to="Speedometer" method="_on_HUDVTOL_throttle_updated"]
+
+[connection signal="vertspeed_float_updated" from="." to="Speedometer" method="_on_HUDVTOL_vertspeed_float_updated"]
+
+
