@@ -78,7 +78,7 @@ subdivide_depth = 0
 
 extents = Vector3( 50, 0, 50 )
 
-[node name="Level" type="Spatial"]
+[node name="Level" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
@@ -88,7 +88,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Wall1" type="MeshInstance" parent="Terrain" index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00511551, 0.853443, -50.0019 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -123,7 +124,8 @@ _sections_unfolded = [ "Pause", "Transform", "Visibility" ]
 
 [node name="Wall2" type="MeshInstance" parent="Terrain" index="1"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 50 )
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 50 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -158,7 +160,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Wall3" type="MeshInstance" parent="Terrain" index="2"]
 
-transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 50, 0, 0 )
+editor/display_folded = true
+transform = Transform( -4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 50, 1, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -192,7 +195,8 @@ disabled = false
 
 [node name="Wall4" type="MeshInstance" parent="Terrain" index="3"]
 
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -50, 0, 0 )
+editor/display_folded = true
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -50, 1, 0 )
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -226,6 +230,7 @@ disabled = false
 
 [node name="MeshInstance" type="MeshInstance" parent="Terrain" index="4"]
 
+editor/display_folded = true
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -259,6 +264,8 @@ disabled = false
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="cubes" type="Node" parent="Terrain" index="5"]
+
+editor/display_folded = true
 
 [node name="StaticCube" parent="Terrain/cubes" index="0" instance=ExtResource( 2 )]
 
