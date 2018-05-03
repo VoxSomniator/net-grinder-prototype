@@ -60,6 +60,7 @@ var max_jump_speed = 20
 var in_freefall_up = false
 var in_freefall_down = false
 var in_freefall = false
+#indicates whether or not the tank should be able to jump
 var can_jump = true
 var turn_direction = TurnDirection.forward
 var bullet
@@ -70,7 +71,6 @@ var fire_rate = .5
 var bullet_speed = 75
 var can_fire = true
 onready var UtilityQuat = preload("res://scripts/UtilityQuat.gd")
-
 
 
 func _ready():
@@ -114,10 +114,8 @@ func _process(delta):
 			
 		#Turn left/right
 		if Input.is_action_pressed("ui_left"):
-			#turn_torque.y += turn_speed
 				angular_velocity.y = turn_speed;
 		elif Input.is_action_pressed("ui_right"):
-			#turn_torque.y -= turn_speed
 				angular_velocity.y = -turn_speed;
 		else:
 				angular_velocity.y = 0
