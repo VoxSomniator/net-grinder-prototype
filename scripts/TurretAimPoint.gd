@@ -21,3 +21,9 @@ func _process(delta):
 
 func _on_Skeleton_turret_transform_updated(received_turret_transform):
 	turret_transform = received_turret_transform
+	
+func get_rotation():
+	return self.rotation
+	
+func get_transform():
+	return turret_transform
