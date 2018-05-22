@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/hud/vtol/HUD-VTOL.gd" type="Script" id=1]
 [ext_resource path="res://scripts/hud/vtol/altimeter/Altimeter.gd" type="Script" id=2]
@@ -10,8 +10,12 @@
 [ext_resource path="res://scripts/hud/vtol/compass/Compass.gd" type="Script" id=8]
 [ext_resource path="res://scripts/hud/vtol/compass/Inner.gd" type="Script" id=9]
 [ext_resource path="res://scripts/hud/vtol/compass/Track.gd" type="Script" id=10]
+[ext_resource path="res://scripts/hud/vtol/reticlegroup/ReticleGroup.gd" type="Script" id=11]
+[ext_resource path="res://scripts/hud/vtol/reticlegroup/Reticle.gd" type="Script" id=12]
+[ext_resource path="res://scripts/hud/vtol/pitchladder/PitchLadder.gd" type="Script" id=13]
+[ext_resource path="res://scripts/hud/vtol/Debug.gd" type="Script" id=14]
 
-[node name="HUD-VTOL" type="Control"]
+[node name="HUD-VTOL" type="Control" index="0"]
 
 modulate = Color( 0, 0.905569, 1, 1 )
 anchor_left = 0.0
@@ -721,7 +725,7 @@ default_color = Color( 1, 1, 1, 1 )
 texture_mode = 1043049367
 sharp_limit = 2.0
 round_precision = 8
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="0"]
 
@@ -1511,7 +1515,107 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="15"]
+[node name="Inbetweens17" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="15"]
+
+position = Vector2( 0, -400 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens17/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Inbetweens7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="16"]
 
 position = Vector2( 0, 50 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -1611,7 +1715,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="16"]
+[node name="Inbetweens8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="17"]
 
 position = Vector2( 0, 100 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -1711,7 +1815,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens9" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="17"]
+[node name="Inbetweens9" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="18"]
 
 position = Vector2( 0, 150 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -1811,7 +1915,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens10" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="18"]
+[node name="Inbetweens10" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="19"]
 
 position = Vector2( 0, 200 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -1911,7 +2015,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens11" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="19"]
+[node name="Inbetweens11" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="20"]
 
 position = Vector2( 0, 250 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -2011,7 +2115,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens12" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="20"]
+[node name="Inbetweens12" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="21"]
 
 position = Vector2( 0, 300 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -2111,7 +2215,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens13" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="21"]
+[node name="Inbetweens13" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="22"]
 
 position = Vector2( 0, 350 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -2211,7 +2315,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Inbetweens14" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="22"]
+[node name="Inbetweens14" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="23"]
 
 position = Vector2( 0, 400 )
 points = PoolVector2Array( 0, 0, 10, 0 )
@@ -2311,8 +2415,109 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
+[node name="Inbetweens18" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens" index="24"]
+
+position = Vector2( 0, 450 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1043049367
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18" index="0"]
+
+editor/display_folded = true
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="0"]
+
+position = Vector2( 0, 5 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="1"]
+
+position = Vector2( 0, 10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="2"]
+
+position = Vector2( 0, 15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="3"]
+
+position = Vector2( 0, -10 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="4"]
+
+position = Vector2( 0, -15 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="5"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Altimeter/Inner/Track/Inbetweens/Inbetweens18/Line2D" index="6"]
+
+position = Vector2( 0, -25 )
+points = PoolVector2Array( 0, 0, 5, 0 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
 [node name="Box" type="Line2D" parent="Altimeter/Inner" index="1"]
 
+editor/display_folded = true
 position = Vector2( 25, 160 )
 z_index = 2
 points = PoolVector2Array( 75, 0, 0, 0, 0, 20, 0, 40, 75, 40, 75, 0 )
@@ -2483,6 +2688,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="Speedometer" type="Container" parent="." index="1"]
 
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -4115,8 +4321,30 @@ invert_enable = false
 invert_border = 100.0
 _sections_unfolded = [ "Transform" ]
 
+[node name="Label" type="Label" parent="Speedometer/Throttle/Bar/Current" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = -10.0
+margin_right = 55.0
+margin_bottom = 10.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
 [node name="Compass" type="Container" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -4133,6 +4361,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 8 )
 _sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Inner" type="Container" parent="Compass" index="0"]
 
@@ -4143,7 +4375,7 @@ anchor_bottom = 0.0
 margin_right = 675.0
 margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
+rect_clip_content = true
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -4171,6 +4403,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="NorthLine" type="Line2D" parent="Compass/Inner/Track" index="0"]
 
+editor/display_folded = true
 position = Vector2( 337, 20 )
 points = PoolVector2Array( 0, 0, 0, 20 )
 width = 3.0
@@ -4180,7 +4413,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="NorthLine2" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="0"]
+[node name="NortheastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="0"]
 
 position = Vector2( 135, 0 )
 points = PoolVector2Array( 0, 0, 0, 20 )
@@ -4191,7 +4424,31 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="NorthLine3" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="1"]
+[node name="NortheastLabel" type="Label" parent="Compass/Inner/Track/NorthLine/NortheastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="EastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="1"]
 
 position = Vector2( 270, 0 )
 points = PoolVector2Array( 0, 0, 0, 20 )
@@ -4201,6 +4458,898 @@ texture_mode = -1082211219
 sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
+
+[node name="EastLabel" type="Label" parent="Compass/Inner/Track/NorthLine/EastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SoutheastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="2"]
+
+position = Vector2( 405, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SoutheastLabel" type="Label" parent="Compass/Inner/Track/NorthLine/SoutheastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SouthLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="3"]
+
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SouthLabel" type="Label" parent="Compass/Inner/Track/NorthLine/SouthLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SouthwestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="4"]
+
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SouthwestLabel" type="Label" parent="Compass/Inner/Track/NorthLine/SouthwestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="WestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="5"]
+
+position = Vector2( 810, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="WestLabel" type="Label" parent="Compass/Inner/Track/NorthLine/WestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthwestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="6"]
+
+position = Vector2( 945, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthwestLabel" type="Label" parent="Compass/Inner/Track/NorthLine/NorthwestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLineR" type="Line2D" parent="Compass/Inner/Track/NorthLine" index="7"]
+
+position = Vector2( 1080, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLabelR" type="Label" parent="Compass/Inner/Track/NorthLine/NorthLineR" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLabel" type="Label" parent="Compass/Inner/Track/NorthLine" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLine2" type="Line2D" parent="Compass/Inner/Track" index="1"]
+
+editor/display_folded = true
+position = Vector2( -743, 20 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NortheastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="0"]
+
+position = Vector2( 135, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NortheastLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/NortheastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="EastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="1"]
+
+position = Vector2( 270, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="EastLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/EastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SoutheastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="2"]
+
+position = Vector2( 405, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SoutheastLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/SoutheastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SouthLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="3"]
+
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SouthLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/SouthLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SouthwestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="4"]
+
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SouthwestLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/SouthwestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="WestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="5"]
+
+position = Vector2( 810, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="WestLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/WestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthwestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="6"]
+
+position = Vector2( 945, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthwestLabel" type="Label" parent="Compass/Inner/Track/NorthLine2/NorthwestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLineR" type="Line2D" parent="Compass/Inner/Track/NorthLine2" index="7"]
+
+visible = false
+position = Vector2( 1080, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLabelR" type="Label" parent="Compass/Inner/Track/NorthLine2/NorthLineR" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLabel" type="Label" parent="Compass/Inner/Track/NorthLine2" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLine3" type="Line2D" parent="Compass/Inner/Track" index="2"]
+
+editor/display_folded = true
+position = Vector2( -1823, 20 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NortheastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="0"]
+
+position = Vector2( 135, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NortheastLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/NortheastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="EastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="1"]
+
+position = Vector2( 270, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="EastLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/EastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SoutheastLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="2"]
+
+position = Vector2( 405, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SoutheastLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/SoutheastLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SouthLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="3"]
+
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SouthLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/SouthLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="SouthwestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="4"]
+
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="SouthwestLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/SouthwestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="WestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="5"]
+
+position = Vector2( 810, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="WestLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/WestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthwestLine" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="6"]
+
+position = Vector2( 945, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthwestLabel" type="Label" parent="Compass/Inner/Track/NorthLine3/NorthwestLine" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLineR" type="Line2D" parent="Compass/Inner/Track/NorthLine3" index="7"]
+
+visible = false
+position = Vector2( 1080, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="NorthLabelR" type="Label" parent="Compass/Inner/Track/NorthLine3/NorthLineR" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="NorthLabel" type="Label" parent="Compass/Inner/Track/NorthLine3" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -17.0
+margin_right = 20.0
+margin_bottom = 3.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
 
 [node name="Pointer" type="Container" parent="Compass" index="1"]
 
@@ -4264,7 +5413,2020 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
+[node name="ReticleGroup" type="Container" parent="." index="3"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.0
+margin_top = -72.0
+margin_right = 72.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 72, 72 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 11 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Reticle" type="Container" parent="ReticleGroup" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 36.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 12 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Top" type="Line2D" parent="ReticleGroup/Reticle" index="0"]
+
+position = Vector2( 36, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Bottom" type="Line2D" parent="ReticleGroup/Reticle" index="1"]
+
+position = Vector2( 36, 52 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Left" type="Line2D" parent="ReticleGroup/Reticle" index="2"]
+
+position = Vector2( 0, 36 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 16
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Right" type="Line2D" parent="ReticleGroup/Reticle" index="3"]
+
+position = Vector2( 52, 36 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 73
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Range" type="Label" parent="ReticleGroup" index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -30.0
+margin_top = -30.0
+margin_right = 30.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0m"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="PitchLadder" type="Container" parent="." index="4"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -240.0
+margin_right = 255.0
+margin_bottom = 240.0
+rect_pivot_offset = Vector2( 255, 240 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 13 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Inner" type="Container" parent="PitchLadder" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -180.0
+margin_right = 255.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 255, 180 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Ladder" type="Container" parent="PitchLadder/Inner" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -180.0
+margin_right = 255.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 255, 180 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Lines0" type="Container" parent="PitchLadder/Inner/Ladder" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -20.0
+margin_right = 255.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0" index="0"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0" index="1"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0" index="2"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LineNegL" index="2"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines0/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label0R" type="Label" parent="PitchLadder/Inner/Ladder/Lines0" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label0L" type="Label" parent="PitchLadder/Inner/Ladder/Lines0" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Lines5" type="Container" parent="PitchLadder/Inner/Ladder" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -120.0
+margin_right = 255.0
+margin_bottom = -80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5" index="1"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label5R" type="Label" parent="PitchLadder/Inner/Ladder/Lines5" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "5"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label5L" type="Label" parent="PitchLadder/Inner/Ladder/Lines5" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "5"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5" index="4"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines5/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Lines10" type="Container" parent="PitchLadder/Inner/Ladder" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -220.0
+margin_right = 255.0
+margin_bottom = -180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10" index="1"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label10R" type="Label" parent="PitchLadder/Inner/Ladder/Lines10" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "10"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label10L" type="Label" parent="PitchLadder/Inner/Ladder/Lines10" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "10"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10" index="4"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines10/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Lines15" type="Container" parent="PitchLadder/Inner/Ladder" index="3"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -320.0
+margin_right = 255.0
+margin_bottom = -280.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15" index="1"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label15R" type="Label" parent="PitchLadder/Inner/Ladder/Lines15" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "15"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label15L" type="Label" parent="PitchLadder/Inner/Ladder/Lines15" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "15"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15" index="4"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines15/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Lines20" type="Container" parent="PitchLadder/Inner/Ladder" index="4"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = -420.0
+margin_right = 255.0
+margin_bottom = -380.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20" index="1"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label20R" type="Label" parent="PitchLadder/Inner/Ladder/Lines20" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "20"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="Label20L" type="Label" parent="PitchLadder/Inner/Ladder/Lines20" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20" index="4"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/Lines20/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinesMinus5" type="Container" parent="PitchLadder/Inner/Ladder" index="5"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = 80.0
+margin_right = 255.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5" index="1"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LabelMinus5R" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus5" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-5"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LabelMinus5L" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus5" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-5"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5" index="4"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus5/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinesMinus10" type="Container" parent="PitchLadder/Inner/Ladder" index="6"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = 180.0
+margin_right = 255.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10" index="1"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LabelMinus10R" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus10" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-10"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LabelMinus10L" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus10" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-10"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10" index="4"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus10/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinesMinus15" type="Container" parent="PitchLadder/Inner/Ladder" index="7"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = 280.0
+margin_right = 255.0
+margin_bottom = 320.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15" index="1"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LabelMinus15R" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus15" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-15"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LabelMinus15L" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus15" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-15"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15" index="4"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus15/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinesMinus20" type="Container" parent="PitchLadder/Inner/Ladder" index="8"]
+
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.0
+margin_top = 380.0
+margin_right = 255.0
+margin_bottom = 420.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20" index="0"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LineL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20" index="1"]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, 10, 0, 0, 80, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LinePosR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LinePosL" index="0"]
+
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 80, 10, 80, 0, 0, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LabelMinus20R" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus20" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 485.0
+margin_top = 10.0
+margin_right = 525.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-20"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LabelMinus20L" type="Label" parent="PitchLadder/Inner/Ladder/LinesMinus20" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -15.0
+margin_top = 10.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "-20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="LineNegL" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20" index="4"]
+
+editor/display_folded = true
+position = Vector2( 30, 20 )
+points = PoolVector2Array( 0, -10, 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LineNegL" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegL3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LineNegL" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LineNegL" index="2"]
+
+editor/display_folded = true
+position = Vector2( 370, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR2" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LineNegL/LineNegR" index="0"]
+
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineNegR3" type="Line2D" parent="PitchLadder/Inner/Ladder/LinesMinus20/LineNegL/LineNegR" index="1"]
+
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 20, 0, 20, -10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Debug" type="Container" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -213.0
+margin_right = 450.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 14 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 78.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="CamGimbalQuat" type="Label" parent="Debug" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 450.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "cam_gimbal_quat:"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="CamQuat" type="Label" parent="Debug" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 20.0
+margin_right = 450.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "cam_quat:"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="BodyQuat" type="Label" parent="Debug" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 40.0
+margin_right = 450.0
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "body_quat:"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="BodyXformRotation" type="Label" parent="Debug" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 450.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "body_xform_rotation:"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect" ]
+
+[node name="ReticleDebug" type="Container" parent="." index="6"]
+
+editor/display_folded = true
+visible = false
+modulate = Color( 0, 1, 0.367188, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 36.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 12 )
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="Top" type="Line2D" parent="ReticleDebug" index="0"]
+
+position = Vector2( 36, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Bottom" type="Line2D" parent="ReticleDebug" index="1"]
+
+position = Vector2( 36, 52 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = -1082211219
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Left" type="Line2D" parent="ReticleDebug" index="2"]
+
+position = Vector2( 0, 36 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 16
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Right" type="Line2D" parent="ReticleDebug" index="3"]
+
+position = Vector2( 52, 36 )
+points = PoolVector2Array( 0, 0, 20, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 73
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[connection signal="aimpoint_range_updated" from="." to="ReticleGroup" method="_on_HUDVTOL_aimpoint_range_updated"]
+
+[connection signal="aimpoint_unprojected_updated" from="." to="ReticleGroup" method="_on_HUDVTOL_aimpoint_unprojected_updated"]
+
+[connection signal="altitude_updated" from="." to="Altimeter" method="_on_HUDVTOL_altitude_updated"]
+
 [connection signal="body_heading_updated" from="." to="Compass" method="_on_HUDVTOL_body_heading_updated"]
+
+[connection signal="body_quat_updated" from="." to="Debug" method="_on_HUDVTOL_body_quat_updated"]
+
+[connection signal="body_xform_rotation_updated" from="." to="Debug" method="_on_HUDVTOL_body_xform_rotation_updated"]
+
+[connection signal="cam_gimbal_quat_updated" from="." to="Debug" method="_on_HUDVTOL_cam_gimbal_quat_updated"]
+
+[connection signal="cam_quat_updated" from="." to="Debug" method="_on_HUDVTOL_cam_quat_updated"]
+
+[connection signal="elevation_updated" from="." to="Altimeter" method="_on_HUDVTOL_elevation_updated"]
+
+[connection signal="pitch_updated" from="." to="PitchLadder" method="_on_HUDVTOL_pitch_updated"]
+
+[connection signal="roll_updated" from="." to="PitchLadder" method="_on_HUDVTOL_roll_updated"]
 
 [connection signal="speed_kph_float_updated" from="." to="Speedometer" method="_on_HUDVTOL_speed_kph_float_updated"]
 

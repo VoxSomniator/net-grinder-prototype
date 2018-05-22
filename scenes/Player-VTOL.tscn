@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Player-VTOL.gd" type="Script" id=1]
 [ext_resource path="res://models/body.material" type="Material" id=2]
 [ext_resource path="res://models/canopy.material" type="Material" id=3]
 [ext_resource path="res://models/thruster-glow.material" type="Material" id=4]
 [ext_resource path="res://models/interior.material" type="Material" id=5]
-[ext_resource path="res://scenes/HUD-VTOL.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/vtol/Camera.gd" type="Script" id=6]
+[ext_resource path="res://scenes/HUD-VTOL.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/vtol/Aimpoint.gd" type="Script" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -451,15 +453,15 @@ can_sleep = true
 axis_lock_linear_x = false
 axis_lock_linear_y = false
 axis_lock_linear_z = false
-axis_lock_angular_x = false
-axis_lock_angular_y = false
+axis_lock_angular_x = true
+axis_lock_angular_y = true
 axis_lock_angular_z = false
 linear_velocity = Vector3( 0, 0, 0 )
-linear_damp = 0.5
+linear_damp = 0.2
 angular_velocity = Vector3( 0, 0, 0 )
-angular_damp = 0.0
+angular_damp = 0.9
 script = ExtResource( 1 )
-_sections_unfolded = [ "Angular", "Linear" ]
+_sections_unfolded = [ "Angular", "Axis Lock", "Linear", "Transform" ]
 
 [node name="vtol-model" type="Spatial" parent="." index="0"]
 
@@ -582,6 +584,7 @@ fov = 70.0
 size = 1.0
 near = 0.05
 far = 10000.0
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Skid-front" type="CollisionShape" parent="." index="3"]
@@ -614,13 +617,40 @@ cast_to = Vector3( 0, -200, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="HUD-VTOL" parent="." index="7" instance=ExtResource( 6 )]
+[node name="HUD-VTOL" parent="." index="7" instance=ExtResource( 7 )]
+
+[node name="Aimpoint" type="RayCast" parent="." index="8"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.8584, 295.47 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( 0, 0, 200 )
+collision_mask = 1
+script = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Endpoint" type="Spatial" parent="Aimpoint" index="0"]
+
+transform = Transform( -0.766045, 0, 0.642787, 0, 1, 0, -0.642787, 0, -0.766045, 20, 0, 2000 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="altitude_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_altitude_updated"]
 
 [connection signal="body_heading_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_body_heading_updated"]
 
+[connection signal="body_quat_upated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_body_quat_upated"]
+
+[connection signal="body_xform_rotation_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_body_xform_rotation_updated"]
+
+[connection signal="cam_gimbal_quat_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_cam_gimbal_quat_updated"]
+
+[connection signal="cam_quat_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_cam_quat_updated"]
+
 [connection signal="elevation_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_elevation_updated"]
+
+[connection signal="pitch_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_pitch_updated"]
+
+[connection signal="roll_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_roll_updated"]
 
 [connection signal="speed_kph_float_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_speed_kph_float_updated"]
 
@@ -629,5 +659,11 @@ _sections_unfolded = [ "Transform" ]
 [connection signal="throttle_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_throttle_updated"]
 
 [connection signal="vertspeed_float_updated" from="." to="HUD-VTOL" method="_on_PlayerVTOL_vertspeed_float_updated"]
+
+[connection signal="aimpoint_unprojected_updated" from="Camera-gimbal/Camera" to="HUD-VTOL" method="_on_Camera_aimpoint_unprojected_updated"]
+
+[connection signal="aimpoint_range_updated" from="Aimpoint" to="HUD-VTOL" method="_on_Aimpoint_aimpoint_range_updated"]
+
+[connection signal="aimpoint_updated" from="Aimpoint" to="Camera-gimbal/Camera" method="_on_Aimpoint_aimpoint_updated"]
 
 

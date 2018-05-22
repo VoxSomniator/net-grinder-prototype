@@ -13,10 +13,15 @@ config_version=3
 config/name="net grinder prototype (feature-vtol branch)"
 run/main_scene="res://scenes/GameCore.tscn"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1440
 window/size/height=900
+window/vsync/use_vsync=false
 window/stretch/aspect="expand"
 
 [input]
