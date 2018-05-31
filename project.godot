@@ -10,8 +10,13 @@ config_version=3
 
 [application]
 
-config/name="net grinder prototype (feature-vtol branch)"
+config/name="net grinder prototype (feature-mech branch)"
 run/main_scene="res://scenes/GameCore.tscn"
+
+[autoload]
+
+UserConfig="*res://autoload/UserConfig.gd"
+PauseMenuGlobals="*res://autoload/PauseMenuGlobals.gd"
 
 [debug]
 

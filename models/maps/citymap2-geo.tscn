@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/maps/citymap2.dae" type="PackedScene" id=1]
+
+[node name="citymap2-geo" instance=ExtResource( 1 )]
+
+

@@ -1,0 +1,1397 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/mech/hud/Compass.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/ExanRegular.tres" type="DynamicFont" id=2]
+
+[node name="Compass" type="Container"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 675.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Mouse", "Rect" ]
+
+[node name="Inner" type="Container" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="Track" type="Container" parent="Inner" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Mouse", "Rect" ]
+
+[node name="North" type="Position2D" parent="Inner/Track" index="0"]
+
+editor/display_folded = true
+position = Vector2( 337, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Northeast" type="Position2D" parent="Inner/Track/North" index="1"]
+
+position = Vector2( 135, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/Northeast" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="East" type="Position2D" parent="Inner/Track/North" index="2"]
+
+position = Vector2( 270, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/East" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Southeast" type="Position2D" parent="Inner/Track/North" index="3"]
+
+position = Vector2( 405, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/Southeast" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="South" type="Position2D" parent="Inner/Track/North" index="4"]
+
+position = Vector2( 540, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/South" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Southwest" type="Position2D" parent="Inner/Track/North" index="5"]
+
+position = Vector2( 675, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/Southwest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="West" type="Position2D" parent="Inner/Track/North" index="6"]
+
+position = Vector2( 810, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/West" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Northwest" type="Position2D" parent="Inner/Track/North" index="7"]
+
+position = Vector2( 945, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North/Northwest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="North2" type="Position2D" parent="Inner/Track" index="1"]
+
+editor/display_folded = true
+position = Vector2( -743, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Northeast" type="Position2D" parent="Inner/Track/North2" index="1"]
+
+position = Vector2( 135, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/Northeast" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="East" type="Position2D" parent="Inner/Track/North2" index="2"]
+
+position = Vector2( 270, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/East" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Southeast" type="Position2D" parent="Inner/Track/North2" index="3"]
+
+position = Vector2( 405, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/Southeast" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="South" type="Position2D" parent="Inner/Track/North2" index="4"]
+
+position = Vector2( 540, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/South" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Southwest" type="Position2D" parent="Inner/Track/North2" index="5"]
+
+position = Vector2( 675, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/Southwest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="West" type="Position2D" parent="Inner/Track/North2" index="6"]
+
+position = Vector2( 810, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/West" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Northwest" type="Position2D" parent="Inner/Track/North2" index="7"]
+
+position = Vector2( 945, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North2/Northwest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="North3" type="Position2D" parent="Inner/Track" index="2"]
+
+editor/display_folded = true
+position = Vector2( -1823, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Northeast" type="Position2D" parent="Inner/Track/North3" index="1"]
+
+position = Vector2( 135, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/Northeast" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "NE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="East" type="Position2D" parent="Inner/Track/North3" index="2"]
+
+position = Vector2( 270, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/East" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Southeast" type="Position2D" parent="Inner/Track/North3" index="3"]
+
+position = Vector2( 405, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/Southeast" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "SE"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="South" type="Position2D" parent="Inner/Track/North3" index="4"]
+
+position = Vector2( 540, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/South" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "S"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Southwest" type="Position2D" parent="Inner/Track/North3" index="5"]
+
+position = Vector2( 675, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/Southwest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "SW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="West" type="Position2D" parent="Inner/Track/North3" index="6"]
+
+position = Vector2( 810, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/West" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "W"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Northwest" type="Position2D" parent="Inner/Track/North3" index="7"]
+
+position = Vector2( 945, 0 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Label" type="Label" parent="Inner/Track/North3/Northwest" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -15.0
+margin_right = 20.0
+margin_bottom = 15.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "NW"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts", "custom_styles" ]
+
+[node name="Lines" type="Position2D" parent="Inner/Track" index="3"]
+
+editor/display_folded = true
+position = Vector2( 337, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Inner/Track/Lines" index="0"]
+
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Inner/Track/Lines" index="1"]
+
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Inner/Track/Lines" index="2"]
+
+position = Vector2( 180, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Inner/Track/Lines" index="3"]
+
+position = Vector2( 225, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Inner/Track/Lines" index="4"]
+
+position = Vector2( 315, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Inner/Track/Lines" index="5"]
+
+position = Vector2( 360, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Inner/Track/Lines" index="6"]
+
+position = Vector2( 450, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Inner/Track/Lines" index="7"]
+
+position = Vector2( 495, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D9" type="Line2D" parent="Inner/Track/Lines" index="8"]
+
+position = Vector2( 585, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D10" type="Line2D" parent="Inner/Track/Lines" index="9"]
+
+position = Vector2( 630, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D11" type="Line2D" parent="Inner/Track/Lines" index="10"]
+
+position = Vector2( 720, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D12" type="Line2D" parent="Inner/Track/Lines" index="11"]
+
+position = Vector2( 765, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D13" type="Line2D" parent="Inner/Track/Lines" index="12"]
+
+position = Vector2( 855, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D14" type="Line2D" parent="Inner/Track/Lines" index="13"]
+
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Lines2" type="Position2D" parent="Inner/Track" index="4"]
+
+editor/display_folded = true
+position = Vector2( -743, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Inner/Track/Lines2" index="0"]
+
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Inner/Track/Lines2" index="1"]
+
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Inner/Track/Lines2" index="2"]
+
+position = Vector2( 180, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Inner/Track/Lines2" index="3"]
+
+position = Vector2( 225, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Inner/Track/Lines2" index="4"]
+
+position = Vector2( 315, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Inner/Track/Lines2" index="5"]
+
+position = Vector2( 360, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Inner/Track/Lines2" index="6"]
+
+position = Vector2( 450, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Inner/Track/Lines2" index="7"]
+
+position = Vector2( 495, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D9" type="Line2D" parent="Inner/Track/Lines2" index="8"]
+
+position = Vector2( 585, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D10" type="Line2D" parent="Inner/Track/Lines2" index="9"]
+
+position = Vector2( 630, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D11" type="Line2D" parent="Inner/Track/Lines2" index="10"]
+
+position = Vector2( 720, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D12" type="Line2D" parent="Inner/Track/Lines2" index="11"]
+
+position = Vector2( 765, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D13" type="Line2D" parent="Inner/Track/Lines2" index="12"]
+
+position = Vector2( 855, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D14" type="Line2D" parent="Inner/Track/Lines2" index="13"]
+
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D15" type="Line2D" parent="Inner/Track/Lines2" index="14"]
+
+position = Vector2( 990, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D16" type="Line2D" parent="Inner/Track/Lines2" index="15"]
+
+position = Vector2( 1035, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Lines3" type="Position2D" parent="Inner/Track" index="5"]
+
+editor/display_folded = true
+position = Vector2( -1823, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="Inner/Track/Lines3" index="0"]
+
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Inner/Track/Lines3" index="1"]
+
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D3" type="Line2D" parent="Inner/Track/Lines3" index="2"]
+
+position = Vector2( 180, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D4" type="Line2D" parent="Inner/Track/Lines3" index="3"]
+
+position = Vector2( 225, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D5" type="Line2D" parent="Inner/Track/Lines3" index="4"]
+
+position = Vector2( 315, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D6" type="Line2D" parent="Inner/Track/Lines3" index="5"]
+
+position = Vector2( 360, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D7" type="Line2D" parent="Inner/Track/Lines3" index="6"]
+
+position = Vector2( 450, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D8" type="Line2D" parent="Inner/Track/Lines3" index="7"]
+
+position = Vector2( 495, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D9" type="Line2D" parent="Inner/Track/Lines3" index="8"]
+
+position = Vector2( 585, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D10" type="Line2D" parent="Inner/Track/Lines3" index="9"]
+
+position = Vector2( 630, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D11" type="Line2D" parent="Inner/Track/Lines3" index="10"]
+
+position = Vector2( 720, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D12" type="Line2D" parent="Inner/Track/Lines3" index="11"]
+
+position = Vector2( 765, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D13" type="Line2D" parent="Inner/Track/Lines3" index="12"]
+
+position = Vector2( 855, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D14" type="Line2D" parent="Inner/Track/Lines3" index="13"]
+
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D15" type="Line2D" parent="Inner/Track/Lines3" index="14"]
+
+position = Vector2( 990, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Line2D16" type="Line2D" parent="Inner/Track/Lines3" index="15"]
+
+position = Vector2( 1035, 0 )
+points = PoolVector2Array( 0, -4, 0, 4 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping", "Transform" ]
+
+[node name="Pointer" type="Position2D" parent="." index="1"]
+
+position = Vector2( 337, 20 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Pointer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_top = -55.0
+margin_right = 20.0
+margin_bottom = -25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Mouse", "Rect", "custom_fonts" ]
+
+[node name="Line2D" type="Line2D" parent="Pointer" index="1"]
+
+visible = false
+position = Vector2( -20, 0 )
+points = PoolVector2Array( 0, -10, 0, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Pointer" index="2"]
+
+visible = false
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, -10, 0, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Box" type="Line2D" parent="Pointer" index="3"]
+
+visible = false
+points = PoolVector2Array( -20, -10, -20, 10, 20, 10, 20, -10, -20, -10 )
+width = 1.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+begin_cap_mode = 1
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Capping" ]
+
+[node name="Arrow" type="Line2D" parent="Pointer" index="4"]
+
+position = Vector2( 0, -20 )
+points = PoolVector2Array( -7, -7, 0, 0, 7, -7 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Border" type="Position2D" parent="." index="2"]
+
+[node name="Left" type="Line2D" parent="Border" index="0"]
+
+points = PoolVector2Array( 0, 0, 0, 40 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Right" type="Line2D" parent="Border" index="1"]
+
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 40 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+

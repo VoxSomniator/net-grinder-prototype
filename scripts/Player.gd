@@ -15,7 +15,7 @@ var camera
 #Holds a ref to the turret skeleton thing. Used by camera.
 var skeleton
 #How fast the mouse moves the camera
-const MOUSE_SENSITIVITY = 0.05
+const MOUSE_SENSITIVITY = 0.001
 #Maximum rotation angles of the camera
 const CAM_Y_RANGE = 45
 const CAM_X_RANGE = 45
