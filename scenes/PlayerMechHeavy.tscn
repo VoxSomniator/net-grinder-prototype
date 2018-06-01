@@ -1052,9 +1052,9 @@ tracks/25/keys = PoolRealArray( 0, 1, 2.57091e-09, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.
 
 [sub_resource type="Animation" id=12]
 
-length = 1.375
-loop = false
-step = 0.1
+length = 1.38
+loop = true
+step = 0.02
 tracks/0/type = "transform"
 tracks/0/path = NodePath("../Armature")
 tracks/0/interp = 1
@@ -1237,6 +1237,18 @@ tracks/25/loop_wrap = true
 tracks/25/imported = true
 tracks/25/enabled = true
 tracks/25/keys = PoolRealArray( 0, 1, 1.35066e-08, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.375, 1, 1.35066e-08, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/26/type = "value"
+tracks/26/path = NodePath("../../../TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder:translation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.34, 0.68, 1.02, 1.38 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( -0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( 0.03, 0, -1.5 ) ]
+}
 
 [sub_resource type="Animation" id=13]
 
@@ -1989,6 +2001,18 @@ tracks/25/loop_wrap = true
 tracks/25/imported = true
 tracks/25/enabled = true
 tracks/25/keys = PoolRealArray( 0, 1, 1.35066e-08, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.20833, 1, 1.35066e-08, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/26/type = "value"
+tracks/26/path = NodePath("../../../TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder:translation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( -0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( 0.03, 0, -1.5 ) ]
+}
 
 [sub_resource type="Animation" id=17]
 
@@ -3325,7 +3349,7 @@ tracks/24/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.08, 0, -1.5 ), Vector3( 0, -0.05, -1.5 ), Vector3( -0.08, 0, -1.5 ), Vector3( 0, -0.05, -1.5 ), Vector3( 0.08, 0, -1.5 ) ]
+"values": [ Vector3( 0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( -0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( 0.03, 0, -1.5 ) ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -3736,6 +3760,7 @@ var throttle_percentage
 var throttle_percentage_int
 var node_list = get_node_list()
 var animation_position
+var current_animation
 
 func _ready():
 #	print(node_list)
@@ -3745,29 +3770,35 @@ func _ready():
 func _process(delta):
 	throttle_percentage = throttle / 20 * 100
 	throttle_percentage_int = int(throttle_percentage)
+	current_animation = transition_node_get_current(\"transition\")
+#	print(current_animation)
 #	animation_position = animation_node_get_master_animation(\"anim 2\")
 #	print(animation_position)
 	if throttle_percentage_int == 0:
 		blend2_node_set_amount(\"walk\", 0)
-#		blend2_node_set_amount(\"jog\", 0)
-#		blend2_node_set_amount(\"run\", 0)
-	if throttle_percentage > 0:
-		transition_node_set_current(\"transition\", 0)
-		blend2_node_set_amount(\"walk\", 1)
-#		blend2_node_set_amount(\"jog\", 1)
-#		blend2_node_set_amount(\"run\", 1)
-#		if throttle_percentage > 25:
-#			if transition_node_get_current(\"transition\") != 1:
-#				transition_node_set_current(\"transition\", 1)
-#				blend2_node_set_amount(\"walk\", 1)
-#				blend2_node_set_amount(\"jog\", 1)
-#				blend2_node_set_amount(\"run\", 1)
-#	if throttle > 50:
-#		if transition_node_get_current(\"transition\") != 2:
-#			transition_node_set_current(\"transition\", 2)
-#			blend2_node_set_amount(\"walk\", 1)
-#			blend2_node_set_amount(\"jog\", 1)
-#			blend2_node_set_amount(\"run\", 1)
+		blend2_node_set_amount(\"jog\", 0)
+		blend2_node_set_amount(\"run\", 0)
+	if throttle_percentage_int > 0:
+#		if blend2_node_get_amount(\"walk\") == 0:
+			
+		if throttle_percentage_int < 25:
+			transition_node_set_current(\"transition\", 0)
+			blend2_node_set_amount(\"walk\", 1)
+			blend2_node_set_amount(\"jog\", 1)
+			blend2_node_set_amount(\"run\", 1)
+		elif throttle_percentage_int > 25:
+			if throttle_percentage_int < 50:
+				if transition_node_get_current(\"transition\") != 1:
+					transition_node_set_current(\"transition\", 1)
+					blend2_node_set_amount(\"walk\", 1)
+					blend2_node_set_amount(\"jog\", 1)
+					blend2_node_set_amount(\"run\", 1)
+			elif throttle_percentage_int > 50:
+				if transition_node_get_current(\"transition\") != 2:
+					transition_node_set_current(\"transition\", 2)
+					blend2_node_set_amount(\"walk\", 1)
+					blend2_node_set_amount(\"jog\", 1)
+					blend2_node_set_amount(\"run\", 1)
 	if Input.is_action_pressed(\"movement_left\"):
 		if throttle == 0:
 			transition_node_set_current(\"transition\", 3)
@@ -3783,10 +3814,31 @@ func _process(delta):
 			transition_node_set_current(\"transition\", 0)
 			blend2_node_set_amount(\"walk\", 0)
 
+func set_animation():
+	if throttle_percentage_int > 0:
+		if throttle_percentage_int < 25:
+			transition_node_set_current(\"transition\", 0)
+			blend2_node_set_amount(\"walk\", 1)
+			blend2_node_set_amount(\"jog\", 1)
+			blend2_node_set_amount(\"run\", 1)
+		elif throttle_percentage_int > 25:
+			if throttle_percentage_int < 50:
+				if transition_node_get_current(\"transition\") != 1:
+					transition_node_set_current(\"transition\", 1)
+					blend2_node_set_amount(\"walk\", 1)
+					blend2_node_set_amount(\"jog\", 1)
+					blend2_node_set_amount(\"run\", 1)
+			elif throttle_percentage_int > 50:
+				if transition_node_get_current(\"transition\") != 2:
+					transition_node_set_current(\"transition\", 2)
+					blend2_node_set_amount(\"walk\", 1)
+					blend2_node_set_amount(\"jog\", 1)
+					blend2_node_set_amount(\"run\", 1)
+
 func _on_PlayerMechHeavy_throttle_updated(new_throttle):
 	throttle = new_throttle"
 
-[node name="PlayerMechHeavy" type="RigidBody" index="0"]
+[node name="PlayerMechHeavy" type="RigidBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -3810,9 +3862,9 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 linear_velocity = Vector3( 0, 0, 0 )
-linear_damp = 0.5
+linear_damp = 0.0
 angular_velocity = Vector3( 0, 0, 0 )
-angular_damp = -1.0
+angular_damp = 0.0
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Linear" ]
 
@@ -3846,11 +3898,16 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CameraHolder" type="Spatial" parent="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0604306, -0.0156888, -1.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03, 0, -1.5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera" type="Camera" parent="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder" index="0"]
+[node name="CamGimbal2" type="Spatial" parent="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder" index="0"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.77507e-09 )
+
+[node name="Camera" type="Camera" parent="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.77507e-09 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -4034,6 +4091,7 @@ mesh = SubResource( 3 )
 skeleton = NodePath("..")
 material/0 = null
 material/1 = null
+_sections_unfolded = [ "material" ]
 
 [node name="canopy" type="MeshInstance" parent="MechHeavy/Armature/Skeleton" index="2"]
 
@@ -4136,7 +4194,7 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "transition", "seek", 0, "walk", "transition", 0, "jog", "transition", 1, "run", "transition", 2, "anim 8", "transition", 3, "anim 7", "transition", 4, "seek", "out", 0, "anim 5", "run", 0, "anim 6", "run", 1, "anim 3", "jog", 0, "anim 4", "jog", 1, "anim", "walk", 0, "anim 2", "walk", 1 ],
+"connections": [ "transition", "seek", 0, "walk", "transition", 0, "jog", "transition", 1, "run", "transition", 2, "anim 8", "transition", 3, "anim 7", "transition", 4, "seek", "out", 0, "anim 5", "run", 0, "anim 6", "run", 1, "anim", "walk", 0, "anim 2", "walk", 1, "anim 3", "jog", 0, "anim 4", "jog", 1 ],
 "master": NodePath("../AnimationPlayer"),
 "nodes": [ {
 "id": "seek",
@@ -4159,7 +4217,7 @@ data = {
 "type": "transition",
 "xfade": 0.0
 }, {
-"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body"), NodePath("../Skeleton:body-base") ],
+"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
 "from": "idle",
 "id": "anim",
 "position": Vector2( 49, 55 ),
@@ -4168,6 +4226,12 @@ data = {
 "id": "out",
 "position": Vector2( 1174, 5 ),
 "type": "output"
+}, {
+"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
+"from": "walk_blocking",
+"id": "anim 2",
+"position": Vector2( 167, 59 ),
+"type": "animation"
 }, {
 "filter": [  ],
 "from": "jog_blocking",
@@ -4181,10 +4245,16 @@ data = {
 "position": Vector2( 452, 298 ),
 "type": "blend2"
 }, {
-"blend": 0.55,
 "filter": [  ],
-"id": "jog",
-"position": Vector2( 450, 165 ),
+"from": "idle",
+"id": "anim 3",
+"position": Vector2( 37, 181 ),
+"type": "animation"
+}, {
+"blend": 1.0,
+"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
+"id": "walk",
+"position": Vector2( 448, 26 ),
 "type": "blend2"
 }, {
 "filter": [  ],
@@ -4193,29 +4263,17 @@ data = {
 "position": Vector2( 453, 443 ),
 "type": "animation"
 }, {
-"blend": 1.0,
-"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body"), NodePath("../Skeleton:body-base") ],
-"id": "walk",
-"position": Vector2( 448, 26 ),
-"type": "blend2"
-}, {
 "filter": [  ],
 "from": "run_blocking",
 "id": "anim 6",
 "position": Vector2( 153, 335 ),
 "type": "animation"
 }, {
-"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body"), NodePath("../Skeleton:body-base") ],
-"from": "walk_blocking",
-"id": "anim 2",
-"position": Vector2( 167, 59 ),
-"type": "animation"
-}, {
+"blend": 0.55,
 "filter": [  ],
-"from": "idle",
-"id": "anim 3",
-"position": Vector2( 37, 181 ),
-"type": "animation"
+"id": "jog",
+"position": Vector2( 450, 165 ),
+"type": "blend2"
 }, {
 "filter": [  ],
 "from": "idle",
@@ -4228,6 +4286,23 @@ data = {
 "id": "anim 7",
 "position": Vector2( 613, 436 ),
 "type": "animation"
+}, {
+"blend": -0.6,
+"id": "blend3",
+"position": Vector2( 1210, 264 ),
+"type": "blend3"
+}, {
+"filter": [  ],
+"from": "idle",
+"id": "anim 9",
+"position": Vector2( 892, 310 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "jog_blocking",
+"id": "anim 11",
+"position": Vector2( 1053, 403 ),
+"type": "animation"
 } ]
 }
 script = SubResource( 27 )
@@ -4237,16 +4312,24 @@ _sections_unfolded = [ "Playback" ]
 
 [connection signal="camera_position_updated" from="." to="MechHeavy/Armature/Skeleton" method="_on_PlayerMechHeavy_camera_position_updated"]
 
+[connection signal="max_rotation_ranges" from="." to="HUDMech" method="_on_PlayerMechHeavy_max_rotation_ranges"]
+
+[connection signal="max_rotation_ranges" from="." to="MechHeavy/Armature/Skeleton" method="_on_PlayerMechHeavy_max_rotation_ranges"]
+
+[connection signal="speed_kph_float_updated" from="." to="HUDMech" method="_on_PlayerMechHeavy_speed_kph_float_updated"]
+
 [connection signal="throttle_updated" from="." to="MechHeavy/Armature/Skeleton/AnimationTreePlayer" method="_on_PlayerMechHeavy_throttle_updated"]
 
 [connection signal="torso_twist_updated" from="." to="HUDMech" method="_on_PlayerMechHeavy_torso_twist_updated"]
 
-[connection signal="aimpoint_unprojected_updated" from="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/Camera" to="HUDMech" method="_on_Camera_aimpoint_unprojected_updated"]
+[connection signal="aimpoint_unprojected_updated" from="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2/Camera" to="HUDMech" method="_on_Camera_aimpoint_unprojected_updated"]
 
-[connection signal="heading_updated" from="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/Camera" to="HUDMech" method="_on_Camera_heading_updated"]
+[connection signal="heading_updated" from="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2/Camera" to="HUDMech" method="_on_Camera_heading_updated"]
+
+[connection signal="body_pitch_updated" from="MechHeavy/Armature/Skeleton" to="HUDMech" method="_on_Skeleton_body_pitch_updated"]
 
 [connection signal="aimpoint_range_updated" from="MechHeavy/Armature/Skeleton/cockpit/Aimpoint" to="HUDMech" method="_on_Aimpoint_aimpoint_range_updated"]
 
-[connection signal="aimpoint_updated" from="MechHeavy/Armature/Skeleton/cockpit/Aimpoint" to="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/Camera" method="_on_Aimpoint_aimpoint_updated"]
+[connection signal="aimpoint_updated" from="MechHeavy/Armature/Skeleton/cockpit/Aimpoint" to="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2/Camera" method="_on_Aimpoint_aimpoint_updated"]
 
 

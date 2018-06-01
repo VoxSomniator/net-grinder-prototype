@@ -18,7 +18,7 @@ func _process(delta):
 #		print("signal")
 	else:
 		aimpoint = $Endpoint.global_transform.origin
-		aimpoint_range = ""
+		aimpoint_range = "--m"
 #		emit_signal("aimpoint_updated", aimpoint)
 #		emit_signal("aimpoint_range_updated", aimpoint_range)
 #		print("signal")

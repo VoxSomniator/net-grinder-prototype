@@ -17,7 +17,7 @@ func _on_HUDMech_aimpoint_unprojected_updated(new_aimpoint_unprojected):
 	aimpoint_unprojected = new_aimpoint_unprojected
 	position = aimpoint_unprojected
 	position.x -= 360
-	position.y -= 225
+	position.y -= 200
 
 func _on_HUDMech_aimpoint_range_updated(new_aimpoint_range):
 	aimpoint_range = new_aimpoint_range

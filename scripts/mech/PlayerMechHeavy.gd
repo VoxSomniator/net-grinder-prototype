@@ -10,8 +10,10 @@ extends RigidBody
 signal camera_activated()
 #Holds ref to the camera gimbal object
 var cam_gimbal
+var cam_gimbal_2
 #holds ref to the camera object
 var camera
+var camera_2
 #Holds a ref to the turret skeleton thing. Used by camera.
 var skeleton
 #How fast the mouse moves the camera
@@ -54,7 +56,7 @@ signal torso_twist_updated(torso_twist)
 #HOW FAST can we go (forward/backward)
 var max_forward_speed = 20
 #How fast do we get going
-var acceleration = 5000
+var acceleration = 1000
 #Vector used for normal driving direction.
 #Rigidbodies use world rotation, so this changes as the tank turns.
 #By default it's set to upwards, so problems will be OBVIOUS
@@ -67,7 +69,7 @@ var lateral_vector = Vector3(1, moving_vector.y, 0)
 var max_lateral_speed = 40
 
 #How fast do we spin?
-var turn_speed = 0.01
+var turn_speed = 0.05
 #Used to store rotation torque for physics processing
 var turn_torque = Vector3(0, 0, 0)
 
@@ -81,13 +83,13 @@ signal throttle_updated(throttle)
 signal throttle_setting_updated(throttle_setting)
 
 var throttle
-var max_throttle = 40
+var max_throttle = 20
 var max_throttle_reverse = max_throttle * -0.5
 var throttle_setting
 
 signal vertspeed_float_updated(vertspeed_float)
 var max_vertical_thrust =  20
-var vertical_acceleration = 1000
+var vertical_acceleration = 2000
 var vertspeed_float
 var vertical_thrust_vector = Vector3(0, 1, 0)
 
@@ -98,6 +100,12 @@ var forward_speed
 var reverse_speed
 var lateral_speed_left
 var lateral_speed_right
+
+#Maximum torso twist and pitch ranges, in degrees
+var max_yaw = 100
+var max_pitch_down = -15
+var max_pitch_up = 20
+signal max_rotation_ranges(max_yaw, max_pitch_down, max_pitch_up)
 
 #Used only by instances of other players' tanks. Each player's master tank updates all the other slaves.
 slave var other_transform
@@ -117,7 +125,9 @@ func _ready():
 		#Set up other camera stuff- Only in this section, otherwise, every other
 		# player's tank would do this too and that might get wonky
 		cam_gimbal = $TorsoGimbal/Gimbal2/CamGimbalY
+		cam_gimbal_2 = $TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2
 		camera = $TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX
+		camera_2 = $TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2/Camera
 		skeleton = $MechHeavy/Armature/Skeleton
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process_input(true)
@@ -125,10 +135,79 @@ func _ready():
 		throttle_setting = 0
 		forward_speed = 0
 		reverse_speed = 0
+		emit_signal("max_rotation_ranges", max_yaw, max_pitch_down, max_pitch_up)
 #		gravity_scale = 0
 
-func _process(delta):
+func _physics_process(delta):
+	process_input(delta)
+	process_movement(delta)
+
+func process_input(delta):
+	if is_network_master():
+		#Move via throttle
+		if Input.is_action_pressed("movement_forward"):
+			if throttle_setting < max_throttle:
+				throttle_setting += max_throttle * 0.01
+		elif Input.is_action_pressed("movement_backward"):
+			if throttle_setting > max_throttle_reverse:
+				throttle_setting -= max_throttle * 0.01
+		
+		#Keep throttle within maximum values
+		if throttle_setting > max_throttle:
+			throttle_setting = max_throttle
+		elif throttle_setting < max_throttle_reverse:
+			throttle_setting = max_throttle_reverse
+		
+		if Input.is_action_just_pressed("throttle_zero"):
+			throttle_setting = 0
+		
+		if Input.is_action_just_pressed("throttle_max"):
+			throttle_setting = max_throttle
+		
+		if Input.is_action_pressed("movement_left"):
+			rotate_object_local(Vector3(0, 1, 0), turn_speed)
+#			moving_vector += accelerate_left(body_xform.basis.x.normalized(), acceleration, delta, max_lateral_speed)
+		elif Input.is_action_pressed("movement_right"):
+			rotate_object_local(Vector3(0, 1, 0), turn_speed * -1)
+#			moving_vector += accelerate_right(body_xform.basis.x.normalized() * -1, acceleration, delta, max_lateral_speed)
 	
+		#Turn left/right
+		if Input.is_action_pressed("ui_left"):
+			turn_torque.y += turn_speed
+		if Input.is_action_pressed("ui_right"):
+			turn_torque.y -= turn_speed
+		
+		#Restrict rotation range
+		cam_gimbal.rotation_degrees.y = clamp(cam_gimbal.rotation_degrees.y, max_yaw * -1, max_yaw)
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, max_pitch_down, max_pitch_up)
+		
+		cam_gimbal_2.rotation_degrees.y = clamp(cam_gimbal_2.rotation_degrees.y, max_yaw * -1, max_yaw)
+		camera_2.rotation_degrees.x = clamp(camera_2.rotation_degrees.x, max_pitch_down, max_pitch_up)
+		
+		#Freelook quaternions
+		var cam_gimbal_2_quat = Quat(Vector3(0, 1, 0), cam_gimbal_2.rotation.y).normalized()
+		var camera_2_quat = Quat(Vector3(1, 0, 0), camera_2.rotation.x).normalized()
+		var zero_quat = Quat(Vector3(1, 1, 0), 0).normalized()
+		
+		var cam_gimbal_2_quat_rotation = Transform(cam_gimbal_2_quat.slerp(zero_quat, 0.2))
+		var camera_2_quat_rotation = Transform(camera_2_quat.slerp(zero_quat, 0.2))
+		
+		cam_gimbal_2_quat_rotation.origin = cam_gimbal_2.transform.origin
+		camera_2_quat_rotation.origin = camera_2.transform.origin
+		
+		#Face forward again when freelook is released
+		if not Input.is_action_pressed("freelook"):
+			cam_gimbal_2.transform = cam_gimbal_2_quat_rotation
+			camera_2.transform = camera_2_quat_rotation
+		
+		#Snap camera back when freelook is released
+#		if not Input.is_action_pressed("freelook"):
+#			if cam_gimbal_2.rotation.y != 0:
+#				cam_gimbal_2.rotation.y = 0
+#			if camera_2.rotation.x != 0:
+#				camera_2.rotation.x = 0
+
+func process_movement(delta):
 	#If this is the locally-controlled tank, get inputs to move
 	if is_network_master():
 		#Set our forward vector properly
@@ -153,43 +232,7 @@ func _process(delta):
 #			moving_vector = accelerate(forward_vector, -1 * acceleration, delta, max_forward_speed)
 		
 		
-		#Move via throttle
-		if Input.is_action_pressed("movement_forward"):
-			if throttle_setting < max_throttle:
-				throttle_setting += max_throttle * 0.01
-		elif Input.is_action_pressed("movement_backward"):
-			if throttle_setting > max_throttle_reverse:
-				throttle_setting -= max_throttle * 0.01
 		
-		#Keep throttle within maximum values
-		if throttle_setting > max_throttle:
-			throttle_setting = max_throttle
-		elif throttle_setting < max_throttle_reverse:
-			throttle_setting = max_throttle_reverse
-		
-		if Input.is_action_just_pressed("throttle_zero"):
-			throttle_setting = 0
-		
-		if Input.is_action_pressed("movement_left"):
-			rotate_object_local(Vector3(0, 1, 0), turn_speed)
-#			moving_vector += accelerate_left(body_xform.basis.x.normalized(), acceleration, delta, max_lateral_speed)
-		elif Input.is_action_pressed("movement_right"):
-			rotate_object_local(Vector3(0, 1, 0), turn_speed * -1)
-#			moving_vector += accelerate_right(body_xform.basis.x.normalized() * -1, acceleration, delta, max_lateral_speed)
-	
-		#Turn left/right
-		if Input.is_action_pressed("ui_left"):
-			turn_torque.y += turn_speed
-		if Input.is_action_pressed("ui_right"):
-			turn_torque.y -= turn_speed
-		
-		#Roll left/right
-#		if Input.is_action_pressed("vtol_roll_left"):
-##			roll_torque.z -= roll_speed
-#			rotate_object_local(Vector3(0, 0, 1), roll_speed * -1)
-#		if Input.is_action_pressed("vtol_roll_right"):
-##			roll_torque.z += roll_speed
-#			rotate_object_local(Vector3(0, 0, 1), roll_speed)
 		
 		#Throttle
 		throttle = forward_speed
@@ -203,10 +246,10 @@ func _process(delta):
 		emit_signal("throttle_updated", throttle)
 		emit_signal("throttle_setting_updated", throttle_setting)
 		
-		moving_vector += accelerate(vertical_thrust_vector, 490, delta, 490)
+#		moving_vector += accelerate(vertical_thrust_vector, 490, delta, 490)
 		
-#		if Input.is_action_pressed("vtol_ascend"):
-#			moving_vector += accelerate_up(vertical_thrust_vector, vertical_acceleration, delta, max_vertical_thrust)
+		if Input.is_action_pressed("vtol_ascend"):
+			moving_vector += accelerate_up(vertical_thrust_vector, vertical_acceleration, delta, max_vertical_thrust)
 #
 #		if Input.is_action_pressed("vtol_descend"):
 #			moving_vector += accelerate_down(vertical_thrust_vector, -1 * vertical_acceleration, delta, max_vertical_thrust)
@@ -289,7 +332,6 @@ func _integrate_forces(state):
 	#Only apply torque to our own tank
 	if is_network_master():
 		state.apply_torque_impulse(turn_torque)
-#		state.apply_torque_impulse(roll_torque)
 
 #Fancy function to apply acceleration forces. Makes it so vehicles can't exceed their
 # max speed on their own, but can go faster if pushed/thrown somehow.
@@ -359,21 +401,46 @@ func _input(event):
 	#If the passed event was mouse motion, and the mouse is currently captured
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		
-		#Move the camera gimbal from side to side, clamp to the limited range.
-		var horizontal_rotation = event.relative.x * MOUSE_SENSITIVITY * -1
-		var new_rot_y = cam_gimbal.get_rotation_degrees().y + horizontal_rotation
-		cam_gimbal.set_rotation_degrees(Vector3(0, new_rot_y, 0))
-		#Move the camera itself up and down, clamp again
-		#Some of the lines have 180 added/subtracted because the camera is turned around to face forward, it's weird
-		var vertical_rotation = event.relative.y * MOUSE_SENSITIVITY * -1
-		var new_rot_x = camera.get_rotation_degrees().x + vertical_rotation
-		camera.set_rotation_degrees(Vector3(new_rot_x, -180, 0))
-		
-		#Emit update signal to turret. First, assemble the camera's quaternion,
-		# relative to the tank base. Slightly messy since it has two rotating parts.
-		var cam_quat = Quat(camera.get_transform().basis)
-#		var cam_quat = Quat(Vector3(1, 0, 0), new_rot_x * -0.01)
-		var gimbal_quat = Quat(cam_gimbal.get_transform().basis)
-		var combined_quat = Quat(Vector3(0, 1, 0), deg2rad(new_rot_y)) * Quat(Vector3(-1, 0, 0), deg2rad(new_rot_x))
-#		var combined_quat = Quat(Vector3(0, 0, 1), PI) * gimbal_quat * cam_quat
-		emit_signal("camera_position_updated", cam_quat, gimbal_quat, combined_quat)
+		if Input.is_action_pressed("freelook"):
+					#Move the camera gimbal from side to side, clamp to the limited range.
+	#		cam_gimbal.rotation_degrees.y = clamp(cam_gimbal.rotation_degrees.y, -30, 30)
+	#		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -10, 20)
+			var horizontal_rotation = event.relative.x * MOUSE_SENSITIVITY * -1
+			var new_rot_y_2 = cam_gimbal_2.get_rotation_degrees().y + horizontal_rotation
+			cam_gimbal_2.set_rotation_degrees(Vector3(0, new_rot_y_2, 0))
+			#Move the camera itself up and down, clamp again
+			#Some of the lines have 180 added/subtracted because the camera is turned around to face forward, it's weird
+			var vertical_rotation = event.relative.y * MOUSE_SENSITIVITY * -1
+			var new_rot_x_2 = camera_2.get_rotation_degrees().x + vertical_rotation
+			camera_2.set_rotation_degrees(Vector3(new_rot_x_2, 0, 0))
+			
+			#Emit update signal to turret. First, assemble the camera's quaternion,
+			# relative to the tank base. Slightly messy since it has two rotating parts.
+#			var cam_quat = Quat(camera.get_transform().basis)
+#	#		var cam_quat = Quat(Vector3(1, 0, 0), new_rot_x * -0.01)
+#			var gimbal_quat = Quat(cam_gimbal.get_transform().basis)
+#			var combined_quat = Quat(Vector3(0, 1, 0), deg2rad(new_rot_y)) * Quat(Vector3(-1, 0, 0), deg2rad(new_rot_x))
+#	#		var combined_quat = Quat(Vector3(0, 0, 1), PI) * gimbal_quat * cam_quat
+#			emit_signal("camera_position_updated", cam_quat, gimbal_quat, combined_quat)
+			
+		else:
+			#Move the camera gimbal from side to side, clamp to the limited range.
+	#		cam_gimbal.rotation_degrees.y = clamp(cam_gimbal.rotation_degrees.y, -30, 30)
+	#		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -10, 20)
+			var horizontal_rotation = event.relative.x * MOUSE_SENSITIVITY * -1
+			var new_rot_y = cam_gimbal.get_rotation_degrees().y + horizontal_rotation
+			cam_gimbal.set_rotation_degrees(Vector3(0, new_rot_y, 0))
+			#Move the camera itself up and down, clamp again
+			#Some of the lines have 180 added/subtracted because the camera is turned around to face forward, it's weird
+			var vertical_rotation = event.relative.y * MOUSE_SENSITIVITY * -1
+			var new_rot_x = camera.get_rotation_degrees().x + vertical_rotation
+			camera.set_rotation_degrees(Vector3(new_rot_x, -180, 0))
+			
+			#Emit update signal to turret. First, assemble the camera's quaternion,
+			# relative to the tank base. Slightly messy since it has two rotating parts.
+			var cam_quat = Quat(camera.get_transform().basis)
+	#		var cam_quat = Quat(Vector3(1, 0, 0), new_rot_x * -0.01)
+			var gimbal_quat = Quat(cam_gimbal.get_transform().basis)
+			var combined_quat = Quat(Vector3(0, 1, 0), deg2rad(new_rot_y)) * Quat(Vector3(-1, 0, 0), deg2rad(new_rot_x))
+	#		var combined_quat = Quat(Vector3(0, 0, 1), PI) * gimbal_quat * cam_quat
+			emit_signal("camera_position_updated", cam_quat, gimbal_quat, combined_quat)
