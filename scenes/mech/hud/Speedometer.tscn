@@ -9,8 +9,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 80.0
-margin_bottom = 200.0
+margin_right = 60.0
+margin_bottom = 180.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -20,14 +20,60 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Rect" ]
 
-[node name="Label" type="Label" parent="." index="0"]
+[node name="Setting" type="Position2D" parent="." index="0"]
+
+position = Vector2( 0, 120 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Setting" type="Line2D" parent="Setting" index="0"]
+
+position = Vector2( 10, 0 )
+points = PoolVector2Array( -10, -10, 0, 0, -10, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Zero" type="Line2D" parent="Setting" index="1"]
+
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 40, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Current" type="Polygon2D" parent="Setting" index="2"]
+
+position = Vector2( 10, 0 )
+polygon = PoolVector2Array( -10, -10, 0, 0, -10, 10 )
+uv = PoolVector2Array(  )
+color = Color( 1, 1, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Label" type="Label" parent="Setting/Current" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -120.0
-margin_bottom = 40.0
+margin_left = -195.0
+margin_top = -20.0
+margin_right = -15.0
+margin_bottom = 20.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -42,5 +88,117 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="CurrentBar" type="Line2D" parent="Setting" index="3"]
+
+position = Vector2( 40, 0 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 30.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="BorderTop" type="Line2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 40, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="BorderBottom" type="Line2D" parent="BorderTop" index="0"]
+
+position = Vector2( 0, 180 )
+points = PoolVector2Array( 0, 0, 40, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers" type="Line2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 60, 20 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers2" type="Line2D" parent="Markers" index="0"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers3" type="Line2D" parent="Markers" index="1"]
+
+position = Vector2( 0, 40 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers4" type="Line2D" parent="Markers" index="2"]
+
+position = Vector2( 0, 60 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers5" type="Line2D" parent="Markers" index="3"]
+
+position = Vector2( 0, 80 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers6" type="Line2D" parent="Markers" index="4"]
+
+position = Vector2( 0, 120 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers7" type="Line2D" parent="Markers" index="5"]
+
+position = Vector2( 0, 140 )
+points = PoolVector2Array( 0, 0, -5, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
 
 

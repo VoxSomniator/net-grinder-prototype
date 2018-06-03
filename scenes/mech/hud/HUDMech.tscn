@@ -87,7 +87,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="HUDMech" type="CanvasLayer" index="0"]
+[node name="HUDMech" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -213,6 +213,8 @@ _sections_unfolded = [ "Rect", "Visibility" ]
 [connection signal="max_rotation_ranges" from="." to="Center/PitchLadder" method="_on_HUDMech_max_rotation_ranges"]
 
 [connection signal="speed_kph_float_updated" from="." to="Speedometer" method="_on_HUDMech_speed_kph_float_updated"]
+
+[connection signal="throttle_updated" from="." to="Speedometer" method="_on_HUDMech_throttle_updated"]
 
 [connection signal="torso_twist_updated" from="." to="TorsoTwist" method="_on_HUDMech_torso_twist_updated"]
 

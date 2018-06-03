@@ -138,9 +138,9 @@ script = ExtResource( 3 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
 
-transform = Transform( 0.870636, -0.0719478, 0.486637, -0.0809656, -0.996714, -0.00250641, 0.485219, -0.0372187, -0.8736, 11.2029, 131.685, 0 )
+transform = Transform( 0.870636, -0.0719478, 0.486637, -0.491216, -0.180351, 0.852162, 0.0264545, -0.980968, -0.192362, 11.2029, 131.685, 0 )
 layers = 1
-light_color = Color( 1, 0.765015, 0.398438, 1 )
+light_color = Color( 1, 0.963165, 0.722656, 1 )
 light_energy = 1.0
 light_indirect_energy = 1.0
 light_negative = false

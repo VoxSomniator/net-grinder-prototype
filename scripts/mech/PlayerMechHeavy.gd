@@ -79,8 +79,8 @@ var roll_speed = 0.02
 
 var transverse_speed = 0.05
 
-signal throttle_updated(throttle)
-signal throttle_setting_updated(throttle_setting)
+signal throttle_updated(throttle, max_throttle, max_throttle_reverse, throttle_setting)
+#signal throttle_setting_updated(throttle_setting)
 
 var throttle
 var max_throttle = 20
@@ -117,6 +117,9 @@ var in_freefall_down = false
 var in_freefall = false
 var can_jump = true
 
+#Weapons
+var pulse_bolt
+
 func _ready():
 	#If this vehicle is the local player's, do some stuff
 	if is_network_master():
@@ -135,6 +138,7 @@ func _ready():
 		throttle_setting = 0
 		forward_speed = 0
 		reverse_speed = 0
+		pulse_bolt = preload("res://scenes/weapons/PulseBolt.tscn")
 		emit_signal("max_rotation_ranges", max_yaw, max_pitch_down, max_pitch_up)
 #		gravity_scale = 0
 
@@ -206,6 +210,8 @@ func process_input(delta):
 #				cam_gimbal_2.rotation.y = 0
 #			if camera_2.rotation.x != 0:
 #				camera_2.rotation.x = 0
+		if Input.is_action_just_pressed("fire_selected_weapon"):
+			fire_weapons()
 
 func process_movement(delta):
 	#If this is the locally-controlled tank, get inputs to move
@@ -235,7 +241,7 @@ func process_movement(delta):
 		
 		
 		#Throttle
-		throttle = forward_speed
+		throttle = clamp(throttle, forward_speed, forward_speed)
 		
 		if throttle_setting > 0:
 			moving_vector += accelerate_forward(forward_vector, acceleration, delta, throttle_setting)
@@ -243,8 +249,8 @@ func process_movement(delta):
 			moving_vector -= accelerate_reverse(forward_vector, acceleration, delta, throttle_setting)
 		
 #		moving_vector = accelerate(forward_vector, acceleration, delta, throttle_setting)
-		emit_signal("throttle_updated", throttle)
-		emit_signal("throttle_setting_updated", throttle_setting)
+		emit_signal("throttle_updated", throttle, max_throttle, max_throttle_reverse, throttle_setting)
+#		emit_signal("throttle_setting_updated", throttle_setting)
 		
 #		moving_vector += accelerate(vertical_thrust_vector, 490, delta, 490)
 		
@@ -326,6 +332,13 @@ func process_movement(delta):
 	else:
 		#If this is the slave tank to another player
 		global_transform = other_transform
+
+func fire_weapons():
+	print("firing")
+	var bolt = pulse_bolt.instance()
+	bolt.transform = self.transform
+	bolt.translation.y = 10
+	self.get_parent().add_child(bolt)
 
 #Called by physics system every frame, torque/rotation is added here.
 func _integrate_forces(state):

@@ -10,6 +10,7 @@ signal aimpoint_unprojected_updated(aimpoint_unprojected)
 signal aimpoint_range_updated(aimpoint_range)
 
 signal speed_kph_float_updated(speed_kph_float)
+signal throttle_updated(throttle, max_throttle, max_throttle_reverse, throttle_setting)
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -44,3 +45,7 @@ func _on_Skeleton_body_pitch_updated(body_pitch):
 
 func _on_PlayerMechHeavy_max_rotation_ranges(max_yaw, max_pitch_down, max_pitch_up):
 	emit_signal("max_rotation_ranges", max_yaw, max_pitch_down, max_pitch_up)
+
+
+func _on_PlayerMechHeavy_throttle_updated(throttle, max_throttle, max_throttle_reverse, throttle_setting):
+	emit_signal("throttle_updated", throttle, max_throttle, max_throttle_reverse, throttle_setting)

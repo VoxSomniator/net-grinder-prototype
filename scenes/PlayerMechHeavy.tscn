@@ -1249,6 +1249,23 @@ tracks/26/keys = {
 "update": 0,
 "values": [ Vector3( 0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( -0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( 0.03, 0, -1.5 ) ]
 }
+tracks/27/type = "method"
+tracks/27/path = NodePath("AnimationTreePlayer")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0.34, 1.02 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.34, 0.5 ],
+"method": "set_animation"
+}, {
+"args": [ 1.02, 1.5 ],
+"method": "set_animation"
+} ]
+}
 
 [sub_resource type="Animation" id=13]
 
@@ -2012,6 +2029,23 @@ tracks/26/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( -0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( 0.03, 0, -1.5 ) ]
+}
+tracks/27/type = "method"
+tracks/27/path = NodePath("AnimationTreePlayer")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.34, 0.0 ],
+"method": "set_animation"
+}, {
+"args": [ 1.02, 0.0 ],
+"method": "set_animation"
+} ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -3351,6 +3385,23 @@ tracks/24/keys = {
 "update": 0,
 "values": [ Vector3( 0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( -0.03, 0, -1.5 ), Vector3( 0, -0.03, -1.5 ), Vector3( 0.03, 0, -1.5 ) ]
 }
+tracks/25/type = "method"
+tracks/25/path = NodePath("AnimationTreePlayer")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.34, 0.0 ],
+"method": "set_animation"
+}, {
+"args": [ 1.02, 0.0 ],
+"method": "set_animation"
+} ]
+}
 
 [sub_resource type="Animation" id=24]
 
@@ -3758,6 +3809,9 @@ script/source = "extends AnimationTreePlayer
 var throttle
 var throttle_percentage
 var throttle_percentage_int
+var walk_blend_range
+var jog_blend_range
+var run_blend_range
 var node_list = get_node_list()
 var animation_position
 var current_animation
@@ -3770,35 +3824,37 @@ func _ready():
 func _process(delta):
 	throttle_percentage = throttle / 20 * 100
 	throttle_percentage_int = int(throttle_percentage)
+	walk_blend_range = throttle_percentage / 25
+	jog_blend_range = throttle_percentage / 50
+	run_blend_range = throttle_percentage / 100
 	current_animation = transition_node_get_current(\"transition\")
+#	timeseek_node_seek(\"seek\", 0.5)
 #	print(current_animation)
 #	animation_position = animation_node_get_master_animation(\"anim 2\")
 #	print(animation_position)
 	if throttle_percentage_int == 0:
 		blend2_node_set_amount(\"walk\", 0)
-		blend2_node_set_amount(\"jog\", 0)
-		blend2_node_set_amount(\"run\", 0)
+#		blend2_node_set_amount(\"jog\", 0)
+#		blend2_node_set_amount(\"run\", 0)
 	if throttle_percentage_int > 0:
-#		if blend2_node_get_amount(\"walk\") == 0:
-			
 		if throttle_percentage_int < 25:
-			transition_node_set_current(\"transition\", 0)
-			blend2_node_set_amount(\"walk\", 1)
-			blend2_node_set_amount(\"jog\", 1)
-			blend2_node_set_amount(\"run\", 1)
+#			transition_node_set_current(\"transition\", 0)
+			blend2_node_set_amount(\"walk\", walk_blend_range)
+#			blend2_node_set_amount(\"jog\", 1)
+#			blend2_node_set_amount(\"run\", 1)
 		elif throttle_percentage_int > 25:
 			if throttle_percentage_int < 50:
-				if transition_node_get_current(\"transition\") != 1:
-					transition_node_set_current(\"transition\", 1)
-					blend2_node_set_amount(\"walk\", 1)
-					blend2_node_set_amount(\"jog\", 1)
-					blend2_node_set_amount(\"run\", 1)
+#				if transition_node_get_current(\"transition\") != 1:
+#					transition_node_set_current(\"transition\", 1)
+#					blend2_node_set_amount(\"walk\", 1)
+				blend2_node_set_amount(\"jog\", jog_blend_range)
+#					blend2_node_set_amount(\"run\", 1)
 			elif throttle_percentage_int > 50:
-				if transition_node_get_current(\"transition\") != 2:
-					transition_node_set_current(\"transition\", 2)
-					blend2_node_set_amount(\"walk\", 1)
-					blend2_node_set_amount(\"jog\", 1)
-					blend2_node_set_amount(\"run\", 1)
+#				if transition_node_get_current(\"transition\") != 2:
+#					transition_node_set_current(\"transition\", 2)
+#					blend2_node_set_amount(\"walk\", 1)
+#					blend2_node_set_amount(\"jog\", 1)
+				blend2_node_set_amount(\"run\", run_blend_range)
 	if Input.is_action_pressed(\"movement_left\"):
 		if throttle == 0:
 			transition_node_set_current(\"transition\", 3)
@@ -3814,28 +3870,41 @@ func _process(delta):
 			transition_node_set_current(\"transition\", 0)
 			blend2_node_set_amount(\"walk\", 0)
 
-func set_animation():
+func set_animation(seek_time, seek_time_alt):
+	var seek_time_float = float(seek_time)
+#	print(seek_time_float)
 	if throttle_percentage_int > 0:
 		if throttle_percentage_int < 25:
-			transition_node_set_current(\"transition\", 0)
-			blend2_node_set_amount(\"walk\", 1)
-			blend2_node_set_amount(\"jog\", 1)
-			blend2_node_set_amount(\"run\", 1)
+			if transition_node_get_current(\"transition\") != 0:
+#				timeseek_node_seek(\"walk_seek\", 1)
+				transition_node_set_current(\"transition\", 0)
+#				timeseek_node_seek(\"walk_seek\", seek_time)
+				timeseek_node_seek(\"seek\", seek_time_alt)
+				print(\"seek walk\")
+#				print(seek_time)
+#				timeseek_node_seek(\"seek\", 0.34)
+#				timeseek_node_seek(\"seek\", 0.5)
 		elif throttle_percentage_int > 25:
 			if throttle_percentage_int < 50:
+#				timeseek_node_seek(\"seek\", 0.34)
 				if transition_node_get_current(\"transition\") != 1:
+#					timeseek_node_seek(\"jog_seek\", 1)
 					transition_node_set_current(\"transition\", 1)
-					blend2_node_set_amount(\"walk\", 1)
-					blend2_node_set_amount(\"jog\", 1)
-					blend2_node_set_amount(\"run\", 1)
+#					timeseek_node_seek(\"jog_seek\", seek_time)
+					timeseek_node_seek(\"seek\", seek_time_float)
+					print(\"seek jog\")
+#					print(seek_time)
+#					timeseek_node_seek(\"seek\", 0.34)
 			elif throttle_percentage_int > 50:
 				if transition_node_get_current(\"transition\") != 2:
 					transition_node_set_current(\"transition\", 2)
-					blend2_node_set_amount(\"walk\", 1)
-					blend2_node_set_amount(\"jog\", 1)
-					blend2_node_set_amount(\"run\", 1)
+#					timeseek_node_seek(\"run_seek\", 1)
+#					timeseek_node_seek(\"run_seek\", seek_time)
+					timeseek_node_seek(\"seek\", seek_time_float)
+					print(\"seek run\")
+#					timeseek_node_seek(\"seek\", 0.3)
 
-func _on_PlayerMechHeavy_throttle_updated(new_throttle):
+func _on_PlayerMechHeavy_throttle_updated(new_throttle, max_throttle, max_throttle_reverse, throttle_setting):
 	throttle = new_throttle"
 
 [node name="PlayerMechHeavy" type="RigidBody"]
@@ -3907,7 +3976,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.77507e-09 )
 
 [node name="Camera" type="Camera" parent="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2" index="0"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.77507e-09 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -4194,11 +4262,11 @@ base_path = NodePath("..")
 active = false
 data = {
 "active": false,
-"connections": [ "transition", "seek", 0, "walk", "transition", 0, "jog", "transition", 1, "run", "transition", 2, "anim 8", "transition", 3, "anim 7", "transition", 4, "seek", "out", 0, "anim 5", "run", 0, "anim 6", "run", 1, "anim", "walk", 0, "anim 2", "walk", 1, "anim 3", "jog", 0, "anim 4", "jog", 1 ],
+"connections": [ "transition", "seek", 0, "walk", "transition", 0, "jog", "transition", 1, "run", "transition", 2, "anim 8", "transition", 3, "anim 7", "transition", 4, "seek", "out", 0, "anim 3", "jog", 0, "jog_seek", "jog", 1, "anim", "walk", 0, "walk_seek", "walk", 1, "anim 5", "run", 0, "run_seek", "run", 1, "anim 4", "jog_seek", 0, "anim 2", "walk_seek", 0, "anim 6", "run_seek", 0 ],
 "master": NodePath("../AnimationPlayer"),
 "nodes": [ {
 "id": "seek",
-"position": Vector2( 1021, 34 ),
+"position": Vector2( 1042, 28 ),
 "type": "timeseek"
 }, {
 "id": "transition",
@@ -4220,54 +4288,12 @@ data = {
 "filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
 "from": "idle",
 "id": "anim",
-"position": Vector2( 49, 55 ),
+"position": Vector2( 50, 16 ),
 "type": "animation"
 }, {
 "id": "out",
 "position": Vector2( 1174, 5 ),
 "type": "output"
-}, {
-"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
-"from": "walk_blocking",
-"id": "anim 2",
-"position": Vector2( 167, 59 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "jog_blocking",
-"id": "anim 4",
-"position": Vector2( 164, 191 ),
-"type": "animation"
-}, {
-"blend": 1.0,
-"filter": [  ],
-"id": "run",
-"position": Vector2( 452, 298 ),
-"type": "blend2"
-}, {
-"filter": [  ],
-"from": "idle",
-"id": "anim 3",
-"position": Vector2( 37, 181 ),
-"type": "animation"
-}, {
-"blend": 1.0,
-"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
-"id": "walk",
-"position": Vector2( 448, 26 ),
-"type": "blend2"
-}, {
-"filter": [  ],
-"from": "turn_left",
-"id": "anim 8",
-"position": Vector2( 453, 443 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "run_blocking",
-"id": "anim 6",
-"position": Vector2( 153, 335 ),
-"type": "animation"
 }, {
 "blend": 0.55,
 "filter": [  ],
@@ -4287,6 +4313,24 @@ data = {
 "position": Vector2( 613, 436 ),
 "type": "animation"
 }, {
+"filter": [  ],
+"from": "idle",
+"id": "anim 3",
+"position": Vector2( 37, 181 ),
+"type": "animation"
+}, {
+"blend": 1.0,
+"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
+"id": "walk",
+"position": Vector2( 448, 26 ),
+"type": "blend2"
+}, {
+"filter": [ NodePath("../Skeleton:thruster.R"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:body") ],
+"from": "walk_blocking",
+"id": "anim 2",
+"position": Vector2( 161, 87 ),
+"type": "animation"
+}, {
 "blend": -0.6,
 "id": "blend3",
 "position": Vector2( 1210, 264 ),
@@ -4296,6 +4340,42 @@ data = {
 "from": "idle",
 "id": "anim 9",
 "position": Vector2( 892, 310 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "turn_left",
+"id": "anim 8",
+"position": Vector2( 453, 443 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "run_blocking",
+"id": "anim 6",
+"position": Vector2( 153, 335 ),
+"type": "animation"
+}, {
+"blend": 1.0,
+"filter": [  ],
+"id": "run",
+"position": Vector2( 452, 298 ),
+"type": "blend2"
+}, {
+"id": "jog_seek",
+"position": Vector2( 314, 244 ),
+"type": "timeseek"
+}, {
+"id": "walk_seek",
+"position": Vector2( 309, 102 ),
+"type": "timeseek"
+}, {
+"id": "run_seek",
+"position": Vector2( 308, 379 ),
+"type": "timeseek"
+}, {
+"filter": [  ],
+"from": "jog_blocking",
+"id": "anim 4",
+"position": Vector2( 164, 191 ),
 "type": "animation"
 }, {
 "filter": [  ],
@@ -4312,11 +4392,13 @@ _sections_unfolded = [ "Playback" ]
 
 [connection signal="camera_position_updated" from="." to="MechHeavy/Armature/Skeleton" method="_on_PlayerMechHeavy_camera_position_updated"]
 
-[connection signal="max_rotation_ranges" from="." to="HUDMech" method="_on_PlayerMechHeavy_max_rotation_ranges"]
-
 [connection signal="max_rotation_ranges" from="." to="MechHeavy/Armature/Skeleton" method="_on_PlayerMechHeavy_max_rotation_ranges"]
 
+[connection signal="max_rotation_ranges" from="." to="HUDMech" method="_on_PlayerMechHeavy_max_rotation_ranges"]
+
 [connection signal="speed_kph_float_updated" from="." to="HUDMech" method="_on_PlayerMechHeavy_speed_kph_float_updated"]
+
+[connection signal="throttle_updated" from="." to="HUDMech" method="_on_PlayerMechHeavy_throttle_updated"]
 
 [connection signal="throttle_updated" from="." to="MechHeavy/Armature/Skeleton/AnimationTreePlayer" method="_on_PlayerMechHeavy_throttle_updated"]
 
