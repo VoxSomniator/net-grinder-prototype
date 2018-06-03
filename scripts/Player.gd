@@ -1,5 +1,11 @@
 extends RigidBody
 
+enum TurnDirection {
+	left,
+	right,
+	forward
+}
+
 #A player-controlled tank.
 #Currently, moves around, controlled by master player or signals from other masters.
 #Uses rigidbody instead of kinematicbody, because big bulky vehicles should have physics.
@@ -42,7 +48,7 @@ var forward_vector = Vector3(0, 1, 0)
 var moving_vector = Vector3(0, 0, 0)
 
 #How fast do we spin?
-var turn_speed = 1
+var turn_speed = 3
 #Used to store rotation torque for physics processing
 var turn_torque = Vector3(0, 0, 0)
 
@@ -54,8 +60,17 @@ var max_jump_speed = 20
 var in_freefall_up = false
 var in_freefall_down = false
 var in_freefall = false
+#indicates whether or not the tank should be able to jump
 var can_jump = true
+var turn_direction = TurnDirection.forward
+var bullet
 
+var bullet_timer
+#The amount of seconds it takes to fire a bullet
+var fire_rate = .5
+var bullet_speed = 75
+var can_fire = true
+onready var UtilityQuat = preload("res://scripts/UtilityQuat.gd")
 
 
 func _ready():
@@ -70,6 +85,16 @@ func _ready():
 		skeleton = $"Scene Root2/tank-armature/Skeleton"
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		set_process_input(true)
+		bullet = preload("res://scenes/Bullet.tscn")
+		bullet_timer = Timer.new()
+		bullet_timer.wait_time = fire_rate
+		bullet_timer.one_shot = true
+		bullet_timer.process_mode = Timer.TIMER_PROCESS_PHYSICS
+		bullet_timer.connect("timeout",self,"_enable_fire")
+		add_child(bullet_timer)
+		
+func _enable_fire():
+	can_fire = true
 
 func _process(delta):
 	
@@ -89,9 +114,11 @@ func _process(delta):
 			
 		#Turn left/right
 		if Input.is_action_pressed("ui_left"):
-			turn_torque.y += turn_speed
-		if Input.is_action_pressed("ui_right"):
-			turn_torque.y -= turn_speed
+				angular_velocity.y = turn_speed;
+		elif Input.is_action_pressed("ui_right"):
+				angular_velocity.y = -turn_speed;
+		else:
+				angular_velocity.y = 0
 		if Input.is_key_pressed(KEY_SPACE) && can_jump:
 			#Sets a limit on how high the tank can jump
 			if linear_velocity.y < max_jump_speed:
@@ -119,6 +146,30 @@ func _process(delta):
 		if in_freefall_down && linear_velocity.y > -0.01:
 			in_freefall = false
 			in_freefall_down = false
+		if Input.is_key_pressed(KEY_K):
+			if can_fire:
+				var turret_rotation = $TurretAimPoint.get_rotation()
+				var tank_rotation = self.get_rotation()
+				var turret_quat = UtilityQuat.quat_from_YXZ(turret_rotation)
+				var tank_quat = UtilityQuat.quat_from_YXZ(tank_rotation)
+				var combined_quat = tank_quat.add_rotation(turret_quat)
+				can_fire = false
+				var b = bullet.instance()
+				#b.transform = self.transform
+				b.transform = $TurretAimPoint.get_transform()
+				#var translate_rotator = UtilityQuat.quat_from_YXZ(Vector3(0, self.get_rotation().y, 0))
+				var translate_rotator = combined_quat
+				b.linear_velocity = translate_rotator.rotate(Vector3(0, 0, bullet_speed))
+				var test_velocity = b.linear_velocity
+				self.get_parent().add_child(b)
+				var offset_vector = Vector3(0,2,10)
+				offset_vector = tank_quat.rotate(offset_vector)
+				b.translate(offset_vector)
+				var self_position = self.to_global(Vector3(0,0,0))
+				var turret_corrector = turret_quat.reciprocal()
+				var corrected_self_position = turret_corrector.rotate(self_position)
+				b.translate(corrected_self_position)
+				bullet_timer.start()
 		
 		#After all forces are calculated, apply the impulse.
 		apply_impulse(Vector3(0, 0, 0), moving_vector*delta)
