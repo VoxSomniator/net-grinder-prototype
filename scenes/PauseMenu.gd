@@ -25,3 +25,5 @@ func pause_menu_button_pressed(button_name):
 #	elif button_name == "open_godot":
 #		OS.shell_open("https://godotengine.org/")
 
+func _on_PausePanel_resized():
+	$PausePanel/BorderRight.set_point_position(1, Vector2(0, $PausePanel.rect_size.y))

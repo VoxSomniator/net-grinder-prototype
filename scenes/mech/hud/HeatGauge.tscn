@@ -1,0 +1,193 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/mech/hud/HeatGauge.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/exan/ExanRegular.tres" type="DynamicFont" id=2]
+
+[node name="HeatGauge" type="Container"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 50.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="BorderTop" type="Line2D" parent="." index="0"]
+
+points = PoolVector2Array( 0, 0, 50, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 190496912
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="BorderBottom" type="Line2D" parent="BorderTop" index="0"]
+
+position = Vector2( 0, 180 )
+points = PoolVector2Array( 0, 0, 50, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 190496912
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="CurrentHeat" type="Line2D" parent="." index="1"]
+
+position = Vector2( 25, 180 )
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 40.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 190496912
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Percentage" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -35.0
+margin_top = -35.0
+margin_right = 85.0
+margin_bottom = -5.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "0%"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Heat" type="Label" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -35.0
+margin_top = 185.0
+margin_right = 85.0
+margin_bottom = 215.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+text = "0k"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Markers" type="Line2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 40, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers2" type="Line2D" parent="Markers" index="0"]
+
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers3" type="Line2D" parent="Markers" index="1"]
+
+position = Vector2( 0, 40 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers4" type="Line2D" parent="Markers" index="2"]
+
+position = Vector2( 0, 60 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers5" type="Line2D" parent="Markers" index="3"]
+
+position = Vector2( 0, 80 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers6" type="Line2D" parent="Markers" index="4"]
+
+position = Vector2( 0, 100 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers7" type="Line2D" parent="Markers" index="5"]
+
+position = Vector2( 0, 120 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="Markers8" type="Line2D" parent="Markers" index="6"]
+
+position = Vector2( 0, 140 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+

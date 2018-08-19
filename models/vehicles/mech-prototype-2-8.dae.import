@@ -7,10 +7,7 @@ path="res://.import/mech-prototype-2-8.dae-cddaadcbce54b536b3e041e85224f62f.scn"
 [deps]
 
 source_file="res://models/vehicles/mech-prototype-2-8.dae"
-source_md5="19f43dd467c8e635613fe40fbcbf038e"
-
 dest_files=[ "res://.import/mech-prototype-2-8.dae-cddaadcbce54b536b3e041e85224f62f.scn" ]
-dest_md5="c01bf9a2a8842443564d1dafeac6d73b"
 
 [params]
 

@@ -26,7 +26,7 @@ func _process(delta):
 #					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 #				else:
 #					Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 #			get_tree().paused = true
 		else:
 			pause_menu_closed()
@@ -36,4 +36,4 @@ func pause_menu_closed():
 	if pause_menu != null:
 		pause_menu.queue_free()
 		pause_menu = null
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

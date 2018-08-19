@@ -16,7 +16,6 @@ anchor_top = 1.0
 anchor_right = 0.0
 margin_top = -250.0
 margin_right = 250.0
-rect_clip_content = false
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
 

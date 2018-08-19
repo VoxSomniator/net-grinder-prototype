@@ -54,7 +54,8 @@ func on_join_game(ip):
 
 #Called on client after it connects okay. Called via "connected_to_server" signal.
 func _connected_ok():
-	print("Connected to server!")
+#	print("Connected to server!")
+	Console.writeLine('Connected to server!')
 	#Calls the "register player" method on *all peers*.
 	rpc("register_player", our_id)
 	
@@ -162,6 +163,7 @@ sync func start_game():
 		#Reset the sync list. This function only actually does stuff for the server.
 		reset_sync_list()
 		add_child(load_node)
+		GameState.game_state = 1
 		
 
 
@@ -216,7 +218,8 @@ remote func state_synced(synced_id, finished_state):
 			#Weird possible edge case that could happen if a client loads the game before the server.
 			#Not sure how to fix it yet so it'll just let us know if this actually happens lol
 			if finished_state == "Game":
-				print("Oops, wrong client/server load order")
+#				print("Oops, wrong client/server load order")
+				Console.writeLine('Oops, wrong client/server load oerder')
 			else:
 				pass#Later, this will correct the client's janked state
 		

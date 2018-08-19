@@ -16,7 +16,7 @@ var cockpit_mesh
 var canopy_mesh
 
 #Transverse is horizontal, elevation is vertical
-var transverse_speed = 0.09
+var transverse_speed = 0.05
 var elevation_speed
 #Range of -1 means the turret can turn forever in that axis,
 # like the transverse of most tanks
@@ -138,4 +138,4 @@ func _on_PlayerMechHeavy_max_rotation_ranges(max_yaw, max_pitch_down, max_pitch_
 	transverse_range = max_yaw
 	elevation_min = max_pitch_down
 	elevation_max = max_pitch_up
-	print("signal")
+#	print("signal")

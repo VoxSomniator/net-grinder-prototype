@@ -9,10 +9,7 @@ path="res://.import/godotmechbase.obj-750c9f3843930b4dc3811b5c087dad25.mesh"
 files=[ "res://.import/godotmechbase.obj-750c9f3843930b4dc3811b5c087dad25.mesh" ]
 
 source_file="res://models/godotmechbase.obj"
-source_md5="6ee17071d83d368ef9d48b4d51a2e552"
-
 dest_files=[ "res://.import/godotmechbase.obj-750c9f3843930b4dc3811b5c087dad25.mesh", "res://.import/godotmechbase.obj-750c9f3843930b4dc3811b5c087dad25.mesh" ]
-dest_md5="4b4cb1da5404f8a72f0b3534e78c4fa5"
 
 [params]
 

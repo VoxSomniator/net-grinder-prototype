@@ -9,12 +9,13 @@ func _ready():
 	options_menu = get_node("/root/PauseMenuGlobals")
 #	user_config.connect("config_saved", )
 	
-	$TwistLine.default_color = user_config.hud_primary_color
-	$CenterLine.default_color = user_config.hud_primary_color
+#	$TwistLine.default_color = user_config.hud_primary_color
+#	$CenterLine.default_color = user_config.hud_primary_color
 
 func _process(delta):
 	$TwistLine.set_point_position(1, Vector2(torso_twist, 0))
 	$TwistLine.default_color = user_config.hud_primary_color
+#	$TwistLine.default_color = user_config.user_config.get_value("hud", "hud_primary_color")
 	$CenterLine.default_color = user_config.hud_primary_color
 
 func _on_HUDMech_torso_twist_updated(new_torso_twist):

@@ -40,6 +40,7 @@ remote func update_list(players):
 func _on_StartGame_pressed():
 	#First checks that we're actually the server, to prevent shenanigans
 	if game_core.get_our_id() == 1:
-		print("Game starting!")
+#		print("Game starting!")
+		Console.writeLine("Game starting!")
 		#Tells connectionmanager to start the game
 		game_core.launch_game()

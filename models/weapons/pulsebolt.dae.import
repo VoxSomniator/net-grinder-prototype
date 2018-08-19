@@ -7,10 +7,7 @@ path="res://.import/pulsebolt.dae-9a9ec931d4121a3aaa27e7d29cafad6c.scn"
 [deps]
 
 source_file="res://models/weapons/pulsebolt.dae"
-source_md5="b88d0238fc0a0bb876b26809a35561d8"
-
 dest_files=[ "res://.import/pulsebolt.dae-9a9ec931d4121a3aaa27e7d29cafad6c.scn" ]
-dest_md5="76274a6c724fd2b6f514e059230bfc0a"
 
 [params]
 

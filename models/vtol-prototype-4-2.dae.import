@@ -7,10 +7,7 @@ path="res://.import/vtol-prototype-4-2.dae-bd4f4b6d256c0e21999a6a3e71bc5a74.scn"
 [deps]
 
 source_file="res://models/vtol-prototype-4-2.dae"
-source_md5="8df7fb5c69e8e63cd7929f7b9b5cc31d"
-
 dest_files=[ "res://.import/vtol-prototype-4-2.dae-bd4f4b6d256c0e21999a6a3e71bc5a74.scn" ]
-dest_md5="88c7e3c9c1a1f08e58adfaec95912b88"
 
 [params]
 
