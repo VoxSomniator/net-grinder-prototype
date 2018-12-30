@@ -16,7 +16,7 @@ var cockpit_mesh
 var canopy_mesh
 
 #Transverse is horizontal, elevation is vertical
-var transverse_speed = 0.09
+var transverse_speed = 0.05
 var elevation_speed
 #Range of -1 means the turret can turn forever in that axis,
 # like the transverse of most tanks
@@ -56,60 +56,60 @@ func _physics_process(delta):
 	#Gets turret's current rotations
 	y_rotation = turret_transform.basis.get_euler().y
 	x_rotation = turret_transform.basis.get_euler().x
-	
-	
+
+
 	#Quaternion copy of the current turret transform
 	var gun_quat = Quat(turret_transform.basis).normalized()
-	
+
 	var body_mesh_quat = Quat(body_mesh_transform.basis).normalized()
 	var cockpit_mesh_quat = Quat(cockpit_mesh_transform.basis).normalized()
 	var canopy_mesh_quat = Quat(canopy_mesh_transform.basis).normalized()
 	#Quaternion representing the desired facing
 	#FUSION? lol it should neatly slide or something
 	var turret_transform_rotation = Transform(gun_quat.slerp(combined_quat, transverse_speed))
-	
+
 	var body_mesh_transform_rotation = Transform(body_mesh_quat.slerp(combined_quat, transverse_speed))
 	var cockpit_mesh_transform_rotation = Transform(cockpit_mesh_quat.slerp(combined_quat, transverse_speed))
 	var canopy_mesh_transform_rotation = Transform(canopy_mesh_quat.slerp(combined_quat, transverse_speed))
-	
+
 	#Make sure the new transform has the right origin
 	turret_transform_rotation.origin = turret_transform.origin
-	
+
 	body_mesh_transform_rotation.origin = body_mesh_transform.origin
 	cockpit_mesh_transform_rotation.origin = cockpit_mesh_transform.origin
 	canopy_mesh_transform_rotation.origin = canopy_mesh_transform.origin
 	#Replace it
 	turret_transform = turret_transform_rotation
-	
+
 	body_mesh_transform = body_mesh_transform_rotation
 	cockpit_mesh_transform = cockpit_mesh_transform_rotation
 	canopy_mesh_transform = canopy_mesh_transform_rotation
-	
+
 	set_bone_pose(turret_bone, turret_transform)
 #	turret_bone.transform = turret_transform
-	
+
 	body_mesh.transform = body_mesh_transform
 	cockpit_mesh.transform = cockpit_mesh_transform
 	canopy_mesh.transform = canopy_mesh_transform
-	
+
 	body_mesh.rotation_degrees.y = clamp(body_mesh.rotation_degrees.y, transverse_range * -1, transverse_range)
 	cockpit_mesh.rotation_degrees.y = clamp(cockpit_mesh.rotation_degrees.y, transverse_range * -1, transverse_range)
 	canopy_mesh.rotation_degrees.y = clamp(canopy_mesh.rotation_degrees.y, transverse_range * -1, transverse_range)
-	
+
 	body_mesh.rotation_degrees.x = clamp(body_mesh.rotation_degrees.x, elevation_max * -1, elevation_min * -1)
 	cockpit_mesh.rotation_degrees.x = clamp(cockpit_mesh.rotation_degrees.x, elevation_max * -1, elevation_min * -1)
 	canopy_mesh.rotation_degrees.x = clamp(canopy_mesh.rotation_degrees.x, elevation_max * -1, elevation_min * -1)
-	
+
 	body_pitch = body_mesh.rotation_degrees.x
 	emit_signal("body_pitch_updated", body_pitch)
-	
+
 #	body_mesh.rotation.x *= -1
 #	cockpit_mesh.rotation.x *= -1
 #	canopy_mesh.rotation.x *= -1
-	
+
 	emit_signal("turret_transform_updated", turret_transform)
-	
-	
+
+
 
 #Updates the position of the camera to target
 #func _on_Player_camera_position_updated(new_cam, new_gimbal, new_combined):
@@ -138,4 +138,4 @@ func _on_PlayerMechHeavy_max_rotation_ranges(max_yaw, max_pitch_down, max_pitch_
 	transverse_range = max_yaw
 	elevation_min = max_pitch_down
 	elevation_max = max_pitch_up
-	print("signal")
+#	print("signal")

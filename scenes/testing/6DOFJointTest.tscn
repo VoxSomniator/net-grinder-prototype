@@ -1,0 +1,250 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/testing/Test6DOFJoint.gd" type="Script" id=1]
+[ext_resource path="res://scenes/testing/ConeTwistJointTest.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/noto-sans/NotoSansRegular.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/testing/6DOFCameraInfo.gd" type="Script" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="SphereMesh" id=2]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 1.0
+height = 2.0
+radial_segments = 64
+rings = 32
+is_hemisphere = false
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Test6DOFJoint" type="Generic6DOFJoint" parent="." index="0"]
+
+nodes/node_a = NodePath("Bottom")
+nodes/node_b = NodePath("Top")
+solver/priority = 1
+collision/exclude_nodes = true
+linear_limit_x/enabled = true
+linear_limit_x/upper_distance = 0.0
+linear_limit_x/lower_distance = 0.0
+linear_limit_x/softness = 0.7
+linear_limit_x/restitution = 0.5
+linear_limit_x/damping = 1.0
+angular_limit_x/enabled = true
+angular_limit_x/upper_angle = 20.0
+angular_limit_x/lower_angle = 10.0
+angular_limit_x/softness = 0.5
+angular_limit_x/restitution = 0.0
+angular_limit_x/damping = 1.0
+angular_limit_x/force_limit = 0.0
+angular_limit_x/erp = 0.5
+angular_motor_x/enabled = true
+angular_motor_x/target_velocity = 2.0
+angular_motor_x/force_limit = 300.0
+linear_limit_y/enabled = true
+linear_limit_y/upper_distance = 0.0
+linear_limit_y/lower_distance = 0.0
+linear_limit_y/softness = 0.7
+linear_limit_y/restitution = 0.5
+linear_limit_y/damping = 1.0
+angular_limit_y/enabled = false
+angular_limit_y/upper_angle = 70.0
+angular_limit_y/lower_angle = 70.0
+angular_limit_y/softness = 0.5
+angular_limit_y/restitution = 0.0
+angular_limit_y/damping = 1.0
+angular_limit_y/force_limit = 0.0
+angular_limit_y/erp = 0.5
+angular_motor_y/enabled = true
+angular_motor_y/target_velocity = 20.0
+angular_motor_y/force_limit = 300.0
+linear_limit_z/enabled = true
+linear_limit_z/upper_distance = 0.0
+linear_limit_z/lower_distance = 0.0
+linear_limit_z/softness = 0.7
+linear_limit_z/restitution = 0.5
+linear_limit_z/damping = 1.0
+angular_limit_z/enabled = true
+angular_limit_z/upper_angle = 0.0
+angular_limit_z/lower_angle = 0.0
+angular_limit_z/softness = 0.5
+angular_limit_z/restitution = 0.0
+angular_limit_z/damping = 1.0
+angular_limit_z/force_limit = 0.0
+angular_limit_z/erp = 0.5
+angular_motor_z/enabled = false
+angular_motor_z/target_velocity = 0.0
+angular_motor_z/force_limit = 300.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "angular_limit_y", "angular_motor_y", "collision", "nodes", "solver" ]
+
+[node name="Top" type="Spatial" parent="Test6DOFJoint" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera" type="Camera" parent="Test6DOFJoint/Top" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41022, 0, 2.15722 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Bottom" type="Spatial" parent="Test6DOFJoint" index="1"]
+
+[node name="MeshInstance" type="MeshInstance" parent="Test6DOFJoint/Bottom" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.84567, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="." index="1"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35288, 0, 0 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="." index="2"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190104, 0, -6.70499 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 2 )
+skeleton = NodePath("..")
+material/0 = null
+
+[node name="ConeTwistJointTest" type="ConeTwistJoint" parent="." index="3"]
+
+transform = Transform( -0.996526, 0, -0.0832873, 0, 1, 0, 0.0832873, 0, -0.996526, 0, 0, 1.11761 )
+nodes/node_a = NodePath("ConeTop")
+nodes/node_b = NodePath("ConeBottom")
+solver/priority = 1
+collision/exclude_nodes = true
+swing_span = 45.0
+twist_span = 180.0
+bias = 8.02
+softness = 0.8
+relaxation = 1.0
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "collision", "nodes", "solver" ]
+
+[node name="ConeTop" type="Spatial" parent="ConeTwistJointTest" index="0"]
+
+transform = Transform( 0.896399, 0, -0.443248, 0, 1, 0, 0.443248, 0, 0.896399, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ConeBottom" type="Spatial" parent="ConeTwistJointTest" index="1"]
+
+transform = Transform( 0.982306, 0.130569, -0.134259, -0.182541, 0.507276, -0.842229, -0.0418628, 0.851835, 0.522134, 1.43246e-07, 0, 2.14786e-07 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Control" type="Control" parent="CanvasLayer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Position2D" type="Position2D" parent="CanvasLayer/Control" index="0"]
+
+position = Vector2( 800, 450 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/Control/Position2D" index="0"]
+
+points = PoolVector2Array( 0, -10, 0, 10 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1061752795
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="Line2D2" type="Line2D" parent="CanvasLayer/Control/Position2D" index="1"]
+
+points = PoolVector2Array( -10, 0, 10, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 1061752795
+sharp_limit = 2.0
+round_precision = 8
+
+[node name="6DOFCameraInfo" type="Label" parent="CanvasLayer/Control" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 578.0
+margin_bottom = 333.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 3 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 4 )
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+

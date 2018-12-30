@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/TrackballCamera.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/noto-sans/NotoSansRegular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/testing/TrackballCameraHUDInfo.gd" type="Script" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+size = Vector3( 6, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[node name="MeshInstance" type="MeshInstance"]
+
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = false
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = null
+_sections_unfolded = [ "material" ]
+
+[node name="TrackballCamera" type="Camera" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, 0.900373, 0.435119, 0, -0.435119, 0.900373, 0, 4.13094, 8.78461 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+script = ExtResource( 1 )
+mouseEnabled = true
+mouseInvert = false
+mouseStrength = 1.111
+keyboardEnabled = true
+keyboardInvert = false
+keyboardStrength = 1.111
+joystickEnabled = true
+joystickInvert = false
+joystickStrength = 1.111
+joystickThreshold = 0.09
+joystickDevice = 0
+inertiaStrength = 1.0
+friction = 0.07
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="TrackballCameraHUDInfo" type="Label" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 496.0
+margin_bottom = 241.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Size Flags", "custom_fonts" ]
+
+

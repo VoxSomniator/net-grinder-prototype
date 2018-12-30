@@ -21,7 +21,10 @@ func _process(delta):
 	$Position2D/PitchLine/Label.text = str(int(pitch) * -1) + "°"
 #	$Position2D/PitchLine/Label.text = "up: " + str(int(pitch_up_percentage)) + "°" + "down: " + str(int(pitch_down_percentage)) + " " + str(int(pitch) * -1)
 	$Border.modulate = user_config.hud_primary_color
-	$Position2D.modulate = user_config.hud_primary_color
+#	$Position2D.modulate = user_config.hud_primary_color
+	$Position2D/PitchLine.modulate = UserConfig.hud_primary_color.lightened(0.8)
+	$Position2D/CenterLine.modulate = UserConfig.hud_primary_color
+	$Position2D/Markers3.modulate = UserConfig.hud_primary_color
 	$CenterVertical.modulate = user_config.hud_primary_color
 
 func _on_HUDMech_body_pitch_updated(body_pitch):

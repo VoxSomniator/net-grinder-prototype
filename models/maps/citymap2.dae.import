@@ -7,10 +7,7 @@ path="res://.import/citymap2.dae-0a8b1493d80917857e7d09f800768454.scn"
 [deps]
 
 source_file="res://models/maps/citymap2.dae"
-source_md5="c364132403e4b219bca4bb60abe74f05"
-
 dest_files=[ "res://.import/citymap2.dae-0a8b1493d80917857e7d09f800768454.scn" ]
-dest_md5="cafa097f53c2a7a24d5bd028deaf73e3"
 
 [params]
 

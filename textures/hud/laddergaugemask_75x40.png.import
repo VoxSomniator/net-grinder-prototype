@@ -7,16 +7,14 @@ path="res://.import/laddergaugemask_75x40.png-06a2ac5763b98dcd995a5bcb050b8047.s
 [deps]
 
 source_file="res://textures/hud/laddergaugemask_75x40.png"
-source_md5="450a2790a46415269d6d2a6aa7570852"
-
 dest_files=[ "res://.import/laddergaugemask_75x40.png-06a2ac5763b98dcd995a5bcb050b8047.stex" ]
-dest_md5="16a6dda1f370d1c387b007613d869f62"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +24,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/mech/hud/HUDMech.gd" type="Script" id=1]
 [ext_resource path="res://scripts/mech/hud/TorsoTwist.gd" type="Script" id=2]
 [ext_resource path="res://scenes/mech/hud/Compass.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/mech/hud/ReticleGroup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/mech/hud/PitchLadder.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/mech/hud/MechHUDAnimationPlayer.gd" type="Script" id=6]
-[ext_resource path="res://scenes/mech/hud/Speedometer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/mech/hud/PitchLadder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/mech/hud/MechHUDAnimationPlayer.gd" type="Script" id=5]
+[ext_resource path="res://scenes/mech/hud/Speedometer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/mech/hud/ReticleGroup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/mech/hud/HeatGauge.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -15,7 +16,7 @@ length = 1.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Center/ReticleGroup:modulate")
+tracks/0/path = NodePath("ReticleGroup:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -104,9 +105,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = 200.0
+margin_top = 150.0
 margin_right = 100.0
-margin_bottom = 220.0
+margin_bottom = 170.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -155,21 +156,17 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="Compass" parent="Center" index="0" instance=ExtResource( 3 )]
 
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -337.5
-margin_right = 337.5
+margin_left = -338.0
+margin_right = 337.0
 _sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
 
-[node name="ReticleGroup" parent="Center" index="1" instance=ExtResource( 4 )]
-
-position = Vector2( 360, 250 )
-
-[node name="PitchLadder" parent="Center" index="2" instance=ExtResource( 5 )]
+[node name="PitchLadder" parent="Center" index="1" instance=ExtResource( 4 )]
 
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -188,27 +185,45 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/startup = SubResource( 1 )
 blend_times = [  ]
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
-[node name="Speedometer" parent="." index="3" instance=ExtResource( 7 )]
+[node name="Speedometer" parent="." index="3" instance=ExtResource( 6 )]
 
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -240.0
-margin_top = -200.0
+margin_top = -220.0
 margin_right = -160.0
-margin_bottom = 0.0
-_sections_unfolded = [ "Rect", "Visibility" ]
+margin_bottom = -20.0
+_sections_unfolded = [ "Margin", "Rect", "Visibility" ]
 
-[connection signal="aimpoint_range_updated" from="." to="Center/ReticleGroup" method="_on_HUDMech_aimpoint_range_updated"]
+[node name="ReticleGroup" parent="." index="4" instance=ExtResource( 7 )]
 
-[connection signal="aimpoint_unprojected_updated" from="." to="Center/ReticleGroup" method="_on_HUDMech_aimpoint_unprojected_updated"]
+position = Vector2( 800, 450 )
+
+[node name="HeatGauge" parent="." index="5" instance=ExtResource( 8 )]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 75.0
+margin_top = -220.0
+margin_right = 125.0
+margin_bottom = -40.0
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[connection signal="aimpoint_range_updated" from="." to="ReticleGroup" method="_on_HUDMech_aimpoint_range_updated"]
+
+[connection signal="aimpoint_unprojected_updated" from="." to="ReticleGroup" method="_on_HUDMech_aimpoint_unprojected_updated"]
 
 [connection signal="body_pitch_updated" from="." to="Center/PitchLadder" method="_on_HUDMech_body_pitch_updated"]
 
 [connection signal="heading_updated" from="." to="Center/Compass" method="_on_HUDMech_heading_updated"]
+
+[connection signal="heat_updated" from="." to="HeatGauge" method="_on_HUDMech_heat_updated"]
 
 [connection signal="max_rotation_ranges" from="." to="Center/PitchLadder" method="_on_HUDMech_max_rotation_ranges"]
 

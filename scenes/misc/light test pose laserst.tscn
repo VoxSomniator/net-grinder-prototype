@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://models/light mech scene test.dae" type="PackedScene" id=1]
+[ext_resource path="res://scenes/testing/laser.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+albedo_color = Color( 0.258824, 0.258824, 0.258824, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+
+albedo_color = Color( 0.552941, 0.552941, 0.552941, 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+
+albedo_color = Color( 0, 0.466667, 0.388235, 1 )
+
+[sub_resource type="CylinderMesh" id=4]
+
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="SpatialMaterial" id=5]
+
+albedo_color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
+[sub_resource type="ProceduralSky" id=6]
+
+sky_top_color = Color( 0.0470588, 0.454902, 0.976471, 1 )
+sky_horizon_color = Color( 0.556863, 0.823529, 0.909804, 1 )
+sky_curve = 0.25
+ground_bottom_color = Color( 0.101961, 0.145098, 0.188235, 1 )
+ground_horizon_color = Color( 0.482353, 0.788235, 0.952941, 1 )
+ground_curve = 0.01
+
+[sub_resource type="Environment" id=7]
+
+background_mode = 2
+background_sky = SubResource( 6 )
+ambient_light_sky_contribution = 0.0
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/4 = true
+glow_levels/5 = false
+glow_intensity = 0.88
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+
+[node name="Scene Root" index="0" instance=ExtResource( 1 )]
+
+[node name="Laser" parent="Empty" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="Laser" parent="Empty001" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="Laser" parent="Empty002" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
+
+[node name="body-lower" parent="body-lower-armature/Skeleton" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="body-upper" parent="." index="4"]
+material/0 = SubResource( 2 )
+material/1 = SubResource( 3 )
+
+[node name="cockpit" parent="." index="6"]
+visible = false
+
+[node name="Spatial2" type="Spatial" parent="launcher-arm-pivotL/launcher-arm" index="0"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 1.02376e-07, 1, 0, -1.1765e-08, 0, 1, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="0"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.388296, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.798398, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.373259, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.373259, 0.388296, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="5"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.373259, 0.798398, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="6"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.353109, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="7"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.353109, 0.388296, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="launcher-arm-pivotL/launcher-arm/Spatial2" index="8"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.353109, 0.798398, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="Spatial" type="Spatial" parent="launcher-arm001" index="0"]
+editor/display_folded = true
+
+[node name="MeshInstance" type="MeshInstance" parent="launcher-arm001/Spatial" index="0"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="launcher-arm001/Spatial" index="1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.388296, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="launcher-arm001/Spatial" index="2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.798398, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="launcher-arm001/Spatial" index="3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.373259, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="launcher-arm001/Spatial" index="4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.373259, 0.388296, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="launcher-arm001/Spatial" index="5"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.373259, 0.798398, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="launcher-arm001/Spatial" index="6"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.353109, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="launcher-arm001/Spatial" index="7"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.353109, 0.388296, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="launcher-arm001/Spatial" index="8"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.353109, 0.798398, 0 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="16"]
+environment = SubResource( 7 )
+
+[node name="Camera" type="Camera" parent="WorldEnvironment" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23873, 0, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="17"]
+transform = Transform( 0.315565, -0.614614, -0.722958, 0, -0.761887, 0.64771, -0.948904, -0.204394, -0.240425, -39.0288, 41.2919, 16.1133 )
+visible = false
+light_color = Color( 1, 0.8, 0.8, 1 )
+light_energy = 0.36
+
+[node name="OmniLight" type="OmniLight" parent="." index="18"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.4989, 25.2302 )
+omni_range = 47.1
+

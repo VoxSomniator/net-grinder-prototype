@@ -29,7 +29,7 @@ func _ready():
 func on_host_game():
 	var host = NetworkedMultiplayerENet.new() #Makes "host" a new network object
 	host.create_server(PORT, 16) #Makes a server that starts listening on port, with 16 max connections
-	#Tells the scenetree (whole game's root thingy) that "host" is the network object we're using. 
+	#Tells the scenetree (whole game's root thingy) that "host" is the network object we're using.
 	#This makes it send node signal message things to the right place apparently?
 	get_tree().set_network_peer(host)
 	our_id = get_tree().get_network_unique_id()
@@ -39,7 +39,7 @@ func on_host_game():
 	_connected_ok()
 	#Starts up the lobby scene
 	start_lobby()
-	
+
 #Called by serverscreen's join button
 func on_join_game(ip):
 	#Mostly similar to host_game's stuff- Just connects to a server instead of starting one.
@@ -47,22 +47,23 @@ func on_join_game(ip):
 	host.create_client(ip, PORT)
 	get_tree().set_network_peer(host)
 	our_id = get_tree().get_network_unique_id()
-	
+
 
 
 #Signal methods
 
 #Called on client after it connects okay. Called via "connected_to_server" signal.
 func _connected_ok():
-	print("Connected to server!")
+#	print("Connected to server!")
+	Console.writeLine('Connected to server!')
 	#Calls the "register player" method on *all peers*.
 	rpc("register_player", our_id)
-	
+
 #Called on all peers when another peer connects, as soon as they're connected, via signals
 func _player_connected(new_id):
 	#Doesn't actually do anything yet...
 	pass
-	
+
 func _player_disconnected(old_id):
 	#If we're the server, this removes the disconnected player from userlist.
 	if our_id == 1:
@@ -127,7 +128,7 @@ func start_server_screen():
 	#Spawns the current state_scene, in this case, the ServerScreen.
 	var load_node = state_scene.instance()
 	add_child(load_node)
-	
+
 #Sets state to lobby. Called once player hits join or host.
 func start_lobby():
 	#If we're not currently on the server screen, we shouldn't really be entering the lobby, someone goofed
@@ -145,7 +146,7 @@ func start_lobby():
 		reset_sync_list()
 		add_child(load_node)
 		#The lobby "state synced" call isn't made here- It happens in the lobby code, after it *actually loads*.
-		
+
 #Sets state to Game. Called once the server hits start.
 #This is a sync function because it'll go off for everyone at once at server command.
 sync func start_game():
@@ -162,7 +163,8 @@ sync func start_game():
 		#Reset the sync list. This function only actually does stuff for the server.
 		reset_sync_list()
 		add_child(load_node)
-		
+		GameState.game_state = 1
+
 
 
 #Helper method called before changing states.
@@ -177,14 +179,14 @@ func clean_tree():
 			#Deletes the node if its name is in the state list
 			node.queue_free()
 	#Please note- This is very likely to be broken and cause some problems :B
-	
+
 #Called on clients by the server after they're done connecting.
 #Tells them the current game state so they can load it.
 remote func sync_state(syncing_state):
 	#If we're being synced to the lobby
 	if syncing_state == "Lobby":
 		start_lobby()
-	
+
 
 
 #State behavior segment- Used by the server to do the right stuff once players have loaded in.
@@ -216,10 +218,11 @@ remote func state_synced(synced_id, finished_state):
 			#Weird possible edge case that could happen if a client loads the game before the server.
 			#Not sure how to fix it yet so it'll just let us know if this actually happens lol
 			if finished_state == "Game":
-				print("Oops, wrong client/server load order")
+#				print("Oops, wrong client/server load order")
+				Console.writeLine('Oops, wrong client/server load oerder')
 			else:
 				pass#Later, this will correct the client's janked state
-		
+
 		#Game start syncing
 		if current_state == "Game":
 			if finished_state == "Game":
@@ -229,18 +232,18 @@ remote func state_synced(synced_id, finished_state):
 				#	which calls all the other players' spawners to load the tanks in
 				if check_arrays(synced_players, players):
 					get_node("Level").all_players_ready(players)
-				
+
 	#If we're the client, call the server instead.
 	else:
 		rpc_id(1, "state_synced", our_id, finished_state)
-	
+
 
 #Minor helper function. Called by state-switching stuff to empty the synced user list.
 #Only goes off if it's being called in the server.
 func reset_sync_list():
 	if our_id == 1:
 		synced_players.clear()
-		
+
 
 #Another helper function. Returns true if the first array contains all data the second has.
 #Ignores order, and excess in the first.
@@ -250,8 +253,8 @@ func check_arrays(first, second):
 		if not first.has(element):
 			contains = false
 	return contains
-		
-		
+
+
 #func _process(delta):
 #	if our_id == 1:
 #		print(synced_players)

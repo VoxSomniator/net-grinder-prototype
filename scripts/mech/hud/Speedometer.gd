@@ -27,31 +27,36 @@ func _process(delta):
 		$Setting/Current/Label.text = str(speed_kph) + " kph"
 	else:
 		$Setting/Current/Label.text = str(speed_kph_float).pad_decimals(1) + " kph"
-	$Setting/Current/Label.modulate = user_config.hud_primary_color
-	$Setting.modulate = user_config.hud_primary_color
-	$BorderTop.modulate = user_config.hud_primary_color
-	$Markers.modulate = user_config.hud_primary_color
-	
+	$Setting/Current/Label.modulate = user_config.hud_primary_color.lightened(0.8)
+#	$Setting.modulate = user_config.hud_primary_color
+	$Setting/Zero.modulate = user_config.hud_primary_color.lightened(0.8)
+	$Setting/Setting.modulate = user_config.hud_primary_color.lightened(0.8)
+	$Setting/Current.self_modulate = user_config.hud_primary_color
+	$BorderTop.modulate = user_config.hud_primary_color.lightened(0.8)
+	$Markers.modulate = user_config.hud_primary_color.lightened(0.8)
+
 	set_pointers_position(delta)
 
 func set_pointers_position(delta):
 	if throttle_setting == 0:
 		$Setting/Setting.position.y = 0
-	
+
 	if throttle_setting_percentage > 0:
 		$Setting/Setting.position.y = throttle_setting_percentage * -1.2
 	elif throttle_reverse_setting_percentage < 0:
 		$Setting/Setting.position.y = throttle_reverse_setting_percentage * -0.6
-	
+
 	if throttle_percentage == 0:
 		$Setting/Current.position.y = 0
 	elif throttle_percentage > 0:
 		$Setting/Current.position.y = throttle_percentage * -1.2
+		$Setting/CurrentBar.modulate = user_config.hud_primary_color
 	elif throttle_reverse_percentage < 0:
 		$Setting/Current.position.y = throttle_reverse_percentage * -0.6
-	
+		$Setting/CurrentBar.modulate = user_config.hud_tertiary_color
+
 	$Setting/CurrentBar.set_point_position(1, Vector2(0, $Setting/Current.position.y))
-	
+
 
 func _on_HUDMech_speed_kph_float_updated(new_speed_kph_float):
 	speed_kph_float = new_speed_kph_float

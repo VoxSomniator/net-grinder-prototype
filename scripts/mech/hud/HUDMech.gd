@@ -12,6 +12,8 @@ signal aimpoint_range_updated(aimpoint_range)
 signal speed_kph_float_updated(speed_kph_float)
 signal throttle_updated(throttle, max_throttle, max_throttle_reverse, throttle_setting)
 
+signal heat_updated(heat, heat_capacity, heat_dissipation_rate)
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -38,14 +40,14 @@ func _on_Aimpoint_aimpoint_range_updated(aimpoint_range):
 func _on_PlayerMechHeavy_speed_kph_float_updated(speed_kph_float):
 	emit_signal("speed_kph_float_updated", speed_kph_float)
 
-
 func _on_Skeleton_body_pitch_updated(body_pitch):
 	emit_signal("body_pitch_updated", body_pitch)
-
 
 func _on_PlayerMechHeavy_max_rotation_ranges(max_yaw, max_pitch_down, max_pitch_up):
 	emit_signal("max_rotation_ranges", max_yaw, max_pitch_down, max_pitch_up)
 
-
 func _on_PlayerMechHeavy_throttle_updated(throttle, max_throttle, max_throttle_reverse, throttle_setting):
 	emit_signal("throttle_updated", throttle, max_throttle, max_throttle_reverse, throttle_setting)
+
+func _on_PlayerMechHeavy_heat_updated(heat, heat_capacity, heat_dissipation_rate):
+	emit_signal("heat_updated", heat, heat_capacity, heat_dissipation_rate)

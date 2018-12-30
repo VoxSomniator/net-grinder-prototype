@@ -1,0 +1,1250 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://scenes/testing/LaserTurretPlayer.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/exan/Exan-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="ProceduralSky" id=1]
+
+sky_top_color = Color( 0.0470588, 0.454902, 0.976471, 1 )
+sky_horizon_color = Color( 0.556863, 0.823529, 0.909804, 1 )
+sky_curve = 0.25
+ground_bottom_color = Color( 0.101961, 0.145098, 0.188235, 1 )
+ground_horizon_color = Color( 0.482353, 0.788235, 0.952941, 1 )
+ground_curve = 0.01
+
+[sub_resource type="Environment" id=2]
+
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_sky_contribution = 0.0
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/4 = true
+glow_levels/5 = false
+glow_intensity = 0.88
+glow_blend_mode = 1
+glow_bicubic_upscale = true
+
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 250, 0.1, 250 )
+
+[sub_resource type="SpatialMaterial" id=4]
+
+albedo_color = Color( 0.734375, 0.734375, 0.734375, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+
+material = SubResource( 4 )
+size = Vector3( 500, 0.2, 500 )
+
+[sub_resource type="CubeMesh" id=6]
+
+size = Vector3( 6, 5, 2 )
+
+[sub_resource type="CylinderMesh" id=7]
+
+top_radius = 0.6
+bottom_radius = 0.6
+height = 8.0
+
+[sub_resource type="BoxShape" id=8]
+
+extents = Vector3( 50, 20, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+
+size = Vector3( 100, 40, 2 )
+
+[sub_resource type="BoxShape" id=10]
+
+extents = Vector3( 3.5, 3.5, 0.25 )
+
+[sub_resource type="CubeMesh" id=11]
+
+size = Vector3( 7, 7, 0.5 )
+
+[sub_resource type="DynamicFontData" id=12]
+
+font_path = "res://assets/fonts/exan/Exan-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+
+bg_color = Color( 0, 0.128906, 0.128906, 0.616667 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+
+bg_color = Color( 0, 0.421875, 0.421875, 0.616667 )
+
+[sub_resource type="DynamicFont" id=16]
+
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=17]
+
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
+
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=19]
+
+size = 18
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=20]
+
+size = 18
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+
+bg_color = Color( 0, 0, 0, 0.7 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 1, 1, 1 )
+
+[sub_resource type="Theme" id=22]
+
+VBoxContainer/constants/separation = 4
+
+[node name="Root" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Ground" type="StaticBody" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+mesh = SubResource( 5 )
+material/0 = null
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LaserTurretPlayer" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63725, 0 )
+script = ExtResource( 1 )
+
+[node name="CameraRoot" type="Spatial" parent="LaserTurretPlayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+
+[node name="CameraHolder" type="Position3D" parent="LaserTurretPlayer/CameraRoot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+
+[node name="Camera" type="Camera" parent="LaserTurretPlayer/CameraRoot/CameraHolder"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+current = true
+far = 1000.0
+
+[node name="Body" type="MeshInstance" parent="LaserTurretPlayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="LaserTop" type="Position3D" parent="LaserTurretPlayer/Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LaserTurretPlayer/Body/LaserTop"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="LaserTop2" type="Position3D" parent="LaserTurretPlayer/Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LaserTurretPlayer/Body/LaserTop2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="LaserTop3" type="Position3D" parent="LaserTurretPlayer/Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LaserTurretPlayer/Body/LaserTop3"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="TurretAim" type="RayCast" parent="LaserTurretPlayer/Body"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 1.62921e-07, 0.5, 3.5 )
+visible = false
+enabled = true
+cast_to = Vector3( 0, 0, -1000 )
+
+[node name="Endpoint" type="Spatial" parent="LaserTurretPlayer/Body/TurretAim"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1000 )
+
+[node name="Environment" type="Spatial" parent="."]
+
+[node name="Wall" type="StaticBody" parent="Environment"]
+editor/display_folded = true
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 240, 20, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Wall"]
+shape = SubResource( 8 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment/Wall"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="RotatingTarget" type="Spatial" parent="Environment"]
+
+[node name="Target" type="StaticBody" parent="Environment/RotatingTarget"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.72717, 42.1857 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/RotatingTarget/Target"]
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Environment/RotatingTarget/Target"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="TurretHUD" type="CanvasLayer" parent="."]
+scale = Vector2( 1, 1 )
+
+[node name="Reticle" type="Position2D" parent="TurretHUD"]
+editor/display_folded = true
+modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 800, 450 )
+
+[node name="Top" type="Line2D" parent="TurretHUD/Reticle"]
+position = Vector2( 0, -20 )
+points = PoolVector2Array( 0, 0, 0, -20 )
+width = 4.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 828071216
+
+[node name="Left" type="Line2D" parent="TurretHUD/Reticle"]
+position = Vector2( -20, 0 )
+points = PoolVector2Array( 0, 0, -30, 0 )
+width = 4.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Right" type="Line2D" parent="TurretHUD/Reticle"]
+position = Vector2( 20, 0 )
+points = PoolVector2Array( 0, 0, 30, 0 )
+width = 4.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Bottom" type="Line2D" parent="TurretHUD/Reticle"]
+position = Vector2( 0, 20 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 4.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="ColorRect" type="ColorRect" parent="TurretHUD/Reticle"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -13.0
+margin_top = -13.0
+margin_right = -7.0
+margin_bottom = -7.0
+
+[node name="Range" type="Label" parent="TurretHUD/Reticle"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = 20.0
+margin_right = 40.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 13 )
+text = "--m"
+align = 1
+valign = 1
+
+[node name="Weapons" type="Container" parent="TurretHUD"]
+editor/display_folded = true
+visible = false
+margin_left = 1030.0
+margin_top = 540.0
+margin_right = 1530.0
+margin_bottom = 810.0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0, 230 )
+
+[node name="WeaponNames" type="VBoxContainer" parent="TurretHUD/Weapons"]
+anchor_bottom = 1.0
+margin_right = 270.0
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="TurretHUD/Weapons/WeaponNames"]
+margin_right = 270.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+text = "test"
+
+[node name="WeaponGroups" type="VBoxContainer" parent="TurretHUD/Weapons"]
+margin_left = 270.0
+margin_right = 385.0
+margin_bottom = 270.0
+
+[node name="WeaponCooldown" type="VBoxContainer" parent="TurretHUD/Weapons"]
+margin_left = 385.0
+margin_right = 500.0
+margin_bottom = 270.0
+
+[node name="ItemList" type="ItemList" parent="TurretHUD"]
+editor/display_folded = true
+visible = false
+margin_left = 1113.0
+margin_top = 625.0
+margin_right = 1589.0
+margin_bottom = 887.0
+custom_styles/bg = SubResource( 14 )
+select_mode = 1
+max_columns = 2
+
+[node name="ColorRect" type="ColorRect" parent="TurretHUD/ItemList"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 475.0
+margin_bottom = 24.0
+color = Color( 0, 0.437958, 0.496094, 0.494431 )
+
+[node name="Panel" type="Panel" parent="TurretHUD/ItemList"]
+margin_left = 329.0
+margin_top = 1.0
+margin_right = 344.0
+margin_bottom = 257.0
+custom_styles/panel = SubResource( 15 )
+
+[node name="Label" type="Label" parent="TurretHUD/ItemList"]
+margin_left = 132.0
+margin_top = 13.0
+margin_right = 172.0
+margin_bottom = 27.0
+text = "test"
+
+[node name="Label2" type="Label" parent="TurretHUD/ItemList"]
+margin_left = 74.0
+margin_top = 23.0
+margin_right = 114.0
+margin_bottom = 37.0
+text = "test2"
+
+[node name="Compass" type="Container" parent="TurretHUD"]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -340.0
+margin_top = 50.0
+margin_right = 335.0
+margin_bottom = 110.0
+rect_clip_content = true
+mouse_filter = 2
+
+[node name="TrackLine" type="Line2D" parent="TurretHUD/Compass"]
+position = Vector2( 0, 2 )
+points = PoolVector2Array( 0, 0, 675, 0 )
+width = 4.0
+default_color = Color( 1, 1, 1, 0.5 )
+texture_mode = 450365024
+
+[node name="Track" type="Container" parent="TurretHUD/Compass"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Position2D" type="Position2D" parent="TurretHUD/Compass/Track"]
+editor/display_folded = true
+position = Vector2( 338, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Line" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "N"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 225, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line2"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "NE"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line2"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line2"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line3" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 450, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line3"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line3"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line3"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line4" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line4"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "SE"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line4"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line4"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line5" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line5"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "S"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line5"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line5"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line6" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 1125, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line6"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "SW"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line6"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line6"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line7" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 1350, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line7"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "W"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line7"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line7"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line8" type="Line2D" parent="TurretHUD/Compass/Track/Position2D"]
+editor/display_folded = true
+position = Vector2( 1575, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D/Line8"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "NW"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line8"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D/Line8"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Position2D2" type="Position2D" parent="TurretHUD/Compass/Track"]
+editor/display_folded = true
+position = Vector2( -1462, 0 )
+
+[node name="Line" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "N"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 225, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line2"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "NE"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line2"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line2"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line3" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 450, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line3"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line3"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line3"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line4" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line4"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "SE"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line4"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line4"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line5" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line5"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "S"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line5"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line5"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line6" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 1125, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line6"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "SW"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line6"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line6"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line7" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 1350, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line7"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "W"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line7"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line7"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line8" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2"]
+editor/display_folded = true
+position = Vector2( 1575, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D2/Line8"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "NW"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line8"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D2/Line8"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Position2D3" type="Position2D" parent="TurretHUD/Compass/Track"]
+editor/display_folded = true
+position = Vector2( -3262, 0 )
+
+[node name="Line" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "N"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 225, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line2"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "NE"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line2"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line2"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line3" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 450, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line3"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "E"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line3"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line3"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line4" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line4"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "SE"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line4"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line4"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line5" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 900, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line5"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "S"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line5"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line5"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line6" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 1125, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line6"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "SW"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line6"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line6"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line7" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 1350, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line7"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "W"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line7"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line7"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line8" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3"]
+editor/display_folded = true
+position = Vector2( 1575, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 450365024
+
+[node name="Label" type="Label" parent="TurretHUD/Compass/Track/Position2D3/Line8"]
+margin_left = -23.0
+margin_top = 13.0
+margin_right = 22.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 16 )
+text = "NW"
+align = 1
+valign = 1
+
+[node name="Line2D" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line8"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Line2D2" type="Line2D" parent="TurretHUD/Compass/Track/Position2D3/Line8"]
+position = Vector2( 150, 0 )
+points = PoolVector2Array( 0, 0, 0, 6 )
+width = 3.0
+default_color = Color( 1, 1, 1, 0.666667 )
+texture_mode = 450365024
+
+[node name="Markers" type="Position2D" parent="TurretHUD/Compass"]
+position = Vector2( -562, 43 )
+
+[node name="AngleToTest" type="Label" parent="TurretHUD"]
+margin_left = 176.0
+margin_top = 514.0
+margin_right = 244.0
+margin_bottom = 536.0
+custom_fonts/font = SubResource( 17 )
+text = "30"
+align = 1
+valign = 1
+
+[node name="CameraHeading" type="Label" parent="TurretHUD"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -28.0
+margin_top = 20.0
+margin_right = 28.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 18 )
+text = "180"
+align = 1
+valign = 1
+
+[node name="HeadingDifference" type="Label" parent="TurretHUD"]
+margin_left = 366.0
+margin_top = 295.0
+margin_right = 406.0
+margin_bottom = 317.0
+custom_fonts/font = SubResource( 19 )
+text = "90"
+align = 1
+valign = 1
+
+[node name="SelectedGroup" type="Label" parent="TurretHUD"]
+margin_left = 32.0
+margin_top = 555.0
+margin_right = 381.0
+margin_bottom = 578.0
+custom_fonts/font = SubResource( 20 )
+text = "Selected weapon group:"
+
+[node name="Radar" type="Position2D" parent="TurretHUD"]
+position = Vector2( 785.213, 736.258 )
+
+[node name="Blips" type="Position2D" parent="TurretHUD/Radar"]
+
+[node name="ColorRect" type="ColorRect" parent="TurretHUD/Radar"]
+margin_left = -3.0
+margin_top = -3.0
+margin_right = 3.0
+margin_bottom = 3.0
+
+[node name="WeaponGroups" type="Panel" parent="TurretHUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -587.0
+margin_top = -301.0
+margin_right = -77.0
+margin_bottom = -301.0
+custom_styles/panel = SubResource( 21 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TurretHUD/WeaponGroups"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_right = -5.0
+theme = SubResource( 22 )
+custom_constants/separation = 3
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Selections" type="Position2D" parent="TurretHUD/WeaponGroups"]
+
+[node name="ColorRect" type="ColorRect" parent="TurretHUD/WeaponGroups/Selections"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.858915, 0.512118, 0, -0.512118, 0.858915, 0, 61.2544, 33.0987 )
+light_indirect_energy = 2.14
+omni_range = 300.0
+

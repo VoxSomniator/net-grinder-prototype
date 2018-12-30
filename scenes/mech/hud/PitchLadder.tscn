@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/mech/hud/PitchLadder.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/ExanRegular.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/exan/ExanRegular.tres" type="DynamicFont" id=2]
 
-[node name="PitchLadder" type="Container" index="0"]
+[node name="PitchLadder" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -72,6 +72,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="PitchLine" type="Line2D" parent="Position2D" index="2"]
 
+editor/display_folded = true
 points = PoolVector2Array( -20, 0, 20, 0 )
 width = 4.0
 default_color = Color( 1, 1, 1, 1 )
@@ -198,7 +199,6 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Markers3" type="Line2D" parent="Position2D" index="5"]
 
-editor/display_folded = true
 position = Vector2( 17, -60 )
 points = PoolVector2Array( -3, 0, 3, 0 )
 width = 2.0
@@ -219,10 +219,10 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Markers4" type="Line2D" parent="Position2D" index="6"]
+[node name="Markers5" type="Line2D" parent="Position2D/Markers3" index="1"]
 
 editor/display_folded = true
-position = Vector2( 17, 120 )
+position = Vector2( 0, 180 )
 points = PoolVector2Array( -3, 0, 3, 0 )
 width = 2.0
 default_color = Color( 1, 1, 1, 1 )
@@ -231,7 +231,7 @@ sharp_limit = 2.0
 round_precision = 8
 _sections_unfolded = [ "Transform" ]
 
-[node name="Markers4" type="Line2D" parent="Position2D/Markers4" index="0"]
+[node name="Markers4" type="Line2D" parent="Position2D/Markers3/Markers5" index="0"]
 
 position = Vector2( 0, -60 )
 points = PoolVector2Array( -3, 0, 3, 0 )
