@@ -1,0 +1,1788 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/testing/test-mech/hud/Compass.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/hud/NotoSansHUD.tres" type="DynamicFont" id=2]
+
+[node name="Compass" type="Container"]
+margin_right = 675.0
+margin_bottom = 180.0
+script = ExtResource( 1 )
+
+[node name="Pointer" type="Polygon2D" parent="."]
+position = Vector2( 337, 25 )
+antialiased = true
+polygon = PoolVector2Array( 0, 10, 10, 0, -10, 0 )
+
+[node name="Heading" type="Label" parent="Pointer"]
+margin_left = -36.0
+margin_top = -50.0
+margin_right = 36.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+valign = 2
+
+[node name="Track" type="Container" parent="."]
+margin_top = 40.0
+margin_right = 675.0
+margin_bottom = 160.0
+rect_clip_content = true
+
+[node name="Track" type="Position2D" parent="Track"]
+editor/display_folded = true
+
+[node name="N" type="Line2D" parent="Track/Track"]
+editor/display_folded = true
+position = Vector2( 337, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+align = 1
+
+[node name="NE" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 135, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/NE"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/NE"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "NE"
+align = 1
+
+[node name="E" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 270, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/E"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/E"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "E"
+align = 1
+
+[node name="SE" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 405, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/SE"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/SE"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "SE"
+align = 1
+
+[node name="S" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/S"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/S"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "S"
+align = 1
+
+[node name="SW" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/SW"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/SW"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "SW"
+align = 1
+
+[node name="W" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 810, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/W"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/W"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "W"
+align = 1
+
+[node name="NW" type="Line2D" parent="Track/Track/N"]
+editor/display_folded = true
+position = Vector2( 945, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N/NW"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N/NW"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "NW"
+align = 1
+
+[node name="N2" type="Line2D" parent="Track/Track"]
+editor/display_folded = true
+position = Vector2( 1417, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+align = 1
+
+[node name="NE" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 135, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/NE"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/NE"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "NE"
+align = 1
+
+[node name="E" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 270, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/E"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/E"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "E"
+align = 1
+
+[node name="SE" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 405, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/SE"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/SE"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "SE"
+align = 1
+
+[node name="S" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/S"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/S"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "S"
+align = 1
+
+[node name="SW" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/SW"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/SW"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "SW"
+align = 1
+
+[node name="W" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 810, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/W"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/W"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "W"
+align = 1
+
+[node name="NW" type="Line2D" parent="Track/Track/N2"]
+editor/display_folded = true
+position = Vector2( 945, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N2/NW"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N2/NW"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "NW"
+align = 1
+
+[node name="N3" type="Line2D" parent="Track/Track"]
+editor/display_folded = true
+position = Vector2( -743, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "N"
+align = 1
+
+[node name="NE" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 135, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/NE"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/NE"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "NE"
+align = 1
+
+[node name="E" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 270, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/E"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/E"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "E"
+align = 1
+
+[node name="SE" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 405, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/SE"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/SE"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "SE"
+align = 1
+
+[node name="S" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 540, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/S"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/S"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "S"
+align = 1
+
+[node name="SW" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/SW"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/SW"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "SW"
+align = 1
+
+[node name="W" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 810, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/W"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/W"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "W"
+align = 1
+
+[node name="NW" type="Line2D" parent="Track/Track/N3"]
+editor/display_folded = true
+position = Vector2( 945, 0 )
+points = PoolVector2Array( 0, 0, 0, 20 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+
+[node name="5" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="10" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 30, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="15" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 45, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="20" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 60, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="25" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 75, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="30" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 90, 0 )
+points = PoolVector2Array( 0, 0, 0, 15 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="35" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 105, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="40" type="Line2D" parent="Track/Track/N3/NW"]
+position = Vector2( 120, 0 )
+points = PoolVector2Array( 0, 0, 0, 10 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 488073600
+
+[node name="Label" type="Label" parent="Track/Track/N3/NW"]
+margin_left = -36.0
+margin_top = 18.0
+margin_right = 36.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 2 )
+text = "NW"
+align = 1
+
+[node name="Markers" type="Position2D" parent="Track"]
+position = Vector2( 337, 12 )
+

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/testing/test-mech/hud/ArmReticle.gd" type="Script" id=1]
+
+[node name="ArmReticle" type="Position2D"]
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 15, 0 )
+points = PoolVector2Array( 0, 0, -15, 15, -30, 0, -15, -15, 0, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+begin_cap_mode = 1
+
+[node name="Line2D2" type="Line2D" parent="."]
+visible = false
+points = PoolVector2Array( 0, -1, 0, 1 )
+width = 4.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 418870288
+begin_cap_mode = 2
+end_cap_mode = 2
+

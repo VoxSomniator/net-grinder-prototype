@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/testing/test-mech/hud/PitchIndicator.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/hud/NotoSansHUD.tres" type="DynamicFont" id=2]
+
+[node name="PitchIndicator" type="Container"]
+margin_right = 675.0
+margin_bottom = 360.0
+script = ExtResource( 1 )
+
+[node name="Center" type="Position2D" parent="."]
+position = Vector2( 0, 180 )
+
+[node name="Pitch" type="Line2D" parent="Center"]
+points = PoolVector2Array( 0, 0, 30, 0 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 0
+
+[node name="Label" type="Label" parent="Center/Pitch"]
+margin_left = 35.0
+margin_top = -25.0
+margin_right = 107.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 2 )
+text = "20°"
+valign = 1
+
+[node name="PitchRight" type="Line2D" parent="Center"]
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, -30, 0 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 0
+
+[node name="Label" type="Label" parent="Center/PitchRight"]
+margin_left = -107.0
+margin_top = -25.0
+margin_right = -35.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 2 )
+text = "20°"
+align = 2
+valign = 1
+
+[node name="Upper" type="Line2D" parent="Center"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 0, -180 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 690121825
+
+[node name="UpperRight" type="Line2D" parent="Center"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 675, -180 )
+points = PoolVector2Array( 0, 0, -10, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 690121825
+
+[node name="CenterLine" type="Line2D" parent="Center"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 690121825
+
+[node name="Position2D" type="Position2D" parent="Center/CenterLine"]
+modulate = Color( 1, 1, 1, 0.0588235 )
+
+[node name="Line2D" type="Line2D" parent="Center/CenterLine/Position2D"]
+points = PoolVector2Array( 0, -180, 0, 180 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 690121825
+
+[node name="CenterLineRight" type="Line2D" parent="Center"]
+self_modulate = Color( 1, 1, 1, 0.490196 )
+position = Vector2( 675, 0 )
+points = PoolVector2Array( 0, 0, -10, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 0
+
+[node name="Position2D" type="Position2D" parent="Center/CenterLineRight"]
+modulate = Color( 1, 1, 1, 0.0588235 )
+
+[node name="Line2D" type="Line2D" parent="Center/CenterLineRight/Position2D"]
+points = PoolVector2Array( 0, -180, 0, 180 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 690121825
+
+[node name="Lower" type="Line2D" parent="Center"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 0, 180 )
+points = PoolVector2Array( 0, 0, 10, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 0
+
+[node name="LowerRight" type="Line2D" parent="Center"]
+modulate = Color( 1, 1, 1, 0.294118 )
+position = Vector2( 675, 180 )
+points = PoolVector2Array( 0, 0, -10, 0 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+

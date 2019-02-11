@@ -1,0 +1,43 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=7 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+
+animation = "walking"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+
+animation = "idle"
+
+[sub_resource type="AnimationNodeBlend2" id=13]
+
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+
+animation = "idle"
+
+[sub_resource type="AnimationNodeStateMachine" id=17]
+
+states/idle/node = SubResource( 16 )
+states/idle/position = Vector2( -847, -108 )
+graph_offset = Vector2( -1491, -291 )
+
+[sub_resource type="AnimationNodeTimeScale" id=14]
+
+
+[resource]
+
+resource_name = "BlendTree"
+graph_offset = Vector2( -112.833, 44.9583 )
+nodes/Animation/node = SubResource( 12 )
+nodes/Animation/position = Vector2( 40, 100 )
+"nodes/Animation 2/node" = SubResource( 11 )
+"nodes/Animation 2/position" = Vector2( 40, 220 )
+nodes/Blend2/node = SubResource( 13 )
+nodes/Blend2/position = Vector2( 360, 80 )
+nodes/StateMachine/node = SubResource( 17 )
+nodes/StateMachine/position = Vector2( 980, 60 )
+nodes/TimeScale/node = SubResource( 14 )
+nodes/TimeScale/position = Vector2( 560, 80 )
+nodes/output/position = Vector2( 840, 60 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+

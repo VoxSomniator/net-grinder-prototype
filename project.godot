@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="net grinder prototype (feature-mech branch)"
+config/name="net grinder prototype"
 run/main_scene="res://scenes/GameCore.tscn"
 
 [autoload]
@@ -25,17 +25,20 @@ PauseMenuGlobals="*res://autoload/PauseMenuGlobals.gd"
 Screenshot="*res://autoload/Screenshot.gd"
 Loadout="*res://autoload/Loadout.gd"
 GameState="*res://autoload/GameState.gd"
+VehicleState="*res://autoload/VehicleState.gd"
+MapState="*res://autoload/MapState.gd"
 
 [debug]
 
-settings/fps/force_fps=60
+settings/fps/force_fps=120
+gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
 window/size/width=1600
 window/size/height=900
+window/dpi/allow_hidpi=true
 window/vsync/use_vsync=false
-window/stretch/aspect="expand"
 
 [input]
 
@@ -136,7 +139,14 @@ reverse_max={
  ]
 }
 
+[logging]
+
+file_logging/enable_file_logging=true
+
+[physics]
+
+3d/physics_engine="Bullet"
+
 [rendering]
 
-quality/filters/anisotropic_filter_level=1
 environment/default_environment="res://default_env.tres"

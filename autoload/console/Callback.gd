@@ -26,7 +26,7 @@ func _init(target, name, type = UNKNOWN):
   _target = target
   _name = name
 
-  if type == UNKNOWN:
+	if type == UNKNOWN:
 	type = getType(_target, _name)
 
   _type = type

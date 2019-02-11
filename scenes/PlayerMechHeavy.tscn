@@ -3833,7 +3833,7 @@ func _process(delta):
 #					blend2_node_set_amount(\"walk\", 1)
 #					blend2_node_set_amount(\"jog\", 1)
 				blend2_node_set_amount(\"run\", run_blend_range)
-	
+
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		if Input.is_action_pressed(\"movement_left\"):
 			if throttle == 0:
@@ -4154,7 +4154,7 @@ script = SubResource( 25 )
 master_player = NodePath("../AnimationPlayer")
 data = {
 "active": false,
-"connections": [ "transition", "seek", 0, "walk", "transition", 0, "jog", "transition", 1, "run", "transition", 2, "anim 8", "transition", 3, "anim 7", "transition", 4, "blend4", "transition", 5, "seek", "out", 0, "anim 3", "jog", 0, "jog_seek", "jog", 1, "anim 2", "walk_seek", 0, "anim 5", "run", 0, "run_seek", "run", 1, "anim 9", "blend4", 0, "anim 10", "blend4", 1, "anim 11", "blend4", 2, "anim 12", "blend4", 3, "anim 4", "jog_seek", 0, "anim 6", "run_seek", 0, "anim", "walk", 0, "walk_seek", "walk", 1 ],
+"connections": [ "transition", "seek", 0, "walk", "transition", 0, "jog", "transition", 1, "run", "transition", 2, "anim 8", "transition", 3, "anim 7", "transition", 4, "blend4", "transition", 5, "seek", "out", 0, "anim 2", "walk_seek", 0, "anim 9", "blend4", 0, "anim 10", "blend4", 1, "anim 11", "blend4", 2, "anim 12", "blend4", 3, "anim 5", "run", 0, "run_seek", "run", 1, "anim 6", "run_seek", 0, "anim", "walk", 0, "walk_seek", "walk", 1, "anim 4", "jog_seek", 0, "anim 3", "jog", 0, "jog_seek", "jog", 1 ],
 "master": NodePath("../AnimationPlayer"),
 "nodes": [ {
 "id": "seek",
@@ -4189,21 +4189,26 @@ data = {
 "position": Vector2( 1174, 5 ),
 "type": "output"
 }, {
-"filter": [  ],
-"from": "idle",
-"id": "anim 3",
-"position": Vector2( 37, 181 ),
-"type": "animation"
-}, {
-"blend": 0.55,
-"filter": [  ],
-"id": "jog",
-"position": Vector2( 450, 165 ),
-"type": "blend2"
-}, {
 "id": "walk_seek",
 "position": Vector2( 309, 102 ),
 "type": "timeseek"
+}, {
+"filter": [  ],
+"from": "jog_blocking",
+"id": "anim 4",
+"position": Vector2( 164, 191 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "walk_blocking",
+"id": "anim 10",
+"position": Vector2( 963, 251 ),
+"type": "animation"
+}, {
+"blend": Vector2( 1, 1 ),
+"id": "blend4",
+"position": Vector2( 1228, 212 ),
+"type": "blend4"
 }, {
 "blend": 1.0,
 "filter": [  ],
@@ -4211,41 +4216,20 @@ data = {
 "position": Vector2( 452, 298 ),
 "type": "blend2"
 }, {
-"blend": Vector2( 1, 1 ),
-"id": "blend4",
-"position": Vector2( 1228, 212 ),
-"type": "blend4"
-}, {
-"filter": [  ],
-"from": "turn_right",
-"id": "anim 7",
-"position": Vector2( 613, 436 ),
-"type": "animation"
-}, {
-"id": "jog_seek",
-"position": Vector2( 314, 244 ),
-"type": "timeseek"
-}, {
-"filter": [  ],
-"from": "turn_left",
-"id": "anim 8",
-"position": Vector2( 453, 443 ),
-"type": "animation"
-}, {
-"filter": [  ],
-"from": "idle",
-"id": "anim 5",
-"position": Vector2( 27, 319 ),
-"type": "animation"
-}, {
 "id": "run_seek",
 "position": Vector2( 308, 379 ),
 "type": "timeseek"
 }, {
 "filter": [  ],
-"from": "run_blocking",
-"id": "anim 12",
-"position": Vector2( 1043, 377 ),
+"from": "idle",
+"id": "anim 9",
+"position": Vector2( 820, 265 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "turn_left",
+"id": "anim 8",
+"position": Vector2( 453, 443 ),
 "type": "animation"
 }, {
 "blend": 1.0,
@@ -4256,20 +4240,24 @@ data = {
 }, {
 "filter": [  ],
 "from": "idle",
-"id": "anim 9",
-"position": Vector2( 820, 265 ),
+"id": "anim 5",
+"position": Vector2( 27, 319 ),
 "type": "animation"
 }, {
-"filter": [ NodePath("../Skeleton:body"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.R") ],
-"from": "walk_blocking",
-"id": "anim 2",
-"position": Vector2( 161, 87 ),
+"id": "jog_seek",
+"position": Vector2( 314, 244 ),
+"type": "timeseek"
+}, {
+"filter": [  ],
+"from": "idle",
+"id": "anim 3",
+"position": Vector2( 37, 181 ),
 "type": "animation"
 }, {
 "filter": [  ],
-"from": "run_blocking",
-"id": "anim 6",
-"position": Vector2( 153, 335 ),
+"from": "turn_right",
+"id": "anim 7",
+"position": Vector2( 613, 436 ),
 "type": "animation"
 }, {
 "filter": [  ],
@@ -4279,22 +4267,33 @@ data = {
 "type": "animation"
 }, {
 "filter": [  ],
-"from": "walk_blocking",
-"id": "anim 10",
-"position": Vector2( 963, 251 ),
+"from": "run_blocking",
+"id": "anim 12",
+"position": Vector2( 1043, 377 ),
 "type": "animation"
 }, {
+"blend": 0.55,
 "filter": [  ],
-"from": "jog_blocking",
-"id": "anim 4",
-"position": Vector2( 164, 191 ),
+"id": "jog",
+"position": Vector2( 450, 165 ),
+"type": "blend2"
+}, {
+"filter": [  ],
+"from": "run_blocking",
+"id": "anim 6",
+"position": Vector2( 153, 335 ),
+"type": "animation"
+}, {
+"filter": [ NodePath("../Skeleton:body"), NodePath("../Skeleton:body-base"), NodePath("../Skeleton:cockpit"), NodePath("../Skeleton:thruster.L"), NodePath("../Skeleton:canopy"), NodePath("../Skeleton:thruster.R") ],
+"from": "walk_blocking",
+"id": "anim 2",
+"position": Vector2( 161, 87 ),
 "type": "animation"
 } ]
 }
 script = SubResource( 26 )
 
 [node name="HUDMech" parent="." instance=ExtResource( 14 )]
-scale = Vector2( 1, 1 )
 
 [connection signal="aimpoint_unprojected_updated" from="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2/CameraShakeHolder/Camera" to="HUDMech" method="_on_Camera_aimpoint_unprojected_updated"]
 [connection signal="heading_updated" from="TorsoGimbal/Gimbal2/CamGimbalY/CamGimbalX/CameraHolder/CamGimbal2/CameraShakeHolder/Camera" to="HUDMech" method="_on_Camera_heading_updated"]

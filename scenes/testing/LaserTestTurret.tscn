@@ -230,7 +230,6 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="TurretHUD" type="CanvasLayer" parent="."]
-scale = Vector2( 1, 1 )
 
 [node name="Reticle" type="Position2D" parent="TurretHUD"]
 editor/display_folded = true

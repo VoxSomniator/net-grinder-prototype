@@ -9,6 +9,6 @@ func _ready():
 	timer.connect("timeout",self,"_timeout")
 	add_child(timer)
 	timer.start()
-	
+
 func _timeout():
 	get_parent().remove_child(self)

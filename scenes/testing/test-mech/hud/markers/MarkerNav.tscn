@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="MarkerNav" type="Node2D"]
+light_mask = 3
+
+[node name="Outline" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 1 )
+antialiased = true
+polygon = PoolVector2Array( 10, 0, 0, 10, -10, 0, 0, -10 )
+
+[node name="Nav" type="Polygon2D" parent="."]
+antialiased = true
+polygon = PoolVector2Array( 8, 0, 0, 8, -8, 0, 0, -8 )
+

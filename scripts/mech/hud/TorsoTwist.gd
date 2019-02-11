@@ -8,7 +8,7 @@ func _ready():
 	user_config = get_node("/root/UserConfig")
 	options_menu = get_node("/root/PauseMenuGlobals")
 #	user_config.connect("config_saved", )
-	
+
 #	$TwistLine.default_color = user_config.hud_primary_color
 #	$CenterLine.default_color = user_config.hud_primary_color
 

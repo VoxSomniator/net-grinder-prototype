@@ -252,7 +252,7 @@ func turn_turret(delta):
 func process_raycast(delta):
 	if turret_aim.is_colliding():
 		turret_aimpoint = turret_aim.get_collision_point()
-		turret_aim_range = str(int(turret_aim.get_collision_point().distance_to(to_global(translation)))) + "m"
+		turret_aim_range = str(int(turret_aim.get_collision_point().distance_to(turret_aim.global_transform.origin))) + "m"
 		range_length = int(turret_aim.get_collision_point().distance_to(to_global(translation)))
 	else:
 		turret_aimpoint = turret_aim_endpoint.global_transform.origin

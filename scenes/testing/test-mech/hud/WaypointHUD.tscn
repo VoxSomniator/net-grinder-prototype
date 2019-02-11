@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/fonts/hud/NotoSansHUD.tres" type="DynamicFont" id=1]
+
+[node name="WaypointHUD" type="Node2D"]
+
+[node name="NameDistance" type="Label" parent="."]
+margin_left = -159.0
+margin_top = 10.0
+margin_right = 158.0
+margin_bottom = 113.0
+custom_fonts/font = ExtResource( 1 )
+text = "Nav Rho
+3.2 km"
+align = 1
+
+[node name="Icon" type="Position2D" parent="."]
+position = Vector2( 0, -8 )
+
