@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 2, 1, 6 )
+
+[sub_resource type="SphereMesh" id=2]
+
+[node name="SlerpTesting" type="Spatial"]
+
+[node name="Body" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83133, -4.63259 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.3991 )
+mesh = SubResource( 2 )
+material/0 = null
+

@@ -21,6 +21,20 @@ var max_pitch = 20
 var max_yaw_2 = 50
 var max_pitch_2 = 30
 
+# Slerp
+var angle_between : float = 0
+var t_speed : float = 0
+var t_value : float = 0
+var dynamic_t_value : float = 0
+
+var angle_between_vert : float = 0
+var t_speed_vert : float = 0
+var t_value_vert : float = 0
+var dynamic_t_value_vert : float = 0
+
+var arms_synced_horizontal : bool = false
+var arms_synced_vertical : bool = false
+
 # Nodes
 onready var camera = get_node("Body/CameraHolder/Camera")
 onready var camera_holder = get_node("Body/CameraHolder")
@@ -68,20 +82,69 @@ func turn_body(delta):
 #	look_cube.look_at(camera.global_transform.origin, Vector3(0, 1, 0))
 
 	# Convert basis to quaternion, keep in mind scale is lost
-	var slerp_speed = 0.02
+	var slerp_speed = 0.2
 	var slerp_speed_degrees = 10
 
-	var a = Quat(body.transform.basis)
-#	var a = Quat(Vector3(0, 1, 0), deg2rad(90))
-	var b = Quat(look_rotator.transform.basis)
-#	var b = Quat(Vector3(0, 1, 0), deg2rad(90))
+	#These rotate on both Y and X axis at once
+#	var a = Quat(body.transform.basis)
+#	var b = Quat(look_rotator.transform.basis)
 
-	# Interpolate using slerp, rotation speed parameter seems to be in radians per second
-	slerp_speed += delta * 2
-	var c = a.slerp(b, slerp_speed) # 0.17
+	#Horizontal rotation quaternions
+	var a = Quat(Vector3(0, 1, 0), body.rotation.y)
+	var b = Quat(Vector3(0, 1, 0), look_rotator.rotation.y)
+
+	# Vertical rotation quaternions
+	var vert_a = Quat(Vector3(1, 0, 0), body.rotation.x)
+	var vert_b = Quat(Vector3(1, 0, 0), look_rotator.rotation.x)
+
+#	angle_between = rad2deg(acos(Quat(body.transform.basis).dot(Quat(look_rotator.transform.basis))))
+
+	angle_between = rad2deg(acos(a.dot(b)))
+	if angle_between > 0:
+		t_speed = 15 / angle_between
+	t_value = t_speed * delta
+
+	# Dynamic slerp value
+	if t_value > 0.5:
+		if angle_between < 1:
+			if angle_between > 0.2:
+				dynamic_t_value = angle_between
+		elif angle_between < 0.2:
+			dynamic_t_value = 1
+	else:
+		dynamic_t_value = t_value
+
+	angle_between_vert = rad2deg(acos(vert_a.dot(vert_b)))
+	if angle_between_vert > 0:
+		t_speed_vert = 5 / angle_between_vert
+	t_value_vert = t_speed_vert * delta
+
+	# Dynamic slerp value, vertical
+	if t_value_vert > 0.5:
+		if angle_between_vert < 1:
+			if angle_between_vert > 0.2:
+				dynamic_t_value_vert = angle_between_vert
+		elif angle_between_vert < 0.2:
+			dynamic_t_value_vert = 1
+	else:
+		dynamic_t_value_vert = t_value_vert
+
+	# Interpolate using slerp
+	var c : Quat = a.slerp(b, dynamic_t_value) # 0.17
+
+	var c_vert : Quat = vert_a.slerp(vert_b, dynamic_t_value_vert)
+
+	var combined_rotations : Quat = c * c_vert
 
 	# Apply back
-	body.transform.basis = Basis(c)
+	body.transform.basis = Basis(combined_rotations)
+
+	# Sync pointers
+#	if look_rotator.rotation_degrees.x > 0:
+#		if look_rotator.rotation_degrees.y < max_yaw -1 && look_rotator_2.rotation_degrees.y < max_yaw:
+#			look_rotator_2.rotation_degrees.y = look_rotator.rotation_degrees.y
+#			arms_synced_horizontal = true
+
 
 	if !Input.is_action_pressed("freelook"):
 		camera.look_at(look_cube.global_transform.origin, Vector3(0, 1, 0))
@@ -96,14 +159,16 @@ func turn_body(delta):
 #	body.transform = body_transform_rotation
 
 func process_angles(delta):
-	$CanvasLayer/Angles.text = "Horizontal rotation: " + \
-	str(look_rotator.rotation_degrees.y) + "\n" \
-	+ "Vertical rotation: " + str(look_rotator.rotation_degrees.x) + "\n" \
-	+ "Horizontal rotation 2: " + str(look_rotator_2.rotation_degrees.y) + "\n" \
-	+ "Vertical rotation 2: " + str(look_rotator_2.rotation_degrees.x) + "\n" \
-	+ "Look cube Z translation: " + str(look_cube.translation.z) + "\n" \
-	+ str(rad2deg(Vector2(camera_holder.global_transform.basis.z.x, camera_holder.global_transform.basis.z.z).angle_to(Vector2($MeshInstance.global_transform.origin.x, $MeshInstance.global_transform.origin.z)))) + "\n" \
-	+ str(MapState.nav_points)
+	$CanvasLayer/Angles.text = "Horizontal rotation: " + str(look_rotator.rotation_degrees.y) + "\n" + \
+	"Vertical rotation: " + str(look_rotator.rotation_degrees.x) + "\n" + \
+	"Horizontal rotation 2: " + str(look_rotator_2.rotation_degrees.y) + "\n" + \
+	"Vertical rotation 2: " + str(look_rotator_2.rotation_degrees.x) + "\n" + \
+	"Body horizontal rotation: " + str(body.rotation_degrees.y) + "\n" + \
+	"Body vertical rotation: " + str(body.rotation_degrees.x) + "\n" + \
+	"Look cube Z translation: " + str(look_cube.translation.z) + "\n" + \
+	"angle between: " + str(angle_between) + "\n" + \
+	"TSpeed (horizontal): " + str(t_speed) + "\n" + \
+	"TValue (horizontal): " + str(t_value)
 
 func _input(event):
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:

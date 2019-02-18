@@ -1,6 +1,6 @@
 extends Spatial
 
-const SPEED : int = 900
+const SPEED : int = 700
 
 const KILL_TIMER : int = 2
 

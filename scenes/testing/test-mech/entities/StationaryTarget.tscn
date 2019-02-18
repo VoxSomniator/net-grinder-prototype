@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/testing/test-mech/entities/StationaryTarget.gd" type="Script" id=1]
+[ext_resource path="res://scripts/testing/test-mech/entities/TargetBoundingBox.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1, 1, 0.25 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 2, 2, 0.5 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 1.25, 1.25, 0.5 )
+
+[node name="StationaryTarget" type="StaticBody"]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="TargetBoundingBox" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="TargetBoundingBox"]
+shape = SubResource( 3 )
+
+[node name="Position3D" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.25, 0.5 )
+
+[node name="Position3D2" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, 0.5 )
+
+[node name="Position3D3" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.25, -0.5 )
+
+[node name="Position3D4" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, -0.5 )
+
+[node name="Position3D5" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -1.25, 0.5 )
+
+[node name="Position3D6" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, -1.25, -0.5 )
+
+[node name="Position3D7" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -1.25, 0.5 )
+
+[node name="Position3D8" type="Position3D" parent="TargetBoundingBox/CollisionShape"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -1.25, -0.5 )
+

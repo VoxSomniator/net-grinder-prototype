@@ -8,8 +8,8 @@ var deceleration : float = 1.5
 var accel : float = 0
 var accel_zoned : float = 0
 
-var vel = Vector3()
-var dir = Vector3()
+var vel : Vector3 = Vector3()
+var dir : Vector3 = Vector3()
 
 var leg_turn_speed = 1
 var transverse_speed = 0.05
@@ -30,8 +30,31 @@ onready var torso_aim = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/b
 var torso_aimpoint = Vector3()
 var torso_aim_distance = 0
 
-onready var arm_mount_left = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left")
-onready var arm_mount_right = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-right")
+onready var arm_mount_left : Node = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left")
+onready var arm_mount_right : Node = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-right")
+
+onready var torso_mount : Node = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/torso-mount/")
+
+onready var weapons : Array = [
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left/arm-weapon-upper/TestMechLaser"),
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-right/arm-weapon-upper/TestMechLaser"),
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left/arm-weapon-lower/Machinegun"),
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-right/arm-weapon-lower/Machinegun")
+]
+
+onready var arm_weapons : Array = [
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left/arm-weapon-upper/TestMechLaser"),
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-right/arm-weapon-upper/TestMechLaser"),
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left/arm-weapon-lower/Machinegun"),
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-right/arm-weapon-lower/Machinegun")
+]
+
+onready var torso_weapons : Array = [
+get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/torso-mount/TestMechLaser")
+]
+
+var arm_weapons_added : bool = false
+var torso_weapons_added : bool = false
 
 onready var weapon_group_1 = [
 get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-left/arm-weapon-upper/TestMechLaser"),
@@ -45,7 +68,7 @@ get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/arm-mount-ri
 
 onready var arm_aim = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/ArmRayRotator/ArmAim")
 var arm_aimpoint = Vector3()
-var arm_aim_distance = 0
+var arm_aim_distance : float = 0
 
 # Rotation accumulators
 var rot_x = 0
@@ -54,9 +77,9 @@ var rot_y = 0
 var rot_x_2 = 0
 var rot_y_2 = 0
 
-var mouse_sensitivity = 0.0005
+var mouse_sensitivity : float = 0.0005
 
-var turn_speed = 0.17
+var turn_speed : float = 0.17
 
 # Body/rotator nodes
 onready var upper_body = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/body-upper")
@@ -71,6 +94,9 @@ onready var look_rotator_2 = get_node("Skeleton/BoneAttachment/Spatial/body-uppe
 onready var look_point = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/TorsoPointer/LookPoint")
 
 onready var camera = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/Camera")
+
+# Targeting
+onready var targeting_ray = get_node("Skeleton/BoneAttachment/Spatial/body-upper-y/body-upper-x/Camera/TargetingRay")
 
 # Navigation
 #export(NodePath) var active_navpoint
@@ -92,13 +118,22 @@ func _ready():
 
 	VehicleState.arm_aim = arm_aim
 
-#	VehicleState.active_navpoint = active_navpoint
-#	print(active_navpoint)
+	for a in arm_weapons:
+		VehicleState.weapons.append(a)
+	if VehicleState.weapons.size() == arm_weapons.size():
+		arm_weapons_added = true
 
-#	VehicleState.body = self
-#	global_transform.origin.
+	if arm_weapons_added == true:
+		for t in torso_weapons:
+			VehicleState.weapons.append(t)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	VehicleState.arm_weapons = arm_weapons
+	VehicleState.torso_weapons = torso_weapons
+
+	VehicleState.ammo["bullets"] = 40
+
+	VehicleState.emit_signal("weapons_loaded")
+
 #func _process(delta):
 #	pass
 
@@ -107,6 +142,7 @@ func _physics_process(delta):
 	process_input(delta)
 	process_movement(delta)
 	process_weapons(delta)
+	process_targeting(delta)
 	process_angles(delta)
 
 func turn_body(delta):
@@ -151,7 +187,7 @@ func process_input(delta):
 		throttle_setting = max_reverse_speed
 
 	if Input.is_action_just_pressed("throttle_zero"):
-		throttle_setting = 0
+		throttle_setting = 0.0
 
 	if throttle_setting > 0:
 		input_movement_vector.y += 1
@@ -192,8 +228,16 @@ func process_movement(delta):
 
 	VehicleState.ground_speed = ground_speed
 
+#	if ground_speed >= 0:
 	$AnimationTree.set("parameters/Blend2/blend_amount", ground_speed / max_forward_speed)
 	$AnimationTree.set("parameters/TimeScale/scale", 0.5 + ((ground_speed / max_forward_speed) * 0.5) )
+
+#	elif ground_speed < 0:
+#		$AnimationTree.set("parameters/Blend2/blend_amount", -1)
+#		$AnimationTree.set("parameters/TimeScale/scale", 1)
+#		$AnimationTree.set("parameters/Blend2/blend_amount", (ground_speed / max_reverse_speed) * -1)
+#		$AnimationTree.set("parameters/TimeScale/scale", -0.5 - ((ground_speed / max_reverse_speed) * 0.5) )
+#		print($AnimationTree)
 
 	if ground_speed < throttle_setting:
 		if throttle_setting > 0:
@@ -242,18 +286,29 @@ func process_weapons(delta):
 
 		arm_mount_left.look_at(arm_aimpoint, Vector3(0, 1, 0))
 		arm_mount_right.look_at(arm_aimpoint, Vector3(0, 1, 0))
+		torso_mount.look_at(torso_aimpoint, Vector3(0, 1, 0))
 
-
-#		for w in weapon_group_1:
-#			w.look_at(arm_aimpoint, Vector3(0, 1, 0))
+		for w in VehicleState.arm_weapons:
+			w.look_at(arm_aimpoint, Vector3(0, 1, 0))
 
 		if Input.is_action_pressed("fire_selected_weapon"):
-			for w in weapon_group_1:
+			for w in VehicleState.weapon_group_1:
 				w.fire()
 
 		if Input.is_action_pressed("fire_weapon_2"):
-			for w in weapon_group_2:
+			for w in VehicleState.weapon_group_2:
 				w.fire()
+
+	if VehicleState.heat > 0 && VehicleState.beam_weapon_firing == false:
+		VehicleState.heat -= VehicleState.heat_dissipation
+	VehicleState.heat = clamp(VehicleState.heat, 0, VehicleState.heat_capacity)
+
+func process_targeting(delta):
+	if Input.is_action_just_pressed("target_reticle"):
+		if targeting_ray.is_colliding() && targeting_ray.get_collider().has_method("targeted"):
+			targeting_ray.get_collider().targeted()
+		else:
+			VehicleState.current_target = null
 
 func process_angles(delta):
 	var torso_heading = rad2deg(Vector2(upper_body_rotator.global_transform.basis.z.x, upper_body_rotator.global_transform.basis.z.z).angle_to(Vector2(0,1)))
@@ -263,7 +318,7 @@ func process_angles(delta):
 
 	VehicleState.torso_pitch = upper_body_rotator.rotation_degrees.x
 	VehicleState.torso_yaw = upper_body_rotator.rotation_degrees.y
-	VehicleState.body_pos = Vector2(upper_body_rotator.global_transform.basis.z.x, upper_body_rotator.global_transform.basis.z.z)
+#	VehicleState.body_pos = Vector2(upper_body_rotator.global_transform.basis.z.x, upper_body_rotator.global_transform.basis.z.z)
 
 func navpoint_reached():
 	pass

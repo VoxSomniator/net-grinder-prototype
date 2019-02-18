@@ -1,14 +1,27 @@
 extends Spatial
 
-var states = ["ready", "firing", "cooldown", "destroyed"]
+signal weapon_ready
 
-var current_state = null
+var weapon_name : String
 
-var cooldown = 0
-var cooldown_timer
+var states : Array = ["ready", "firing", "cooldown", "destroyed"]
+
+var current_state : String
+
+var cooldown : float = 0
+var cooldown_timer : float = 0
+
+var show_cooldown : bool = true
+
+var optimal_range : int = 500
+
+var uses_ammo : bool
+
+var ammo_type : String
+
+var weapon_heat : float
 
 func _ready():
-	cooldown_timer = 0
 	current_state = "ready"
 
 func _physics_process(delta):
@@ -17,7 +30,6 @@ func _physics_process(delta):
 
 func fire():
 	if current_state == "ready":
-#		print("firing")
 		current_state = "firing"
 
 func firing(delta):
@@ -26,13 +38,12 @@ func firing(delta):
 
 func cooldown_state(delta):
 	if current_state == "cooldown":
-#		print("cooldown")
 		if cooldown_timer < cooldown:
 			cooldown_timer += delta
 		elif cooldown_timer >= cooldown:
-#			print("ready")
 			current_state = "ready"
 			cooldown_timer = 0
+			emit_signal("weapon_ready")
 
 func destroyed():
 	current_state = "destroyed"

@@ -12,8 +12,6 @@ export var switch_on_reached = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	pass
-#	MapState.nav_points.append(self)
 	$Area.connect("body_entered", self, "collided")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

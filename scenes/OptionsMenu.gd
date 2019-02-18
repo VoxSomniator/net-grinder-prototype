@@ -3,16 +3,24 @@ extends Control
 var user_config
 var save_button
 
-var hud_font = load("res://assets/fonts/hud/NotoSansHUD.tres")
+var hud_font : Resource = load("res://assets/fonts/hud/NotoSansHUD.tres")
 
-onready var font_size_button = get_node("TabContainer/HUD/HUDPanel/FontSize")
+onready var font_size_button : Node = get_node("TabContainer/HUD/HUDPanel/FontSize")
 
-onready var font_sizes = [
+onready var font_sizes : Array = [
 10,
 12,
 14,
+16,
 18,
+20,
+22,
 24,
+26,
+28,
+30,
+32,
+34,
 36
 ]
 

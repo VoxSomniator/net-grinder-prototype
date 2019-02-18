@@ -2,26 +2,23 @@
 
 [ext_resource path="res://scripts/weapons/Bullet.gd" type="Script" id=1]
 
-[sub_resource type="SpatialMaterial" id=2]
-
+[sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true
 albedo_color = Color( 1, 0.913725, 0.611765, 0.498039 )
 metallic_specular = 0.0
 emission_enabled = true
 emission = Color( 1, 0.913725, 0.611765, 1 )
-emission_energy = 2.0
+emission_energy = 4.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="CapsuleMesh" id=1]
-
-material = SubResource( 2 )
+[sub_resource type="CapsuleMesh" id=2]
+material = SubResource( 1 )
 radius = 0.2
 radial_segments = 16
 rings = 4
 
-[sub_resource type="SpatialMaterial" id=4]
-
+[sub_resource type="SpatialMaterial" id=3]
 metallic_specular = 0.0
 emission_enabled = true
 emission = Color( 1, 1, 1, 1 )
@@ -29,27 +26,29 @@ emission_energy = 2.0
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="CapsuleMesh" id=3]
-
-material = SubResource( 4 )
+[sub_resource type="CapsuleMesh" id=4]
+material = SubResource( 3 )
 radius = 0.1
+radial_segments = 16
+rings = 4
 
 [sub_resource type="CapsuleShape" id=5]
-
-radius = 0.1
+radius = 0.2
 
 [node name="Bullet" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="Outer" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Inner" type="MeshInstance" parent="."]
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Area" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 shape = SubResource( 5 )

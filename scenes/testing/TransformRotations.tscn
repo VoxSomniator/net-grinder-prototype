@@ -5,11 +5,9 @@
 [ext_resource path="res://scenes/testing/test-mech/entities/NavPoint.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CubeMesh" id=1]
-
 size = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="SpatialMaterial" id=2]
-
 flags_transparent = true
 albedo_color = Color( 1, 0, 0, 0.505882 )
 emission_enabled = true
@@ -19,11 +17,9 @@ emission_operator = 0
 emission_on_uv2 = false
 
 [sub_resource type="CubeMesh" id=3]
-
 size = Vector3( 0.1, 0.1, 0.01 )
 
 [sub_resource type="SpatialMaterial" id=4]
-
 albedo_color = Color( 0, 1, 0.529412, 1 )
 emission_enabled = true
 emission = Color( 0, 1, 0.321569, 1 )
@@ -33,21 +29,16 @@ emission_on_uv2 = false
 
 [sub_resource type="SphereMesh" id=5]
 
-
 [sub_resource type="CubeMesh" id=6]
-
 size = Vector3( 2, 1, 5 )
 
 [sub_resource type="CubeMesh" id=7]
-
 size = Vector3( 0.1, 2, 0.1 )
 
 [sub_resource type="CubeMesh" id=8]
-
 size = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="SpatialMaterial" id=9]
-
 flags_transparent = true
 albedo_color = Color( 1, 1, 1, 0.262745 )
 
@@ -126,21 +117,25 @@ material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="Body/BodyMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907766, 1.5087, 0.359465 )
+visible = false
 mesh = SubResource( 7 )
 material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="Body/BodyMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.907766, 1.5087, 2.40109 )
+visible = false
 mesh = SubResource( 7 )
 material/0 = null
 
 [node name="MeshInstance4" type="MeshInstance" parent="Body/BodyMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.908, 1.509, 2.401 )
+visible = false
 mesh = SubResource( 7 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="Body/BodyMesh"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.908, 1.509, 0.359 )
+visible = false
 mesh = SubResource( 7 )
 material/0 = null
 

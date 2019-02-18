@@ -1784,5 +1784,8 @@ text = "NW"
 align = 1
 
 [node name="Markers" type="Position2D" parent="Track"]
-position = Vector2( 337, 12 )
+position = Vector2( 337, 10 )
+
+[node name="Entities" type="Position2D" parent="Track"]
+position = Vector2( 337, 10 )
 

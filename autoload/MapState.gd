@@ -1,11 +1,13 @@
 extends Node
 
-onready var nav_points = []
 signal navpoints_loaded()
 signal navpoint_reached(reached, next)
 
-func _init():
-	pass
+signal entities_updated(entity)
+
+onready var nav_points : Array = []
+
+var entities : Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,5 +17,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func next_navpoint(reached, next):
-	emit_signal("navpoint_reached", reached, next)
+#func next_navpoint(reached, next):
+#	emit_signal("navpoint_reached", reached, next)
